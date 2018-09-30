@@ -5,6 +5,7 @@ nome varchar(255) NOT NULL,
 idade INT,
 sexo VARCHAR(2),
 senha VARCHAR(255),
+especialidade VARCHAR(255),
 mediaAvaliacao FLOAT,
 somaDeAvaliacoes FLOAT,
 totalDeAvaliacoes INT,
@@ -13,11 +14,6 @@ eMedico BOOLEAN,
 eModerador BOOLEAN
 );
 
-CREATE TABLE IF NOT EXISTS Medico(
-medico_id INT NOT NULL,
-PRIMARY KEY (medico_id),
-FOREIGN KEY(medico_id) REFERENCES Usuario(usuario_id)
-);
 
 CREATE TABLE IF NOT EXISTS Pergunta(
 pergunta_id INTEGER AUTO_INCREMENT,
@@ -34,7 +30,7 @@ CREATE TABLE IF NOT EXISTS Resposta(
 resposta_id INTEGER AUTO_INCREMENT,
 PRIMARY KEY(resposta_id),
 medico_id INT NOT NULL,
-FOREIGN KEY(medico_id) REFERENCES Medico(medico_id),
+FOREIGN KEY(medico_id) REFERENCES Usuario(usuario_id),
 pergunta_id INTEGER NOT NULL,
 FOREIGN KEY(pergunta_id) REFERENCES Pergunta(pergunta_id),
 texto TEXT NOT NULL,

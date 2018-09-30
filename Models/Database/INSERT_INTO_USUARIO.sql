@@ -1,70 +1,68 @@
-INSERT INTO Usuario VALUES
+INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 (
-  NULL,
   "Eduardo Osielski Schonhofen",
   20,
   "M",
+  "Psiquiatra",
   "batataFrita123",
   5.6,
-  NULL,
   327,
   false,
   true,
   true
 );
 
-INSERT INTO Usuario VALUES
+INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+
 (
-  NULL,
   "Felipe Bastos",
   22,
   "M",
+  "Cardiologista",
   "ffbastos",
   7.2,
-  NULL,
   524,
   false,
   true,
   false
 );
 
-INSERT INTO Usuario VALUES
+INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+
 (
-  NULL,
   "Matheus Kovaleski",
   23,
   "M",
   "nazihitler",
   2.3,
-  NULL,
   666,
   true,
   false,
   false
 );
-INSERT INTO Usuario VALUES
+INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+
 (
-  NULL,
+
   "Giovane",
   24,
   "M",
   "racket",
   7.2,
-  NULL,
   150,
   true,
   false,
   false
 );
-INSERT INTO Usuario VALUES
+INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+
 (
-  NULL,
+
   "Cassiano",
   24,
   "M",
   "csGO",
   0,
-  NULL,
   0,
   false,
   false,
