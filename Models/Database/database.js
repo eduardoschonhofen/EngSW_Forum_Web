@@ -7,17 +7,20 @@ var con = mysql.createConnection({
   database: "website"
 });
 
-buscaPacientes()
+function inserePaciente()
 {
-  con.query("Select Nome FROM Pacientes",function(err, result)
-    {
-        if (err)
-            callback(err,null);
-        else
-            return result;
+  system.log("AAA");
 
-    }
-  )
-};
+}
 
-system.log(buscaPacientes);
+
+con.query("Select Nome from Usuario",(error,results,fields)=>{
+  if(error)
+  {
+    return console.error(error.message);
+
+  }
+  console.log(results);
+});
+
+con.end();
