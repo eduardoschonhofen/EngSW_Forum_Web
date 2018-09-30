@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var mysql = require('mysql');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -8,6 +9,26 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
+
+var baseDeDados = 'a' // nome da base de dados (DATABASE) aqui
+var tabela = 'Usuario' // nome da tabela aqui
+
+var con = mysql.createConnection({
+	user: 'root',      // nome do usuário do BD
+	password: 'root',  // senha do BD
+	host: 'localhost',
+	database: baseDeDados
+});
+
+// fazendo query no banco de dados
+con.connect(function(err) {
+	if (err) throw err;
+	con.query("SELECT * FROM " + tabela, function (err, result, fields) {
+	if (err) throw err;
+	console.log(result);
+	});
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
