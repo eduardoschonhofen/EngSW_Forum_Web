@@ -1,6 +1,7 @@
-INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+INSERT INTO Usuario(nome,nomeUsuario,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 (
   "Eduardo Osielski Schonhofen",
+  "eoschonhofen",
   20,
   "M",
   "Psiquiatra",
@@ -12,14 +13,15 @@ INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAv
   true
 );
 
-INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+INSERT INTO Usuario(nome,nomeUsuario,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 
 (
   "Felipe Bastos",
+  "ffbastos",
   22,
   "M",
   "Cardiologista",
-  "ffbastos",
+  "ffbastos123",
   7.2,
   524,
   false,
@@ -27,10 +29,11 @@ INSERT INTO Usuario(nome,idade,sexo,especialidade,senha,mediaAvaliacao,totalDeAv
   false
 );
 
-INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+INSERT INTO Usuario(nome,nomeUsuario,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 
 (
   "Matheus Kovaleski",
+  "mfkovaleski",
   23,
   "M",
   "nazihitler",
@@ -40,11 +43,12 @@ INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaci
   false,
   false
 );
-INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
+INSERT INTO Usuario(nome,nomeUsuario,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 
 (
 
   "Giovane",
+  "gafonseca",
   24,
   "M",
   "racket",
@@ -54,11 +58,10 @@ INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaci
   false,
   false
 );
-INSERT INTO Usuario(nome,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
-
+INSERT INTO Usuario(nome,nomeUsuario,idade,sexo,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES
 (
-
   "Cassiano",
+  "cdabruckhoff",
   24,
   "M",
   "csGO",
