@@ -1,58 +1,62 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var http = require('http');
+var fs = require('fs');
+var url= require('url');
+var path = "./Views/";
 
-var routes = require('./Controllers/router');
-
-var app = express();
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routes);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+function salvaHTML(req,res)
+{
+  filename=path+"test.html";
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/html'});
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    return res.end();
   });
 }
 
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+function salvaCSS(req,res)
+{
+  filename=path+"style.css";
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/css'});
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'text/css'});
+    res.write(data);
+    return res.end();
   });
-});
+}
+
+function salvaJS(req,res)
+{
+  filename=path+"teste.js";
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'text/js'});
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'text/javascript'});
+    res.write(data);
+    return res.end();
+  });
+}
 
 
-module.exports = app;
+
+http.createServer(function (req, res) {
+  console.log(req.url);
+  switch(req.url)
+  {
+  case "/":salvaHTML(req,res);
+  break;
+  case "/style.css":salvaCSS(req,res);
+  break;
+  case "/teste.js":salvaJS(req,res);
+
+  }
+
+}).listen(8080);

@@ -21,10 +21,8 @@ function inserePaciente()
 });
 });
 }
-var quero='';
-
 
 inserePaciente().then(function(results)
 {
-console.log(results);
+console.log(results[0].Nome);
 })
