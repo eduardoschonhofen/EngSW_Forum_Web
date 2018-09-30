@@ -19,3 +19,5 @@ buscaPacientes()
     }
   )
 };
+
+system.log(buscaPacientes);
