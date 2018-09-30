@@ -10,23 +10,23 @@ class Usuario
     this.eModerador=eModerador;
   }
 
-  setnome(nome)
+  setNome(nome)
   {
     this.nome=nome;
   }
-  setsenha(senha)
+  setSenha(senha)
   {
     this.senha=senha;
   }
-  setnome(mediaAvaliacao)
+  setNome(mediaAvaliacao)
   {
     this.mediaAvaliacao=mediaAvaliacao;
   }
-  setsomaDeAvaliacoes(somaDeAvaliacoes)
+  setSomaDeAvaliacoes(somaDeAvaliacoes)
   {
     this.somaDeAvaliacoes=somaDeAvaliacoes;
   }
-  settotalDeAvaliacoes(totalDeAvaliacoes)
+  setTotalDeAvaliacoes(totalDeAvaliacoes)
   {
     this.totalDeAvaliacoes=somaDeAvaliacoes;
   }

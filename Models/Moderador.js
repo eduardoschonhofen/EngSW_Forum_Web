@@ -1,16 +1,14 @@
 var Usuario = require('./Usuario');
 
-class Moderador extends Usuario{
-  constructor() {
+class Moderador extends Usuario
+{
 
-  }
-
-  aprovaPergunta()
+  aprovaPergunta(textoPergunta)
   {
-
+	
   }
 
-  finalizaTopico()
+  finalizaTopico(topico)
   {
     
   }
