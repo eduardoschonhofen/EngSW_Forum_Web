@@ -38,3 +38,5 @@ class Registro
   }
   
 }
+
+module.exports = Registro;

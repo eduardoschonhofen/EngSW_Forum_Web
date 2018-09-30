@@ -19,3 +19,5 @@ class Resposta extends Registro
   }
   
 }
+
+module.exports=Resposta;

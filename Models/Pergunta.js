@@ -24,3 +24,5 @@ class Pergunta extends Registro
   }
   
 }
+
+module.exports=Pergunta;
