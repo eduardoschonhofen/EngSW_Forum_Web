@@ -1,8 +1,10 @@
 class Usuario
 {
-  constructor(nome,senha,mediaAvaliacao,,ePaciente,eMedico,eModerador)
+  constructor(nome,idade,sexo,senha,mediaAvaliacao,,ePaciente,eMedico,eModerador)
   {
     this.nome=nome;
+    this.idade=idade;
+    this.sexo=sexo;
     this.senha=senha;
     this.mediaAvaliacao=mediaAvaliacao;
     this.somaDeAvaliacoes=somaDeAvaliacoes;
@@ -18,6 +20,22 @@ class Usuario
   getNome()
   {
 	return this.nome;
+  }
+  setIdade(idade)
+  {
+    this.idade=idade;
+  }
+  getIdade()
+  {
+	return this.idade;
+  }
+  setSexo(sexo)
+  {
+    this.sexo=sexo;
+  }
+  getSexo()
+  {
+	return this.sexo;
   }
   setSenha(senha)
   {

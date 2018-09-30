@@ -4,6 +4,21 @@ var Usuario = require('./Usuario.js');
 class Medico extends Usuario
 {
 
+  constructor(especialidade)
+  {
+	  this.especialidade = especialidade;
+  }
+  
+  setEspecialidade(especialidade)
+  {
+	  this.especialidade = especialidade;
+  }
+  
+  getEspecialidade()
+  {
+	  return this.especialidade;
+  }
+
   respondePergunta(textoResposta, pergunta)
   {
 	// adiciona uma resposta para uma pergunta

@@ -8,6 +8,7 @@ class Topico
   {
 	  this.pergunta = pergunta;
 	  this.listaDeRespostas = [];
+	  this.estaAberto = false;
   }
   
   setPergunta(pergunta)
@@ -18,6 +19,16 @@ class Topico
   getPergunta()
   {
 	  return this.pergunta;
+  }
+  
+  setEstaAberto(estaAberto)
+  {
+	  this.estaAberto = estaAberto;
+  }
+  
+  getEstaAberto()
+  {
+	  return this.estaAberto;
   }
   
   adicionaResposta(resposta)
@@ -38,6 +49,11 @@ class Topico
   insereResposta(resposta)
   {
 	  adicionaResposta(resposta);
+  }
+  
+  abreTopico()
+  {
+	  setEstaAberto(true);
   }
   
 }
