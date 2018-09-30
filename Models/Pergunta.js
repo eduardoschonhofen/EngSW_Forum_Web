@@ -20,7 +20,7 @@ class Pergunta extends Registro
   
   geraNotificacao()
   {
-	  // do something
+	  // Avisa os médicos que existe pergunta nova ???
   }
   
 }

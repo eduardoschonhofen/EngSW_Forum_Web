@@ -1,10 +1,11 @@
 class Usuario
 {
-  constructor(nome,senha,mediaAvaliacao,ePaciente,eMedico,eModerador)
+  constructor(nome,senha,mediaAvaliacao,,ePaciente,eMedico,eModerador)
   {
     this.nome=nome;
     this.senha=senha;
     this.mediaAvaliacao=mediaAvaliacao;
+    this.somaDeAvaliacoes=somaDeAvaliacoes;
     this.ePaciente=ePaciente;
     this.eMedico=eMedico;
     this.eModerador=eModerador;
@@ -14,21 +15,33 @@ class Usuario
   {
     this.nome=nome;
   }
+  getNome()
+  {
+	return this.nome;
+  }
   setSenha(senha)
   {
     this.senha=senha;
   }
-  setNome(mediaAvaliacao)
+  getSenha()
+  {
+	return this.senha;
+  }
+  setMediaAvaliacao(mediaAvaliacao)
   {
     this.mediaAvaliacao=mediaAvaliacao;
+  } 
+  getMediaAvaliacao()
+  {
+    return this.mediaAvaliacao;
   }
   setSomaDeAvaliacoes(somaDeAvaliacoes)
   {
     this.somaDeAvaliacoes=somaDeAvaliacoes;
   }
-  setTotalDeAvaliacoes(totalDeAvaliacoes)
+  getSomaDeAvaliacoes()
   {
-    this.totalDeAvaliacoes=somaDeAvaliacoes;
+	 return this.somaDeAvaliacoes; 
   }
 
 
@@ -36,14 +49,39 @@ class Usuario
   {
     this.ePaciente=ePaciente;
   }
+  getePaciente()
+  {
+	  return this.ePaciente;
+  }
   seteMedico(eMedico)
   {
     this.eMedico=eMedico;
+  }
+  geteMedico()
+  {
+	  return this.eMedico;
   }
   setePaciente(eModerador)
   {
     this.eModerador=eModerador;
   }
+  geteModerador()
+  {
+	  return this.eModerador;
+  }
+  
+  realizarLogin(nomeDeUsuario, senha)
+  {
+	  if(//consistente no banco de dados)
+	  {
+		  // atualiza os dados do usuário
+	  }
+	  else
+	  {
+		  console.log('Usuário Inválido'); // mensagem de erro
+	  }
+  }
+  
 }
 
 module.exports=Usuario;
