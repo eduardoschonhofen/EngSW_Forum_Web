@@ -9,18 +9,22 @@ var con = mysql.createConnection({
 
 function inserePaciente()
 {
-  system.log("AAA");
+  return new Promise(function(resolve,reject)
+{
+  con.query("Select Nome from Usuario",function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
 
-}
-
-
-con.query("Select Nome from Usuario",(error,results,fields)=>{
-  if(error)
-  {
-    return console.error(error.message);
-
-  }
-  console.log(results);
+    }
+    resolve(results);
 });
+});
+}
+var quero='';
 
-con.end();
+
+inserePaciente().then(function(results)
+{
+console.log(results);
+})
