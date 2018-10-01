@@ -108,10 +108,9 @@ function TsalvaJS(req,res)
 
 
 http.createServer(function (req, res) {
-  
-  var q = url.parse(req.url, true).pathname;
-  console.log(q);
-  switch(q)
+  console.log(req.url);
+  var q = url.parse(req.url, true);
+  switch(q.pathname)
   {
 	  case '/login.html': LsalvaHTML(req, res);
 	  break;
@@ -127,6 +126,25 @@ http.createServer(function (req, res) {
 	  case '/test.css': TsalvaCSS(req, res);
 	  break;
 	  case '/test.js': TsalvaJS(req, res);
+	  break;
+	  case '/resposta':
+		var qdata = q.query;
+		//console.log(qdata.a + qdata.b + qdata.c + qdata.d);
+		fs.appendFile('test.txt', qdata.a + ',' + qdata.b + ',' + qdata.c + ',' + qdata.d + '\n', function (err) {
+		  if (err) throw err;
+		  console.log('Saved!');
+		});
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		res.write(JSON.stringify("A senha da prova é 1Q"));
+		return res.end();
+	  break;
+	  case '/getans': 
+		fs.readFile('test.txt', function(err, data) {
+		data = data.toString('utf-8');
+		res.writeHead(200, {'Content-Type': 'application/json'});
+		res.write(JSON.stringify(data));
+		return res.end();
+		});
 	  break;
 	  default:
 	  res.writeHead(404, {'Content-Type': 'text/css'});

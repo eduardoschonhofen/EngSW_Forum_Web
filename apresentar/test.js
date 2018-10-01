@@ -16,8 +16,8 @@ var dict = {
 	'JHASKLjdfhJKHnkjanjkasngjkang2184717657823626262968w9ugmndskgjmkdsgsdg45d4g65a45641i40912u8aouh7asfya78': new Usuario('Cassiano', undefined, 'Sydney'),
 	'ASKODFY(*SAY(f8asghf87a87G*GFGH(A&SYD&*SAFGY*SAGF*SAF&GSAfh0asfhJP)jhfa90fpUAFUS()U(SH(SFH(SHFASJSKAHKS*': new Usuario('Eduardo', 'neurocirurgiao', 'Boston'),
 	'SDYYASD*&SATD&AGYg*Ysgaf8gsG*gf*GF*g*gfA*GFSFJ)AFSJ)F(JKSA)(KFSA(FKSA)(KF)(KFS)A(KFS)AKF)(SAKF()SAFK)F(SK': new Usuario('Felipe', 'cardiologista', 'Lisbon'),
-	'NM<NBCXZBVJHIDGUHIOEYQTY&*EY*&Tg8sdygdhsghohyoyoO&GOyo7yo7GHOHgGHOHG7HGGhO9HYohuigyUYYGUIOGYUIGYiuohiuhh': new Usuario('Giovane', undefined, 'Racket'),
-	'AN(H(FH*FHASJFOISAJfijaoifjoankj nvjkcxbvznvbzx hjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH': new Usuario('Matheus', undefined, 'Moskow')
+	'akjLKJLKAJFKLSJaJKPOJPEPHÇKÇasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK': new Usuario('Giovane', undefined, 'Racket'),
+	'ANsadasadaasJFOISAJfijaoifjoankjnvjkcxbvznvbzxljhhjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH': new Usuario('Matheus', undefined, 'Moskow')
 };
 
 var indexOfEqual= document.location.href.lastIndexOf('=');
@@ -46,6 +46,36 @@ function quit()
 	document.location.href = document.location.href.substr(0, indexOfSlash) + '/login.html';
 }
 
+var xhr = new XMLHttpRequest();
+var url = "getans";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+	if (xhr.readyState === 4 && xhr.status === 200) {
+		var json = JSON.parse(xhr.responseText);
+		var content = xhr.responseText;
+		var indexOfNewLine = content.indexOf("\\n");
+		while(indexOfNewLine !== -1)
+		{
+			var ans = content.substr(0, indexOfNewLine);
+			var indexOfComma = ans.indexOf(',');
+			var lst = [];
+			while(indexOfComma !== -1)
+			{
+				lst.push(ans.substr(0, indexOfComma));
+				ans = ans.substr(indexOfComma+1);
+				indexOfComma = ans.indexOf(',');
+			}
+			lst.push(ans);
+			printAnswer(lst[0], lst[1], lst[2], lst[3]);
+			content = content.substr(indexOfNewLine+1);
+			indexOfNewLine = content.indexOf('\\n');
+		}
+	}
+};
+var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+xhr.send(data);
+
 function ans() {
 	if(usuario === undefined)
 	{
@@ -62,7 +92,21 @@ function ans() {
 	{
 		var answer = document.getElementById('resposta').value.trim(); // remove trailing spaces
 		if(answer.length > 0)
+		{
 			printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+			var xhr = new XMLHttpRequest();
+			var url = "resposta?a="+answer+'&b='+usuario.name + '&c=' + usuario.speciality + '&d=' + usuario.city;
+			xhr.open("POST", url, true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.onreadystatechange = function () {
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					var json = JSON.parse(xhr.responseText);
+					console.log(xhr.responseText);
+				}
+			};
+			//var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+			xhr.send(answer);
+		}
 	}
 }
 
