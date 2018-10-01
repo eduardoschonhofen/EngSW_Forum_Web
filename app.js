@@ -3,6 +3,8 @@ var fs = require('fs');
 var url= require('url');
 var path = "./Views/";
 
+//require(path + 'yourfile.js');
+
 function salvaHTML(req,res)
 {
   filename=path+"test.html";
@@ -33,10 +35,10 @@ function salvaCSS(req,res)
 
 function salvaJS(req,res)
 {
-  filename=path+"teste.js";
+  filename=path+"test.js";
   fs.readFile(filename, function(err, data) {
     if (err) {
-      res.writeHead(404, {'Content-Type': 'text/js'});
+      res.writeHead(404, {'Content-Type': 'text/javascript'});
       return res.end("404 Not Found");
     }
     res.writeHead(200, {'Content-Type': 'text/javascript'});
@@ -55,7 +57,7 @@ http.createServer(function (req, res) {
   break;
   case "/style.css":salvaCSS(req,res);
   break;
-  case "/teste.js":salvaJS(req,res);
+  case "/test.js":salvaJS(req,res);
 
   }
 
