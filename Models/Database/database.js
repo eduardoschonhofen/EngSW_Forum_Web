@@ -7,6 +7,8 @@ var con = mysql.createConnection({
   database: "website"
 });
 
+var dbPaciente = require('./dbPaciente.js');
+
 function inserePaciente()
 {
   return new Promise(function(resolve,reject)
@@ -21,7 +23,10 @@ function inserePaciente()
 });
 });
 }
-
+dbPaciente.obtemPaciente(con,"eoschonhofen").then(function(results)
+{
+console.log(results);
+})
 inserePaciente().then(function(results)
 {
 console.log(results[0].Nome);
