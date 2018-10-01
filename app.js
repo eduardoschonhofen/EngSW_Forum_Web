@@ -48,16 +48,9 @@ function salvaJS(req,res)
 }
 function salvaJSON(req,res)
 {
-  filename=path+"test.js";
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'application/json'});
-      return res.end("404 Not Found");
-    }
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();
-  });
 }
 
 
