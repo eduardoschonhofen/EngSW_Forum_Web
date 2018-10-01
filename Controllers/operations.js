@@ -5,9 +5,9 @@ function startScreen(req,res)
 
 }
 function goLogin(req,res)
-  {
+{
 
-  }
+}
 
 function loginScreen(req,res)
 {

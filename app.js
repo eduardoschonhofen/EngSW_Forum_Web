@@ -52,6 +52,7 @@ var indexOfDot = path.indexOf('.');
 var type = path.substr(indexOfDot+1); // html, css, js, ...
 path = path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
 
+console.log(path);
 console.log(type);
 // --> qdo for comunicar por .js acho q tem q dar um nome que vai cair em algum switch daqui <--
 
@@ -59,7 +60,7 @@ console.log(type);
 switch(type)
 {
 case '/checkLogin':
-	
+	routesLogin.salvaJSON(req,res);
 break;
 }
 
@@ -78,7 +79,6 @@ case "login":
 		break;
 		default:	
 	}
-	//auxSelector(routesLogin, type, req, res);
 break;
 case "test":
 	switch(type)
@@ -95,27 +95,23 @@ break;
 default:
 	// 404 error
 	res.writeHead(404, {'Content-Type': 'text/css'});
-      return res.end("404 Not Found");
+    return res.end("404 Not Found");
 }
 
 
 }
 
 http.createServer(function (req, res) {
-  //console.log(req.url);
-  /*switch(req.url)
+  /*console.log(req.url);
+  switch(req.url)
   {
-  //case "/":routesTeste.TestesalvaHTML(req,res);
-  //break;
-  case "/test.js":routesTeste.TestesalvaJS(req,res);
+  case "/":routesTeste.salvaHTML(req,res);
   break;
-  case "/style.css":routesTeste.TestesalvaCSS(req,res);
+  case "/test.js":routesTeste.salvaJS(req,res);
   break;
-  case "/login.html":selector(req, res);
+  case "/test.css":routesTeste.salvaCSS(req,res);
   break;
-  case "/test.html":selector(req, res);
-  break;
-  default:routesTeste.TestesalvaJSON(req,res);
+  default:routesTeste.salvaJSON(req,res);
 
   }*/
   selector(req, res);
