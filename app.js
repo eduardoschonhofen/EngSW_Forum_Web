@@ -52,10 +52,16 @@ var indexOfDot = path.indexOf('.');
 var type = path.substr(indexOfDot+1); // html, css, js, ...
 path = path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
 
-console.log(path);
 console.log(type);
 // --> qdo for comunicar por .js acho q tem q dar um nome que vai cair em algum switch daqui <--
 
+
+switch(type)
+{
+case '/checkLogin':
+	
+break;
+}
 
 switch(path)
 {
@@ -87,7 +93,9 @@ case "test":
 	}
 break;
 default:
-	// ERRO 404 PAGE NOT FOUND
+	// 404 error
+	res.writeHead(404, {'Content-Type': 'text/css'});
+      return res.end("404 Not Found");
 }
 
 
