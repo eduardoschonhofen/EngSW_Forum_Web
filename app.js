@@ -46,6 +46,19 @@ function salvaJS(req,res)
     return res.end();
   });
 }
+function salvaJSON(req,res)
+{
+  filename=path+"test.js";
+  fs.readFile(filename, function(err, data) {
+    if (err) {
+      res.writeHead(404, {'Content-Type': 'application/json'});
+      return res.end("404 Not Found");
+    }
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.write(JSON.stringify("A senha da prova é 1Q"));
+    return res.end();
+  });
+}
 
 
 
@@ -58,6 +71,8 @@ http.createServer(function (req, res) {
   case "/style.css":salvaCSS(req,res);
   break;
   case "/test.js":salvaJS(req,res);
+  break;
+  default:salvaJSON(req,res);
 
   }
 
