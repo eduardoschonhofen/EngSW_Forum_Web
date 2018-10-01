@@ -9,6 +9,16 @@
         width: 100%;
 }
 
+#pergunta {
+		margin-top: 16px;
+		
+}
+
+#error {
+    color: red;
+}
+
+
 #question {
         background-color: #eff1f3;
 }
