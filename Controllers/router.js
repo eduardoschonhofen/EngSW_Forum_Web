@@ -1,20 +1,15 @@
-var express = require('express');
+var express=require('express');
+var app=express();
+var operations = require('/.operations.js');
+
+app.listen(8080);
+
+app.get('/',operations.startScreen(req,res));
+app.post('/',operations.goLogin(req,res));
 
 
-var router = express.Router();
+app.get('/login',operations.loginScreen(req,res));
+app.post('/login',operations.DoLogin(req,res));
 
 
-//Página GET
-router.get('/',function(req,res)
-{
-  res.render('index',{title:'DISGRAÇA!!!'});
-});
-
-router.get('/test/:id',function(req,res)
-{
-  res.render('teste',{output:req.params.id});
-
-
-})
-
-module.exports=router;
+module.exports = app;

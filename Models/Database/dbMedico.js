@@ -1,8 +1,8 @@
-function obtemPaciente(con,nomePaciente)
+function obtemMedico(con,nomeMedico)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario where ePaciente=true and nomeUsuario='"+nomePaciente+"'";
+  busca="Select * from Usuario where nomeUsuario='"+nomeMedico+"' AND eMedico=true";
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -13,11 +13,11 @@ function obtemPaciente(con,nomePaciente)
 });
 }
 
-function obtemPacientes(con)
+function obtemMedicos(con)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario WHERE ePaciente=true";
+  busca="Select * from Usuario where eMedico=true";
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -30,6 +30,6 @@ function obtemPacientes(con)
 
 
 
+exports.obtemMedico=obtemMedico;
+exports.obtemMedicos=obtemMedicos;
 
-exports.obtemPaciente=obtemPaciente;
-exports.obtemPacientes=obtemPacientes;

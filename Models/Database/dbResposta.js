@@ -1,8 +1,8 @@
-function obtemPaciente(con,nomePaciente)
+function obtemRespostaParaPergunta(con,tituloPergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario where ePaciente=true and nomeUsuario='"+nomePaciente+"'";
+  busca="Select * from Resposta where perguntaTitulo='"+tituloPergunta+"'";
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -13,11 +13,11 @@ function obtemPaciente(con,nomePaciente)
 });
 }
 
-function obtemPacientes(con)
+function obtemRespostas(con)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario WHERE ePaciente=true";
+  busca="Select * from Pergunta INNER JOIN Resposta ON Pergunta.titulo=Resposta.perguntaTitulo"
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -28,8 +28,6 @@ function obtemPacientes(con)
 });
 }
 
+exports.obtemRespostaParaPergunta=obtemRespostaParaPergunta;
+exports.obtemRespostas=obtemRespostas;
 
-
-
-exports.obtemPaciente=obtemPaciente;
-exports.obtemPacientes=obtemPacientes;
