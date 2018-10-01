@@ -1,4 +1,7 @@
 
+var path = './Views/';
+var fs = require('fs');
+
 function TestesalvaHTML(req,res)
 {
   filename=path+"test.html";

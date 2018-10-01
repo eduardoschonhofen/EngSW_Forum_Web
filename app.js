@@ -9,6 +9,7 @@ var dbModerador = require('./Models/Database/dbModerador.js');
 var dbUsuario = require('./Models/Database/dbUsuario.js');
 var dbPergunta = require('./Models/Database/dbPergunta.js');
 var dbResposta = require('./Models/Database/dbResposta.js');
+var routes = require('./Controllers/routesTeste.js');
 
 
 var con = mysql.createConnection({
@@ -44,13 +45,13 @@ http.createServer(function (req, res) {
   console.log(req.url);
   switch(req.url)
   {
-  case "/":salvaHTML(req,res);
+  case "/":routes.TestesalvaHTML(req,res);
   break;
-  case "/style.css":salvaCSS(req,res);
+  case "/style.css":routes.TestesalvaCSS(req,res);
   break;
-  case "/test.js":salvaJS(req,res);
+  case "/test.js":routes.TestesalvaJS(req,res);
   break;
-  default:salvaJSON(req,res);
+  default:routes.TestesalvaJSON(req,res);
 
   }
 
