@@ -10,9 +10,26 @@ class Usuario
 	}
 };
 
-var usuario = new Usuario('felipe', 'cardiologista', 'Porto Alegre');
+//document.getElementById('error').style.display = 'none';
 
-document.getElementById('error').style.display = 'none';
+var dict = {
+	'JHASKLjdfhJKHnkjanjkasngjkang2184717657823626262968w9ugmndskgjmkdsgsdg45d4g65a45641i40912u8aouh7asfya78': new Usuario('Cassiano', undefined, 'Sydney'),
+	'ASKODFY(*SAY(f8asghf87a87G*GFGH(A&SYD&*SAFGY*SAGF*SAF&GSAfh0asfhJP)jhfa90fpUAFUS()U(SH(SFH(SHFASJSKAHKS*': new Usuario('Eduardo', 'neurocirurgiao', 'Boston'),
+	'SDYYASD*&SATD&AGYg*Ysgaf8gsG*gf*GF*g*gfA*GFSFJ)AFSJ)F(JKSA)(KFSA(FKSA)(KF)(KFS)A(KFS)AKF)(SAKF()SAFK)F(SK': new Usuario('Felipe', 'cardiologista', 'Lisbon'),
+	'NM<NBCXZBVJHIDGUHIOEYQTY&*EY*&Tg8sdygdhsghohyoyoO&GOyo7yo7GHOHgGHOHG7HGGhO9HYohuigyUYYGUIOGYUIGYiuohiuhh': new Usuario('Giovane', undefined, 'Racket'),
+	'AN(H(FH*FHASJFOISAJfijaoifjoankj nvjkcxbvznvbzx hjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH': new Usuario('Matheus', undefined, 'Moskow')
+};
+
+var indexOfEqual= document.location.href.lastIndexOf('=');
+var username = document.location.href.substr(indexOfEqual+1);
+
+var usuario = dict[username];
+
+if(usuario === undefined)
+{
+	document.getElementById('sair').textContent = 'Fazer Login';
+}
+
 
 function printTopic(title, msg) {
     document.getElementById("title").innerHTML += title;
@@ -30,9 +47,16 @@ function quit()
 }
 
 function ans() {
-	if(usuario.speciality === undefined)
+	if(usuario === undefined)
 	{
-		document.getElementById('error').style.display = 'block';
+		document.getElementById('error').textContent = 'Voce nao esta logado';
+		//document.getElementById('error').style.display = 'block';
+	}
+	else if(usuario.speciality === undefined)
+	{
+		
+		document.getElementById('error').textContent = 'Voce nao pode responder perguntas';
+		//document.getElementById('error').style.display = 'block';
 	}
 	else
 	{

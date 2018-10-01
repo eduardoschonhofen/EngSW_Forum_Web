@@ -2,6 +2,7 @@
 
 var http = require('http');
 var fs = require('fs');
+var url = require('url');
 var path = './';
 //var filename;
 
@@ -107,9 +108,10 @@ function TsalvaJS(req,res)
 
 
 http.createServer(function (req, res) {
-  console.log(req.url);
-  var file;
-  switch(req.url)
+  
+  var q = url.parse(req.url, true).pathname;
+  console.log(q);
+  switch(q)
   {
 	  case '/login.html': LsalvaHTML(req, res);
 	  break;
@@ -119,7 +121,8 @@ http.createServer(function (req, res) {
 	  break;
 	  case '/login.png': LsalvaPNG(req, res);
 	  break;
-	  case '/test.html': TsalvaHTML(req, res);
+	  case '/test.html':
+			TsalvaHTML(req, res);
 	  break;
 	  case '/test.css': TsalvaCSS(req, res);
 	  break;
@@ -132,21 +135,3 @@ http.createServer(function (req, res) {
 
 }).listen(8080);
 
-
-/*http.createServer(function (req, res) {
-  console.log(req.url);
-  var file;
-  switch(req.url)
-  {
-	  case '/': file = './login.html';
-	  break;
-	  case '/test.html': file = './test.html';
-	  break;
-  }
-  fs.readFile(file, function(err, data) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write(data);
-  res.end();
-  });
-
-}).listen(8080);*/
