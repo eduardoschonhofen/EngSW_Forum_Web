@@ -8,6 +8,7 @@ var con = mysql.createConnection({
 });
 
 var dbPaciente = require('./dbPaciente.js');
+var dbUsuario = require('./dbUsuario.js');
 
 function inserePaciente()
 {
@@ -24,11 +25,19 @@ function inserePaciente()
 });
 }
 
-dbPaciente.obtemPaciente(con,"eoschonhofen").then(function(results)
+dbPaciente.obtemPaciente(con,"gafonseca").then(function(results)
 {
 console.log(results);
 })
-inserePaciente().then(function(results)
+
+dbPaciente.obtemPacientes(con).then(function(results)
 {
-console.log(results[0].Nome);
+console.log(results);
+})
+
+
+
+dbUsuario.loginUsuario(con,"eoschonhofen","batataFrita123").then(function(results)
+{
+console.log(results);
 })
