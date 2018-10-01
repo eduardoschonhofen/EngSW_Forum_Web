@@ -2,58 +2,43 @@ var http = require('http');
 var fs = require('fs');
 var url= require('url');
 var path = "./Views/";
+var mysql = require('mysql');
+var dbPaciente = require('./Models/Database/dbPaciente.js');
+var dbMedico = require('./Models/Database/dbMedico.js');
+var dbModerador = require('./Models/Database/dbModerador.js');
+var dbUsuario = require('./Models/Database/dbUsuario.js');
+var dbPergunta = require('./Models/Database/dbPergunta.js');
+var dbResposta = require('./Models/Database/dbResposta.js');
+
+
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "Eduardo",
+  password: "123",
+  database: "website"
+});
+
+
 
 //require(path + 'yourfile.js');
 
-function salvaHTML(req,res)
-{
-  filename=path+"test.html";
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/html'});
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    res.write(data);
-    return res.end();
-  });
-}
 
-function salvaCSS(req,res)
-{
-  filename=path+"style.css";
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/css'});
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, {'Content-Type': 'text/css'});
-    res.write(data);
-    return res.end();
-  });
-}
 
-function salvaJS(req,res)
+function selector(req,res)
 {
-  filename=path+"test.js";
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, {'Content-Type': 'text/javascript'});
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, {'Content-Type': 'text/javascript'});
-    res.write(data);
-    return res.end();
-  });
-}
-function salvaJSON(req,res)
+url=req.url;
+q=url.parse(url,true);
+path=q.pathname;
+
+
+switch(path)
 {
-    res.writeHead(200, {'Content-Type': 'application/json'});
-    res.write(JSON.stringify("A senha da prova é 1Q"));
-    return res.end();
+case "login":
+
 }
 
 
+}
 
 http.createServer(function (req, res) {
   console.log(req.url);
