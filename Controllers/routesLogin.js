@@ -1,6 +1,7 @@
 
 var path = './Views/login/';
 var fs = require('fs');
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 function salvaHTML(req,res)
 {
@@ -60,6 +61,17 @@ function salvaPNG(req,res)
 
 function salvaJSON(req,res)
 {
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', '/checkLogin');
+	console.log(this.res);
+	/*var data = JSON.parse(this.response);
+	console.log(data);
+	xhr.onload = function(e) {
+	  var data = JSON.parse(this.response);
+	  console.log(data);
+	}
+	xhr.send();*/
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();

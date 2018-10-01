@@ -45,6 +45,7 @@ function salvaJS(req,res)
 }
 function salvaJSON(req,res)
 {
+	
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();

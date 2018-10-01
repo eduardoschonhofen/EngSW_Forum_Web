@@ -60,6 +60,7 @@ console.log(type);
 switch(type)
 {
 case '/checkLogin':
+	console.log('checking Login...');
 	routesLogin.salvaJSON(req,res);
 break;
 }
