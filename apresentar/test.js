@@ -16,7 +16,7 @@ var dict = {
 	'JHASKLjdfhJKHnkjanjkasngjkang2184717657823626262968w9ugmndskgjmkdsgsdg45d4g65a45641i40912u8aouh7asfya78': new Usuario('Cassiano', undefined, 'Sydney'),
 	'ASKODFY(*SAY(f8asghf87a87G*GFGH(A&SYD&*SAFGY*SAGF*SAF&GSAfh0asfhJP)jhfa90fpUAFUS()U(SH(SFH(SHFASJSKAHKS*': new Usuario('Eduardo', 'neurocirurgiao', 'Boston'),
 	'SDYYASD*&SATD&AGYg*Ysgaf8gsG*gf*GF*g*gfA*GFSFJ)AFSJ)F(JKSA)(KFSA(FKSA)(KF)(KFS)A(KFS)AKF)(SAKF()SAFK)F(SK': new Usuario('Felipe', 'cardiologista', 'Lisbon'),
-	'akjLKJLKAJFKLSJaJKPOJPEPHÇKÇasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK': new Usuario('Giovane', undefined, 'Racket'),
+	'akjLKJLKAJFKLSJaJKPOJPEPHeKaasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK': new Usuario('Giovane', undefined, 'Racket'),
 	'ANsadasadaasJFOISAJfijaoifjoankjnvjkcxbvznvbzxljhhjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH': new Usuario('Matheus', undefined, 'Moskow')
 };
 
@@ -85,7 +85,7 @@ function ans() {
 	else if(usuario.speciality === undefined)
 	{
 		
-		document.getElementById('error').textContent = 'Voce nao pode responder perguntas';
+		document.getElementById('error').textContent = 'Voce nao pode responder perguntas pois nao e medico';
 		//document.getElementById('error').style.display = 'block';
 	}
 	else

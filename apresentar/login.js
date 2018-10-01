@@ -23,7 +23,7 @@ var hash = {
 	'cassiano': 'JHASKLjdfhJKHnkjanjkasngjkang2184717657823626262968w9ugmndskgjmkdsgsdg45d4g65a45641i40912u8aouh7asfya78',
 	'eduardo': 'ASKODFY(*SAY(f8asghf87a87G*GFGH(A&SYD&*SAFGY*SAGF*SAF&GSAfh0asfhJP)jhfa90fpUAFUS()U(SH(SFH(SHFASJSKAHKS*',
 	'felipe': 'SDYYASD*&SATD&AGYg*Ysgaf8gsG*gf*GF*g*gfA*GFSFJ)AFSJ)F(JKSA)(KFSA(FKSA)(KF)(KFS)A(KFS)AKF)(SAKF()SAFK)F(SK',
-	'giovane': 'akjLKJLKAJFKLSJaJKPOJPEPHÇKÇasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK',
+	'giovane': 'akjLKJLKAJFKLSJaJKPOJPEPHeKaasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK',
 	'matheus': 'ANsadasadaasJFOISAJfijaoifjoankjnvjkcxbvznvbzxljhhjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH'
 };
 
