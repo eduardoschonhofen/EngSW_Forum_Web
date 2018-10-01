@@ -23,6 +23,7 @@ function inserePaciente()
 });
 });
 }
+
 dbPaciente.obtemPaciente(con,"eoschonhofen").then(function(results)
 {
 console.log(results);

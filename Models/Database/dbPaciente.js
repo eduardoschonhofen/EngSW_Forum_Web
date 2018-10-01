@@ -2,7 +2,8 @@ function obtemPaciente(con,nomePaciente)
 {
   return new Promise(function(resolve,reject)
 {
-  con.query("Select Nome from Usuario where nomeUsuario="+nomePaciente,function(error,results,fields){
+  busca="Select Nome from Usuario where nomeUsuario='"+nomePaciente+"'";
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -11,3 +12,5 @@ function obtemPaciente(con,nomePaciente)
 });
 });
 }
+
+exports.obtemPaciente=obtemPaciente;
