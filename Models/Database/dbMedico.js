@@ -13,7 +13,7 @@ function obtemMedico(con,nomeMedico)
 });
 }
 
-function obtemTodosMedicos(con)
+function obtemMedicos(con)
 {
   return new Promise(function(resolve,reject)
 {
@@ -31,5 +31,5 @@ function obtemTodosMedicos(con)
 
 
 exports.obtemMedico=obtemMedico;
-exports.obtemTodosMedicos=obtemTodosMedicos;
+exports.obtemMedicos=obtemMedicos;
 

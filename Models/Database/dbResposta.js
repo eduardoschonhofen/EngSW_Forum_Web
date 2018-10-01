@@ -1,8 +1,8 @@
-function obtemModerador(con,nomeModerador)
+function obtemRespostaParaPergunta(con,tituloPergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario where nomeUsuario='"+nomeModerador+"' AND eModerador=true";
+  busca="Select * from Resposta where perguntaTitulo='"+tituloPergunta+"'";
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -13,11 +13,11 @@ function obtemModerador(con,nomeModerador)
 });
 }
 
-function obtemModeradores(con)
+function obtemRespostas(con)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Usuario where eModerador=true";
+  busca="Select * from Pergunta INNER JOIN Resposta ON Pergunta.titulo=Resposta.perguntaTitulo"
   con.query(busca,function(error,results,fields){
     if(error)
     {
@@ -28,8 +28,6 @@ function obtemModeradores(con)
 });
 }
 
-
-
-exports.obtemModerador=obtemModerador;
-exports.obtemModeradores=obtemModeradores;
+exports.obtemRespostaParaPergunta=obtemRespostaParaPergunta;
+exports.obtemRespostas=obtemRespostas;
 
