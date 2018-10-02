@@ -5,5 +5,27 @@
 
 }).call(this);
 
+var xhr = new XMLHttpRequest();
+var url = "search";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+xhr.onreadystatechange = function () {
+  if (xhr.readyState === 4 && xhr.status === 200) {
+    var success = xhr.responseText;
+    console.log(xhr.responseText);
+    success=JSON.parse(success);
+    console.log(success);
+
+    console.log(success);
+  }
+};
+
+var data = JSON.stringify("");
+xhr.send(data);
+
+
+
+
 printTopic("abc", "def", "ghi");
 printTopic("abcu", "deuf", "ghiu");

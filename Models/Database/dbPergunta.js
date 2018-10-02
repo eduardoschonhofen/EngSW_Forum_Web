@@ -44,7 +44,31 @@ function obtemPerguntas(con)
 }
 
 
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
+
+
+function inserePergunta(con,nomeUsuario,texto,titulo)
+{
+  insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
+  insert=printf(insert,[nomeUsuario,titulo,texto]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+})
+}
+
+exports.inserePergunta=inserePergunta;
+
 exports.obtemPerguntaTitulo=obtemPerguntaTitulo;
 exports.obtemPerguntaUsuario=obtemPerguntaUsuario;
 exports.obtemPerguntas=obtemPerguntas;
-

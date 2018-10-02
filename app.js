@@ -12,6 +12,8 @@ var dbResposta = require('./Models/Database/dbResposta.js');
 var routesTeste = require('./Controllers/routesTeste.js');
 var routesLogin = require('./Controllers/routesLogin.js');
 var routesRegister = require('./Controllers/routesRegister.js');
+var routesCreatePergunta=require('./Controllers/routesCreatePergunta');
+var routesShowPerguntas=require('./Controllers/routesShowPerguntas.js');
 
 var con = mysql.createConnection({
   host: "localhost",
@@ -96,17 +98,31 @@ case "login":
 		default:
 	}
 break;
-case "test":
+case "search":
 	switch(type)
 	{
-		case 'html': routesTeste.salvaHTML(req, res);
+		case 'html': routesShowPerguntas.salvaHTML(req, res);
 		break;
-		case 'css': routesTeste.salvaCSS(req, res);
+		case 'css': routesShowPerguntas.salvaCSS(req, res);
 		break;
-		case 'js': routesTeste.salvaJS(req, res);
+		case 'js': routesShowPerguntas.salvaJS(req, res);
 		break;
 		default:
 	}
+break;
+
+case "Createpergunta":
+	switch(type)
+	{
+		case 'html': routesCreatePergunta.salvaHTML(req, res);
+		break;
+		case 'css': routesCreatePergunta.salvaCSS(req, res);
+		break;
+		case 'js': routesCreatePergunta.salvaJS(req, res);
+		break;
+		default:
+	}
+break;
   case "register":
   	switch(type)
   	{
@@ -135,6 +151,9 @@ else
   break;
   case "/register":routesRegister.salvaUsuario(req,res,con);
   break;
+  case "/createPergunta":routesCreatePergunta.criaPergunta(req,res,con);
+  break;
+  case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   default:
   	// 404 error
   	res.writeHead(404, {'Content-Type': 'text/css'});
