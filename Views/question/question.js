@@ -9,7 +9,7 @@ function getPergunta()
 }
 function getUsername()
 {
-	return getCookie("gafonseca");
+	return getCookie("username");
 }
 
 getCookie = function(name) {
@@ -44,5 +44,3 @@ document.getElementById('submit').addEventListener("click", function() {
 	alert("Redirecionando para página de Perguntas");
 	document.location.href = '/search.html';
 })
-console.log("AA");
-console.log(getUsername());

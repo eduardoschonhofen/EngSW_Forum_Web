@@ -85,6 +85,9 @@ if(req.method!="POST")
 switch(path)
 {
 case "login":
+  {
+  console.log(q);
+  console.log(q.query);
 	switch(type)
 	{
 		case 'html': routesLogin.salvaHTML(req, res);
@@ -97,6 +100,7 @@ case "login":
 		break;
 		default:
 	}
+}
 break;
 case "search":
 	switch(type)

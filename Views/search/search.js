@@ -27,7 +27,7 @@ xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
   console.log(xhr.readyState);
   console.log(xhr.status);
-  console.log(getCookie("gafonseca"));
+  console.log(getCookie("username"));
   if (xhr.readyState === 4 && xhr.status === 200) {
     var success = xhr.responseText;
     console.log(xhr.responseText);
@@ -40,5 +40,5 @@ xhr.onreadystatechange = function () {
   }
 };
 
-var data = JSON.stringify({"B":"A"});
-xhr.send(null);
+var data = JSON.stringify({"cookie":getCookie("username")});
+xhr.send(data);

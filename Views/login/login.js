@@ -1,5 +1,5 @@
 saveCookie = function(name, value) {
-	return document.cookie = `${name}=${value}` + "; expires=Fri, 31 Dec 9999 23:59:59 GMT" + "; path=/";
+	return document.cookie = `${name}=${value}` + "; expires=Fri, 31 Dec 9999 23:59:59 GMT" + "; domain:/" + "; path=/";
 };
 
 getCookie = function(name) {
@@ -46,9 +46,10 @@ document.getElementById('submit').addEventListener("click", function() {
 			console.log(success);
 			console.log("TREU");
 
+			console.log(getNomeUsuario());
 			if (success=="true")
 			{
-				console.log(saveCookie(getNomeUsuario(),getSenhaUsuario()));
+				console.log(saveCookie("username",getNomeUsuario()));
 				alert("Redirecionando para lista de tópicos");
 				document.location.href = '/search.html';
 			}
