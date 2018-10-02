@@ -127,16 +127,18 @@ default:
 }
 else
 {
-  switch(path)
+  switch(req.url)
   {
   case "login":0;
   break;
   case "test":0;
   break;
-  case "register": collectRequestData(req, result => {
+  case "/register":{console.log("AAA");
+     collectRequestData(req, result => {
         console.log(result);
-        res.end(`Parsed data belonging to ${result.fname}`);
-    });
+        console.log("EITA");
+        res.end(`Parsed data belonging to `);
+    })};
   break;
   default:
   	// 404 error
