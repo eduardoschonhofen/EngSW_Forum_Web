@@ -35,7 +35,7 @@ document.getElementById('submit').addEventListener("click", function() {
 			console.log(xhr.responseText);
 			sucess=JSON.parse(sucess);
 
-			if (success == "true")
+			if (success["username"] === "true")
 			{
 				alert("Login EXISTE");
 			}
