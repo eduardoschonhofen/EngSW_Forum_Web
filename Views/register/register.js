@@ -14,6 +14,15 @@ function getSenhaUsuario()
 }
 
 document.getElementById('submit').addEventListener("click", function() {
+
+	if (getNome() == "" || getNomeUsuario() == "" || getSenhaUsuario() == "")
+	{
+		alert("Preencha todos os campos.");
+		return;
+	}
+
+	console.log("REG");
+
 	var xhr = new XMLHttpRequest();
 	var url = "register";
 	xhr.open("POST", url, true);

@@ -24,6 +24,13 @@ function getSenhaUsuario()
 }
 
 document.getElementById('submit').addEventListener("click", function() {
+
+	if (getNomeUsuario() == "" || getSenhaUsuario() == "")
+	{
+		alert("Preencha todos os campos.");
+		return;
+	}
+
 	var xhr = new XMLHttpRequest();
 	var url = "login";
 	xhr.open("POST", url, true);
