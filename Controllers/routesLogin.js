@@ -29,14 +29,14 @@ function realizarLogin(req,res,con)
       {
         console.log("FALSE");
         res.writeHead(200, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify({"username": "false"}));
+        res.write(JSON.stringify("false"));
         return res.end();
 
       }
         else
         {
           res.writeHead(200, {'Content-Type': 'application/json'});
-          res.write(JSON.stringify({"username": "true"}));
+          res.write(JSON.stringify("true"));
           return res.end();
         }
       });
