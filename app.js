@@ -37,11 +37,25 @@ var con = mysql.createConnection({
 		case 'js': route.salvaJS(req, res);
 		break;
 		default:
-		
+
 	}
 }*/
 
-
+function collectRequestData(request, callback) {
+    const FORM_URLENCODED = 'application/x-www-form-urlencoded';
+    if(request.headers['content-type'] === FORM_URLENCODED) {
+        let body = '';
+        request.on('data', chunk => {
+            body += chunk.toString();
+        });
+        request.on('end', () => {
+            callback(parse(body));
+        });
+    }
+    else {
+        callback(null);
+    }
+}
 
 function selector(req,res)
 {
@@ -64,7 +78,8 @@ case '/checkLogin':
 	routesLogin.salvaJSON(req,res);
 break;
 }
-
+if(req.method!="POST")
+{
 switch(path)
 {
 case "login":
@@ -78,7 +93,7 @@ case "login":
 		break;
 		case 'png': routesLogin.salvaPNG(req, res);
 		break;
-		default:	
+		default:
 	}
 break;
 case "test":
@@ -90,19 +105,52 @@ case "test":
 		break;
 		case 'js': routesTeste.salvaJS(req, res);
 		break;
-		default:	
+		default:
 	}
+  case "register":
+  	switch(type)
+  	{
+  		case 'html': routesRegister.salvaHTML(req, res);
+  		break;
+  		case 'css': routesRegister.salvaCSS(req, res);
+  		break;
+  		case 'js': routesRegister.salvaJS(req, res);
+  		break;
+  		default:
+  	}
 break;
 default:
 	// 404 error
 	res.writeHead(404, {'Content-Type': 'text/css'});
     return res.end("404 Not Found");
 }
+}
+else
+{
+  switch(path)
+  {
+  case "login":0;
+  break;
+  case "test":0;
+  break;
+  case "register": collectRequestData(req, result => {
+        console.log(result);
+        res.end(`Parsed data belonging to ${result.fname}`);
+    });
+  break;
+  default:
+  	// 404 error
+  	res.writeHead(404, {'Content-Type': 'text/css'});
+      return res.end("404 Not Found");
+  }
+
+}
 
 
 }
 
-http.createServer(function (req, res) {
+
+http.createServer(
   /*console.log(req.url);
   switch(req.url)
   {
@@ -114,8 +162,7 @@ http.createServer(function (req, res) {
   break;
   default:routesTeste.salvaJSON(req,res);
 
-  }*/
-  selector(req, res);
+}*/selector(req, res)
 
 
-}).listen(8080);
+).listen(8080);

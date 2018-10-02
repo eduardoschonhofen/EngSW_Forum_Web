@@ -28,6 +28,18 @@ function obtemPacientes(con)
 });
 }
 
+function inserePaciente(con,nome,nomeUsuario,senha)
+{
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('+nome+','+nomeUsuario+','+senha+',0,0,false,true,true);";
+
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+}
+}
+
 
 
 
