@@ -1,5 +1,5 @@
 
-var path = './Views/login/';
+var path = './Views/question/';
 var fs = require('fs');
 
 var dbPergunta = require('../Models/Database/dbPergunta.js');
@@ -20,13 +20,13 @@ function realizarPergunta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbPergunta.inserePergunta(con,resultados.username,resultados.text,resultados.title);
+      dbPergunta.inserePergunta(con,resultados.username,resultados.question,resultados.title);
 });
 }
 
 function salvaHTML(req,res)
 {
-  filename=path+"pergunta.html";
+  filename=path+"question.html";
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'});
@@ -40,7 +40,7 @@ function salvaHTML(req,res)
 
 function salvaCSS(req,res)
 {
-  filename=path+"pergunta.css";
+  filename=path+"question.css";
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/css'});
@@ -54,7 +54,7 @@ function salvaCSS(req,res)
 
 function salvaJS(req,res)
 {
-  filename=path+"pergunta.js";
+  filename=path+"question.js";
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/javascript'});
@@ -68,7 +68,7 @@ function salvaJS(req,res)
 
 function salvaPNG(req,res)
 {
-  filename=path+"pergunta.png";
+  filename=path+"question.png";
   fs.readFile(filename, function(err, data) {
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/javascript'});

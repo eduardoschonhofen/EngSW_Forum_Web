@@ -71,7 +71,7 @@ path = path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e ap
 console.log(path);
 console.log(type);
 // --> qdo for comunicar por .js acho q tem q dar um nome que vai cair em algum switch daqui <--
-
+console.log(res.finished);
 
 switch(type)
 {
@@ -111,7 +111,7 @@ case "search":
 	}
 break;
 
-case "Createpergunta":
+case "question":
 	switch(type)
 	{
 		case 'html': routesCreatePergunta.salvaHTML(req, res);
@@ -143,6 +143,7 @@ default:
 }
 else
 {
+
   switch(req.url)
   {
   case "/login":routesLogin.realizarLogin(req,res,con);
@@ -151,9 +152,10 @@ else
   break;
   case "/register":routesRegister.salvaUsuario(req,res,con);
   break;
-  case "/createPergunta":routesCreatePergunta.criaPergunta(req,res,con);
+  case "/question":routesCreatePergunta.realizarPergunta(req,res,con);
   break;
   case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
+break;
   default:
   	// 404 error
   	res.writeHead(404, {'Content-Type': 'text/css'});

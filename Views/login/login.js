@@ -44,9 +44,11 @@ document.getElementById('submit').addEventListener("click", function() {
 			console.log(xhr.responseText);
 			success=JSON.parse(success);
 			console.log(success);
+			console.log("TREU");
 
 			if (success=="true")
 			{
+				console.log(saveCookie(getNomeUsuario(),getSenhaUsuario()));
 				alert("Redirecionando para lista de tópicos");
 				document.location.href = '/search.html';
 			}

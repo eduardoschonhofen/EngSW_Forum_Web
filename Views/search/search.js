@@ -5,27 +5,40 @@
 
 }).call(this);
 
+getCookie = function(name) {
+	var parts, value;
+  console.log(document.cookie);
+	value = "; " + document.cookie;
+	parts = value.split("; " + name + "=");
+	if (parts.length === 2) {
+		return parts.pop().split(";").shift();
+	} else {
+		return "";
+	}
+};
+
 var xhr = new XMLHttpRequest();
 var url = "search";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 
+
+
 xhr.onreadystatechange = function () {
+  console.log(xhr.readyState);
+  console.log(xhr.status);
+  console.log(getCookie("gafonseca"));
   if (xhr.readyState === 4 && xhr.status === 200) {
     var success = xhr.responseText;
     console.log(xhr.responseText);
     success=JSON.parse(success);
     console.log(success);
-
-    console.log(success);
+    for(var i=0;i<success.length;i++)
+    {
+      printTopic(success[i].titulo,success[i].texto,success[i].nomeUsuario);
+    }
   }
 };
 
-var data = JSON.stringify("");
-xhr.send(data);
-
-
-
-
-printTopic("abc", "def", "ghi");
-printTopic("abcu", "deuf", "ghiu");
+var data = JSON.stringify({"B":"A"});
+xhr.send(null);

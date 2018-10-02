@@ -8,16 +8,17 @@ var dbPergunta = require('../Models/Database/dbPergunta.js');
 function MostrarPerguntas(req,res,con)
 {
 
-      dbPergunta.MostrarPerguntas(con).then(function(results)
-      {
-        console.log(results);
+    dbPergunta.obtemPerguntas(con).then(function(results)
+    {
         res.writeHead(200, {'Content-Type': 'application/json'});
-        res.write(JSON.stringify("false"));
-        return res.end();
+      console.log("Acabou:");
+      console.log(res.finished);
 
+      var valor=JSON.stringify(results);
 
-      });
-
+    res.write(JSON.stringify(results));
+    res.end();
+    });
 
 }
 
