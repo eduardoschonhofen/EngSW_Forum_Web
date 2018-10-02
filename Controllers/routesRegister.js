@@ -1,5 +1,5 @@
 
-var path = '../apresentar/register/';
+var path = './Views/register/';
 var fs = require('fs');
 
 var dbPaciente = require('../Models/Database/dbPaciente.js');

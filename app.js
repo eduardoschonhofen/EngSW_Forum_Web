@@ -11,7 +11,7 @@ var dbPergunta = require('./Models/Database/dbPergunta.js');
 var dbResposta = require('./Models/Database/dbResposta.js');
 var routesTeste = require('./Controllers/routesTeste.js');
 var routesLogin = require('./Controllers/routesLogin.js');
-
+var routesRegister = require('./Controllers/routesRegister.js');
 
 var con = mysql.createConnection({
   host: "localhost",
