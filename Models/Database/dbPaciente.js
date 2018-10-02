@@ -45,3 +45,4 @@ function inserePaciente(con,nome,nomeUsuario,senha)
 
 exports.obtemPaciente=obtemPaciente;
 exports.obtemPacientes=obtemPacientes;
+exports.inserePaciente=inserePaciente;

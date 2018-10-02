@@ -9,14 +9,11 @@ var dbPaciente = require('../Models/Database/dbPaciente.js');
 
 function salvaUsuario(req,res,con)
 {
-  console.log("SALVAUSUARIO");
-console.log(req.body);
-console.log(req.param);
-console.log("Req.on"+req.on);
-var body = '';
+
+        var body = '';
         req.on('data', function (data) {
             body += data;
-            console.log(body);
+            dbPaciente.inserePaciente(con,body.name,body.username,body.password);
             // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
             if (body.length > 1e6) {
                 // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
