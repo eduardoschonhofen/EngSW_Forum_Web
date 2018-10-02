@@ -37,7 +37,7 @@ function inserePaciente(con,nome,nomeUsuario,senha)
     {
       return console.error(error.message);
     }
-}
+})
 }
 
 
