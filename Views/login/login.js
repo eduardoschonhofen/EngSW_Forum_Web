@@ -33,7 +33,8 @@ document.getElementById('submit').addEventListener("click", function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			var success = xhr.responseText;
 			console.log(xhr.responseText);
-			
+			sucess=JSON.parse(sucess);
+
 			if (success == "true")
 			{
 				alert("Login EXISTE");

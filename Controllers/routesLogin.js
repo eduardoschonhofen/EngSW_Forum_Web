@@ -2,10 +2,12 @@
 var path = './Views/login/';
 var fs = require('fs');
 
+var dbUsuario = require('../Models/Database/dbUsuario.js');
 
 
 function realizarLogin(req,res,con)
 {
+
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -21,10 +23,11 @@ function realizarLogin(req,res,con)
 
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbUsuario.loginUsuario(con,resultados.name,resultados.password).then(function(results)
+      dbUsuario.loginUsuario(con,resultados.username,resultados.password).then(function(results)
       {
         if(results[0]==undefined)
       {
+        console.log("FALSE");
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify("false"));
         return res.end();

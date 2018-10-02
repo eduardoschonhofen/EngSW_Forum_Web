@@ -129,7 +129,7 @@ else
 {
   switch(req.url)
   {
-  case "login":routesLogin.realizarLogin(req,res,con);
+  case "/login":routesLogin.realizarLogin(req,res,con);
   break;
   case "test":0;
   break;
