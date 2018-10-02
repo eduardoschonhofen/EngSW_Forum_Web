@@ -162,7 +162,10 @@ http.createServer(
   break;
   default:routesTeste.salvaJSON(req,res);
 
-}*/selector(req, res)
+}*/function(req,res){
+
+selector(req, res);
+}
 
 
 ).listen(8080);
