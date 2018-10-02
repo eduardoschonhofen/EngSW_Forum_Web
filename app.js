@@ -133,12 +133,7 @@ else
   break;
   case "test":0;
   break;
-  case "/register":{console.log("AAA");
-     collectRequestData(req, result => {
-        console.log(result);
-        console.log("EITA");
-        res.end(`Parsed data belonging to `);
-    })};
+  case "/register":routesRegister.salvaUsuario(req,res,con);
   break;
   default:
   	// 404 error

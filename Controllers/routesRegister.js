@@ -4,9 +4,14 @@ var fs = require('fs');
 
 var dbPaciente = require('../Models/Database/dbPaciente.js');
 
+//var sublime = require('sublime');
+
 function salvaUsuario(req,res,con)
 {
-dbPaciente.inserePaciente(con,"A","A","a");
+  console.log("SALVAUSUARIO");
+console.log(req.body);
+console.log(req.param);
+
 }
 
 function salvaHTML(req,res)
@@ -79,3 +84,4 @@ exports.salvaJS=salvaJS;
 exports.salvaCSS=salvaCSS;
 exports.salvaJSON=salvaJSON;
 exports.salvaPNG=salvaPNG;
+exports.salvaUsuario=salvaUsuario;
