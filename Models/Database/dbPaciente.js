@@ -28,10 +28,21 @@ function obtemPacientes(con)
 });
 }
 
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
+
+
 function inserePaciente(con,nome,nomeUsuario,senha)
 {
-  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('+nome+','+nomeUsuario+','+senha+',0,0,false,true,true);";
-
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,false,true,true);";
+  insert=printf(insert,[nome,nomeUsuario,senha]);
   con.query(insert,function(error,results){
     if(error)
     {

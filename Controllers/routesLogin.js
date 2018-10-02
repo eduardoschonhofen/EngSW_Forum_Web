@@ -2,6 +2,29 @@
 var path = './Views/login/';
 var fs = require('fs');
 
+
+
+function realizarLogin(req,res,con)
+{
+  dbUsuario.loginUsuario(con,"gafonseca","racket").then(function(results)
+  {
+    if(results[0]==undefined)
+  {
+    res.writeHead(200, {'Content-Type': 'application/json'});
+    res.write(JSON.stringify("false"));
+    return res.end();
+
+  }
+    else
+    {
+      res.writeHead(200, {'Content-Type': 'application/json'});
+      res.write(JSON.stringify("true"));
+      return res.end();
+    }
+  });
+
+}
+
 function salvaHTML(req,res)
 {
   filename=path+"login.html";
@@ -60,7 +83,7 @@ function salvaPNG(req,res)
 
 function salvaJSON(req,res)
 {
-	
+
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();
@@ -72,3 +95,4 @@ exports.salvaJS=salvaJS;
 exports.salvaCSS=salvaCSS;
 exports.salvaJSON=salvaJSON;
 exports.salvaPNG=salvaPNG;
+exports.realizarLogin=realizarLogin;

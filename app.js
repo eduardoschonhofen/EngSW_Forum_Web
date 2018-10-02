@@ -129,7 +129,7 @@ else
 {
   switch(req.url)
   {
-  case "login":0;
+  case "login":routesLogin.realizarLogin(req,res,con);
   break;
   case "test":0;
   break;
@@ -160,6 +160,8 @@ http.createServer(
   default:routesTeste.salvaJSON(req,res);
 
 }*/function(req,res){
+
+
 
 selector(req, res);
 }

@@ -9,11 +9,10 @@ var dbPaciente = require('../Models/Database/dbPaciente.js');
 
 function salvaUsuario(req,res,con)
 {
-
         var body = '';
         req.on('data', function (data) {
             body += data;
-            dbPaciente.inserePaciente(con,body.name,body.username,body.password);
+
             // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
             if (body.length > 1e6) {
                 // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
@@ -22,8 +21,10 @@ function salvaUsuario(req,res,con)
         });
         req.on('end', function () {
 
-            var POST = qs.parse(body);
-            // use POST
+
+            resultados=JSON.parse(body);
+            console.log(resultados);
+            dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
 
         });
 
