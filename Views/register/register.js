@@ -29,4 +29,7 @@ document.getElementById('submit').addEventListener("click", function() {
 	xhr.setRequestHeader("Content-Type", "application/json");
 	var data = JSON.stringify({"name": getNome(), "username": getNomeUsuario(), "password": getSenhaUsuario()});
 	xhr.send(data);
+
+	alert("Redirecionando para página de login");
+	document.location.href = '/login.html';
 })

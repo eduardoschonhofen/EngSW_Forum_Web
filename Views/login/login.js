@@ -23,6 +23,8 @@ function getSenhaUsuario()
 	return document.getElementById("password").value;
 }
 
+
+
 document.getElementById('submit').addEventListener("click", function() {
 
 	if (getNomeUsuario() == "" || getSenhaUsuario() == "")
@@ -43,14 +45,13 @@ document.getElementById('submit').addEventListener("click", function() {
 			success=JSON.parse(success);
 			console.log(success);
 
-
-
 			if (success=="true")
 			{
-				alert("Login EXISTE");
+				alert("Redirecionando para lista de tópicos");
+				document.location.href = '/search.html';
 			}
 			else {
-				alert("Login NÃO EXISTE");
+				alert("Usuário e/ou senha não foi encontrado");
 			}
 		}
 	};
