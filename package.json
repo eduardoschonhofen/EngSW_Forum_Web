@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/eduardoschonhofen/engsw/issues"
   },
-  "homepage": "https://github.com/eduardoschonhofen/engsw#readme"
+  "homepage": "https://github.com/eduardoschonhofen/engsw#readme",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
 }
