@@ -184,7 +184,7 @@ break;
 
 }
 
-
+var = process.env.PORT || 8080;
 http.createServer(
   /*console.log(req.url);
   switch(req.url)
@@ -205,4 +205,4 @@ selector(req, res);
 }
 
 
-).listen(8080);
+).listen(port);
