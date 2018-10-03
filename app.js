@@ -140,9 +140,22 @@ break;
   	}
 break;
 default:
-	// 404 error
-	res.writeHead(404, {'Content-Type': 'text/css'});
-    return res.end("404 Not Found");
+{
+console.log(q);
+console.log(q.query);
+switch(type)
+{
+  case 'html': routesLogin.salvaHTML(req, res);
+  break;
+  case 'css': routesLogin.salvaCSS(req, res);
+  break;
+  case 'js': routesLogin.salvaJS(req, res);
+  break;
+  case 'png': routesLogin.salvaPNG(req, res);
+  break;
+  default: routesLogin.salvaHTML(req, res);
+}
+}
 }
 }
 else
