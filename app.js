@@ -186,7 +186,7 @@ break;
 
 var port = process.env.PORT || 8080;
 http.createServer(
-  console.log(con.state);
+
   /*console.log(req.url);
   switch(req.url)
   {
@@ -199,6 +199,7 @@ http.createServer(
   default:routesTeste.salvaJSON(req,res);
 
 }*/function(req,res){
+console.log(con.state);
 
 
 
