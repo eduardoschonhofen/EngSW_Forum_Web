@@ -13,7 +13,7 @@ var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 class Routes
 {
-  get(req,res,path)
+  get(req,res,path,con)
   {
 
     var indexOfDot = path.indexOf('.');
