@@ -12,10 +12,13 @@ var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 class Routes
 {
-  get(req,res,path,type)
+  get(req,res,path)
   {
-    var folder='./Views/'
-    var filename=folder+path+"/"+path+"."+type;
+    var indexOfDot = path.indexOf('.');
+    var subPath =path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
+    var type = path.substr(indexOfDot+1); // html, css, js, ...
+    var folder='./Views'
+    var filename=folder+"/"+subPath+"/"+subPath+"."+type;
     console.log(filename);
       fs.readFile(filename, function(err, data) {
         if (err) {

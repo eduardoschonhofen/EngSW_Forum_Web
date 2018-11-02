@@ -21,13 +21,11 @@ function selector(req,res)
 adr=req.url;
 q=url.parse(adr,true);
 path=q.pathname;
-var indexOfDot = path.indexOf('.');
-var type = path.substr(indexOfDot+1); // html, css, js, ...
-path = path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
+console.log("Path:"+path);
 
 var Router=new Routes();
 if(req.method!="POST")
-  Router.get(req,res,path,type);
+  Router.get(req,res,path);
 else
   Router.post(req,res,con);
 }
