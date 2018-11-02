@@ -17,6 +17,7 @@ class Routes
   {
 
     var indexOfDot = path.indexOf('.');
+    console.log("IndexofDot:"+indexOfDot);
     if(indexOfDot!=0)
     {
     var subPath =path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
@@ -36,6 +37,7 @@ class Routes
     }
     else
     {
+      console.log("CRIOU!");
       if(path=="/create")
         dbCreate.create(con);
 

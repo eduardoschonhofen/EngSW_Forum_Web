@@ -47,7 +47,7 @@ function inserePaciente(con,nome,nomeUsuario,senha)
   con.query(insert,function(error,results){
     if(error)
     {
-      console.log("BUGOU!!!!");
+
       return console.error(error.message);
     }
 })
