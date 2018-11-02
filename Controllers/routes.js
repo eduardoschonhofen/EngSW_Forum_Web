@@ -18,7 +18,7 @@ class Routes
 
     var indexOfDot = path.indexOf('.');
     console.log("IndexofDot:"+indexOfDot);
-    if(indexOfDot!=0)
+    if(indexOfDot>=0)
     {
     var subPath =path.substr(1, indexOfDot-1); // parse da string (remove '/' inicial e após o '.')
     var type = path.substr(indexOfDot+1); // html, css, js, ...
