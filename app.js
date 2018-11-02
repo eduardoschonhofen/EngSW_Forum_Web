@@ -33,24 +33,8 @@ else
 }
 
 var port = process.env.PORT || 8080;
-http.createServer(
-
-  /*console.log(req.url);
-  switch(req.url)
-  {
-  case "/":routesTeste.salvaHTML(req,res);
-  break;
-  case "/test.js":routesTeste.salvaJS(req,res);
-  break;
-  case "/test.css":routesTeste.salvaCSS(req,res);
-  break;
-  default:routesTeste.salvaJSON(req,res);
-
-}*/function(req,res){
+http.createServer(function(req,res){
 console.log(con.state);
-
-
-
 selector(req, res);
 }
 
