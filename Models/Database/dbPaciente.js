@@ -21,6 +21,7 @@ function obtemPacientes(con)
   con.query(busca,function(error,results,fields){
     if(error)
     {
+
       return console.error(error.message);
     }
     resolve(results);
@@ -46,6 +47,7 @@ function inserePaciente(con,nome,nomeUsuario,senha)
   con.query(insert,function(error,results){
     if(error)
     {
+      console.log("BUGOU!!!!");
       return console.error(error.message);
     }
 })
