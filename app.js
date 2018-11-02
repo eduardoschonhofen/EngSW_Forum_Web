@@ -6,7 +6,8 @@ var mysql = require('mysql');
 
 var Routes=require('./Controllers/routes.js');
 
-var con = mysql.createConnection({
+var con = mysql.createPool({
+  connectionLimit : 10,
   host: "us-cdbr-iron-east-01.cleardb.net",
   user: "b089b876f46b39",
   password: "e7e02c90",

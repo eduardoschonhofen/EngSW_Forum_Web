@@ -35,6 +35,7 @@ function realizarLogin(req,res,con)
       }
         else
         {
+          console.log("AAA");
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();
