@@ -19,8 +19,6 @@ function MostrarPerguntas(req,res,con)
       }
   });
   req.on('end', function () {
-
-
       resultados=JSON.parse(body);
       console.log(resultados);
       dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
