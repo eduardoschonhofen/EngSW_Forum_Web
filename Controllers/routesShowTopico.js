@@ -3,10 +3,11 @@ var path = './Views/search/';
 var fs = require('fs');
 
 var dbPergunta = require('../Models/Database/dbPergunta.js');
+var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-function MostrarPerguntas(req,res,con)
+function MostrarTopico(req,res,con,topico)
 {
   var body = '';
   req.on('data', function (data) {
@@ -29,17 +30,23 @@ function MostrarPerguntas(req,res,con)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
       }
-      dbPergunta.obtemPerguntas(con).then(function(results)
+
+      dbPergunta.obtemPerguntaTitulo(con,topico).then(function(results)
       {
+        dbResposta.obtemRespostaParaPergunta(con,topico).then(function(results2))
+        {
+
 
           res.writeHead(200, {'Content-Type': 'application/json'});
         console.log("Acabou:");
         console.log(res.finished);
 
-        var valor=JSON.stringify(results);
+        var valor=JSON.stringify([results,results2]);
+        console.log(valor);
 
-      res.write(JSON.stringify(results));
+      res.write(valor);
       res.end();
+    });
       });
 
     })
