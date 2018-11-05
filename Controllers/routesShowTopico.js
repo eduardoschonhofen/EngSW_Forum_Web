@@ -59,6 +59,7 @@ function MostrarPerguntaErespostas(req,res,con)
 
 function insereResposta(req,res,con)
 {
+  console.log("INSERIU RESPOSTA");
   var body = '';
   req.on('data', function (data) {
       body += data;
