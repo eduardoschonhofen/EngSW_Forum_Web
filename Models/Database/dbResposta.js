@@ -66,3 +66,4 @@ function insereResposta(con,nomeUsuario,texto,pergunta_id)
 
 exports.obtemRespostaParaPerguntaPorId=obtemRespostaParaPerguntaPorId;
 exports.obtemRespostas=obtemRespostas;
+exports.insereResposta=insereResposta;

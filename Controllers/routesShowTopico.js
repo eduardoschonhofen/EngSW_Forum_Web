@@ -73,7 +73,7 @@ function insereResposta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbResposta.inserePergunta(con,resultados.username,resultados.texto,resultados.topico_id);
+      dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
 });
 }
 exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
