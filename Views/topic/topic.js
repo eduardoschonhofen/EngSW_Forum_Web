@@ -76,7 +76,7 @@ xhr.onreadystatechange = function () {
 var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
 xhr.send(data);
 
-function ans(usuario) {
+function ans() {
 	/*if(usuario === undefined)
 	{
 		document.getElementById('error').textContent = 'Voce nao esta logado';
@@ -90,21 +90,24 @@ function ans(usuario) {
 	}
 	else*/
 	{
+
 		var answer = document.getElementById('resposta').value.trim(); // remove trailing spaces
 		if(answer.length > 0)
 		{
-			printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+			alert("TESTE");
+			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 			var xhr = new XMLHttpRequest();
-			var url = "resposta?a="+answer+'&b='+usuario.name + '&c=' + usuario.speciality + '&d=' + usuario.city;
+			var url = topic;
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4 && xhr.status === 200) {
-					var json = JSON.parse(xhr.responseText);
+
+					var response = JSON.parse(xhr.responseText);
 					console.log(xhr.responseText);
 				}
 			};
-			//var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
+
 			xhr.send(answer);
 		}
 	}
