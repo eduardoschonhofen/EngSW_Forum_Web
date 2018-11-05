@@ -24,7 +24,7 @@ function salvaUsuario(req,res,con)
 
             resultados=JSON.parse(body);
             console.log(resultados);
-            dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
+            dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password, resultados.epaciente, resultados.emedico);
 
         });
 

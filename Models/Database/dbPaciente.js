@@ -40,10 +40,10 @@ var i;
 }
 
 
-function inserePaciente(con,nome,nomeUsuario,senha)
+function inserePaciente(con,nome,nomeUsuario,senha, ePaciente, eMedico)
 {
-  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,false,true,true);";
-  insert=printf(insert,[nome,nomeUsuario,senha]);
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,{},{},false);";
+  insert=printf(insert,[nome,nomeUsuario,senha,ePaciente,eMedico]);
   con.query(insert,function(error,results){
     if(error)
     {

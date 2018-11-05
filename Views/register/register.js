@@ -27,7 +27,11 @@ document.getElementById('submit').addEventListener("click", function() {
 	var url = "register";
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
-	var data = JSON.stringify({"name": getNome(), "username": getNomeUsuario(), "password": getSenhaUsuario()});
+	
+	var epaciente = document.getElementById("paciente").checked;
+	var emedico = document.getElementById("medico").checked;
+	
+	var data = JSON.stringify({"name": getNome(), "username": getNomeUsuario(), "password": getSenhaUsuario(), "epaciente": epaciente, "emedico": emedico});
 	xhr.send(data);
 
 	alert("Redirecionando para página de login");
