@@ -39,7 +39,7 @@ class Routes
     var folder='./Views'
     var filename=folder+"/"+subPath+"/"+subPath+"."+type;
     console.log(filename);
-    loadPage(req,res,filename,type);
+    this.loadPage(req,res,filename,type);
     }
 
     else
