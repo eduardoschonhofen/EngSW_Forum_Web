@@ -63,7 +63,7 @@ function ans() {
 				}
 			};
 
-      var answer = JSON.stringify({"topico_id": 1,"cookie":getCookie("username"),"texto":getAnswer()})
+      var answer = JSON.stringify({"topico_id": 1,"username":getCookie("username"),"texto":getAnswer()})
 			xhr.send(answer);
 		}
 	}
