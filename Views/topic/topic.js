@@ -47,7 +47,7 @@ function quit()
 }
 
 var xhr = new XMLHttpRequest();
-var url = "getans";
+var url = "topic";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
@@ -97,7 +97,7 @@ function ans() {
 			alert("TESTE");
 			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 			var xhr = new XMLHttpRequest();
-			var url = topic;
+			var url = "topic";
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
