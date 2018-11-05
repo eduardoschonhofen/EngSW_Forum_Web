@@ -9,6 +9,7 @@ var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 function MostrarPerguntaErespostas(req,res,con)
 {
+  console.log("Entrei na pergunta e resposta");
   var body = '';
   req.on('data', function (data) {
       body += data;
