@@ -1,8 +1,8 @@
-function obtemPerguntaTitulo(con,tituloPergunta)
+function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Pergunta where titulo='"+tituloPergunta+"'";
+  busca="Select * from Pergunta where titulo="+Pergunta;
   con.query(busca,function(error,results,fields){
     if(error)
     {

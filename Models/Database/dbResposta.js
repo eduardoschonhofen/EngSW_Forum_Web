@@ -2,7 +2,7 @@ function obtemRespostaParaPerguntaPorId(con,idPergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Resposta INNER JOIN Usuario ON Resposta.nomeUsuario=Usuario.nomeUsuario where pergunta_id='"+idPergunta+"'";
+  busca="Select * from Resposta INNER JOIN Usuario ON Resposta.nomeUsuario=Usuario.nomeUsuario where pergunta_id="+idPergunta+;
   con.query(busca,function(error,results,fields){
     if(error)
     {

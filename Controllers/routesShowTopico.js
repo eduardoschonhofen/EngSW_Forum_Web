@@ -33,7 +33,7 @@ function MostrarPerguntaErespostas(req,res,con)
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntaTitulo(con,resultados.topico_id).then(function(results)
+      dbPergunta.obtemPerguntaId(con,resultados.topico_id).then(function(results)
       {
         dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2)
         {
