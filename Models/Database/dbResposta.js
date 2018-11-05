@@ -42,5 +42,27 @@ function obtemRespostas(con)
 });
 }
 
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
+
+function insereResposta(con,nomeUsuario,texto,pergunta_id)
+{
+  insert="INSERT INTO Resposta(nomeUsuario,pergunta_id,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
+  insert=printf(insert,[nomeUsuario,pergunta_id,texto]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+})
+}
+
 exports.obtemRespostaParaPerguntaPorId=obtemRespostaParaPerguntaPorId;
 exports.obtemRespostas=obtemRespostas;

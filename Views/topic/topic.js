@@ -19,7 +19,7 @@ function quit()
 }
 
 function ans() {
-	var usuario = getCookie("username");
+	usuario = getCookie("username");
 	if(usuario === undefined)
 	{
 		document.getElementById('error').textContent = 'Voce nao esta logado';
@@ -44,7 +44,7 @@ function ans() {
 			alert("TESTE");
 			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 			var xhr = new XMLHttpRequest();
-			var url = topic;
+			var url = "answer";
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
@@ -63,6 +63,7 @@ function ans() {
 				}
 			};
 
+      var answer = JSON.stringify({"topico_id": 1,"cookie":getCookie("username"),"texto":getAnswer()})
 			xhr.send(answer);
 		}
 	}
@@ -85,7 +86,7 @@ getCookie = function(name) {
 
 // Requisição da página
 var xhr = new XMLHttpRequest();
-var url = "/topic";
+var url = "topic";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
@@ -103,6 +104,5 @@ xhr.onreadystatechange = function () {
 	}
 };
 
-var endtopic = JSON.stringify({"topico_id": 21,"cookie":getCookie("username")})
+var endtopic = JSON.stringify({"topico_id": 1,"cookie":getCookie("username")})
 xhr.send(endtopic);
-
