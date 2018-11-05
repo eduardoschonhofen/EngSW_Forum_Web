@@ -8,11 +8,11 @@ INSERT INTO Resposta(nomeUsuario,perguntaTitulo,texto,data,mediaAvaliacao,totalD
   50
 );
 
-INSERT INTO Resposta(nomeUsuario,perguntaTitulo,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES
+INSERT INTO Resposta(pergunta_id,nomeUsuario,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES
 
 (
+  1,
   "ffbastos",
-  "Como realizar uma cirurgia no olho sem enxergar?",
   "Fala meu consagrado!Para realizar a cirurgia,utilize uma faca de cortar carne,e um maçarico,como é no olho você não precisa enxergar,somente sentir,use o maçarico para cauterizar depois.Obrigado!Não se esqueça de avaliar minha resposta!",
   now(),
   5.9,

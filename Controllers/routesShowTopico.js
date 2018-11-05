@@ -43,7 +43,7 @@ function MostrarPerguntaErespostas(req,res,con)
         console.log(results);
         console.log(results2);
 
-        var valor=JSON.stringify([results,results2]);
+        var valor=JSON.stringify({"question":results,"answer":results2});
         console.log(valor);
 
       res.write(valor);
