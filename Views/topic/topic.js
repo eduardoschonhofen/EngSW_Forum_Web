@@ -4,10 +4,14 @@ function printTopic(title, msg) {
     return document.getElementById("question").innerHTML += msg;
 };
 
-function printAnswer(msg, name, speciality, city) {
-    return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n                        <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
+function printAnswer(msg, name, speciality, city, nota) {
+    return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n        <span class=\"nota\">" + nota + "</span>\n                  <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
 };
 
+function getAnswer()
+{
+  return document.getElementById("resposta").value.trim();
+}
 function quit()
 {
 	var indexOfSlash = document.location.href.lastIndexOf('/');
@@ -15,21 +19,26 @@ function quit()
 }
 
 function ans() {
-	/*if(usuario === undefined)
+	var usuario = getCookie("username");
+	if(usuario === undefined)
 	{
 		document.getElementById('error').textContent = 'Voce nao esta logado';
 		//document.getElementById('error').style.display = 'block';
 	}
-	else if(usuario.speciality === undefined)
+	/*else if(usuario.speciality === undefined)
 	{
 
 		document.getElementById('error').textContent = 'Voce nao pode responder perguntas pois nao e medico';
 		//document.getElementById('error').style.display = 'block';
-	}
-	else*/
-	{
+	}*/
+	else if(getAnswer()=="")
+  {
+    alert("Você precisa digitar uma resposta");
+  }
 
-		var answer = document.getElementById('resposta').value.trim(); // remove trailing spaces
+	else{
+
+		var answer = getAnswer(); // remove trailing spaces
 		if(answer.length > 0)
 		{
 			alert("TESTE");
@@ -40,9 +49,17 @@ function ans() {
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
 				if (xhr.readyState === 4 && xhr.status === 200) {
+          var answerText = xhr.responseText;
+          console.log(xhr.responseText);
+          answerText = JSON.parse(answerText);
+          console.log(answerText);
 
-					var response = JSON.parse(xhr.responseText);
-					console.log(xhr.responseText);
+          console.log(getAnswer());
+
+          if(answerText =="true")
+          {
+            alert("Resposta salva e aguardando e aguardando aceitação dos moderadores");
+          }
 				}
 			};
 
@@ -73,15 +90,19 @@ xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
 	if (xhr.readyState === 4 && xhr.status === 200) {
-
-		var response = JSON.parse(xhr.responseText);
 		console.log(xhr.responseText);
+		var response = JSON.parse(xhr.responseText);
+		console.log(response);
+		var pergunta = response.question[0];
+		var resposta = response.answer;
+		printTopic(pergunta.titulo,pergunta.texto)
+		for(var i=0; i<resposta.length;i++)
+		{
+			printAnswer(resposta[i].texto, resposta[i].nomeUsuario, resposta[i].especialidade, resposta[i].cidade,resposta[i].mediaAvaliacao);
+		}
 	}
 };
 
-xhr.send(JSON.stringify({"topico_id": 1,"cookie":getCookie("username")}));
+var endtopic = JSON.stringify({"topico_id": 21,"cookie":getCookie("username")})
+xhr.send(endtopic);
 
-printTopic("Title", "Pergunta");
-printAnswer("gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg ", "NOME", "ESPEC", "CIDADE");
-printAnswer("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg", "NOME", "ESPEC", "CIDADE");
-printAnswer("gggggggg", "NOME", "ESPEC", "CIDADE");
