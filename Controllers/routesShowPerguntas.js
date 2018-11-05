@@ -27,7 +27,7 @@ function MostrarPerguntas(req,res,con)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
       }
-      dbPergunta.obtemPerguntas(con).then(function(results)
+      dbPergunta.obtemPerguntasAceitas(con).then(function(results)
       {
 
           res.writeHead(200, {'Content-Type': 'application/json'});
