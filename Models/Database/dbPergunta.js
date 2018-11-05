@@ -69,6 +69,6 @@ function inserePergunta(con,nomeUsuario,texto,titulo)
 
 exports.inserePergunta=inserePergunta;
 
-exports.obtemPerguntaTitulo=obtemPerguntaTitulo;
+exports.obtemPerguntaId=obtemPerguntaId;
 exports.obtemPerguntaUsuario=obtemPerguntaUsuario;
 exports.obtemPerguntas=obtemPerguntas;
