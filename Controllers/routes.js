@@ -51,6 +51,7 @@ class Routes
 
   post(req,res,con)
   {
+    console.log("Entrei");
     switch(req.url)
     {
     case "/login":routesLogin.realizarLogin(req,res,con);
@@ -64,6 +65,7 @@ class Routes
     case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   break;
     case "/topic":routesShowTopico.MostrarPerguntaErespostas(req,res,con);
+    break;
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});
