@@ -68,6 +68,7 @@ class Routes
     break;
     case "/answer":routesShowTopico.insereResposta(req,res,con);
     break;
+    case "/avaliate":routeShowTopico.avaliaResposta(req,res,con);
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});

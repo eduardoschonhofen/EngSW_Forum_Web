@@ -76,5 +76,26 @@ function insereResposta(req,res,con)
       dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
 });
 }
+
+function avaliaResposta(req,res,con)
+{
+  console.log("AVALIOU RESPOSTA!!!!!!!!!!SUPER AVALIADOR NOTA MIL!!!");
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbResposta.atualizaAvaliacao(con,resultados.pergunta_id,resultados.nota);
+});
+
+}
 exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
 exports.insereResposta=insereResposta;

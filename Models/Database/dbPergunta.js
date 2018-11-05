@@ -44,6 +44,35 @@ function obtemPerguntas(con)
 });
 }
 
+function obtemPerguntasPendentes(con)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * from Pergunta INNER JOIN Usuario ON Pergunta.nomeUsuario=Usuario.nomeUsuario WHERE aprovada=false";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+function obtemPerguntasAceitas(con)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * from Pergunta INNER JOIN Usuario ON Pergunta.nomeUsuario=Usuario.nomeUsuario WHERE aprovada=true";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+
 
 function printf(str, params) {
 var i;
@@ -73,3 +102,5 @@ exports.inserePergunta=inserePergunta;
 exports.obtemPerguntaId=obtemPerguntaId;
 exports.obtemPerguntaUsuario=obtemPerguntaUsuario;
 exports.obtemPerguntas=obtemPerguntas;
+exports.obtemPerguntasPendentes=obtemPerguntasPendentes;
+exports.obtemPerguntasAceitas=obtemPerguntasAceitas;
