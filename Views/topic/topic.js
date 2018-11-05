@@ -10,16 +10,6 @@ class Usuario
 	}
 };
 
-//document.getElementById('error').style.display = 'none';
-
-var dict = {
-	'JHASKLjdfhJKHnkjanjkasngjkang2184717657823626262968w9ugmndskgjmkdsgsdg45d4g65a45641i40912u8aouh7asfya78': new Usuario('Cassiano', undefined, 'Sydney'),
-	'ASKODFY(*SAY(f8asghf87a87G*GFGH(A&SYD&*SAFGY*SAGF*SAF&GSAfh0asfhJP)jhfa90fpUAFUS()U(SH(SFH(SHFASJSKAHKS*': new Usuario('Eduardo', 'neurocirurgiao', 'Boston'),
-	'SDYYASD*&SATD&AGYg*Ysgaf8gsG*gf*GF*g*gfA*GFSFJ)AFSJ)F(JKSA)(KFSA(FKSA)(KF)(KFS)A(KFS)AKF)(SAKF()SAFK)F(SK': new Usuario('Felipe', 'cardiologista', 'Lisbon'),
-	'akjLKJLKAJFKLSJaJKPOJPEPHeKaasG*gf*GF*g*gfA*GFSFugmndskgjmkdsgsdg4sasKSA)(KF)sadsadsa)AKF)(SAdasdaAFK)SK': new Usuario('Giovane', undefined, 'Racket'),
-	'ANsadasadaasJFOISAJfijaoifjoankjnvjkcxbvznvbzxljhhjfhafhasuoishF(Y(AFYhfhFH(AUHfa98hf(AHFhFHFF(*AHF*SHASH': new Usuario('Matheus', undefined, 'Moskow')
-};
-
 var indexOfEqual= document.location.href.lastIndexOf('=');
 var username = document.location.href.substr(indexOfEqual+1);
 
@@ -45,36 +35,6 @@ function quit()
 	var indexOfSlash = document.location.href.lastIndexOf('/');
 	document.location.href = document.location.href.substr(0, indexOfSlash) + '/login.html';
 }
-
-var xhr = new XMLHttpRequest();
-var url = "getans";
-xhr.open("POST", url, true);
-xhr.setRequestHeader("Content-Type", "application/json");
-xhr.onreadystatechange = function () {
-	if (xhr.readyState === 4 && xhr.status === 200) {
-		var json = JSON.parse(xhr.responseText);
-		var content = xhr.responseText;
-		var indexOfNewLine = content.indexOf("\\n");
-		while(indexOfNewLine !== -1)
-		{
-			var ans = content.substr(0, indexOfNewLine);
-			var indexOfComma = ans.indexOf(',');
-			var lst = [];
-			while(indexOfComma !== -1)
-			{
-				lst.push(ans.substr(0, indexOfComma));
-				ans = ans.substr(indexOfComma+1);
-				indexOfComma = ans.indexOf(',');
-			}
-			lst.push(ans);
-			printAnswer(lst[0], lst[1], lst[2], lst[3]);
-			content = content.substr(indexOfNewLine+1);
-			indexOfNewLine = content.indexOf('\\n');
-		}
-	}
-};
-var data = JSON.stringify({"email": "hey@mail.com", "password": "101010"});
-xhr.send(data);
 
 function ans() {
 	/*if(usuario === undefined)
@@ -113,40 +73,37 @@ function ans() {
 	}
 }
 
-/*document.getElementById('submit').addEventListener("click", function() {
-	var answer = document.getElementById('resposta').value.trim(); // remove trailing spaces
-	console.log(answer);
-	if(answer.length > 0)
-	{
-		printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+saveCookie = function(name, value) {
+	return document.cookie = `${name}=${value}` + "; expires=Fri, 31 Dec 9999 23:59:59 GMT" + "; domain:/" + "; path=/";
+};
+
+getCookie = function(name) {
+	var parts, value;
+	value = "; " + document.cookie;
+	parts = value.split("; " + name + "=");
+	if (parts.length === 2) {
+		return parts.pop().split(";").shift();
+	} else {
+		return "";
 	}
-});*/
+};
+
+// Requisição da página
+var xhr = new XMLHttpRequest();
+var url = "/topic";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+	if (xhr.readyState === 4 && xhr.status === 200) {
+
+		var response = JSON.parse(xhr.responseText);
+		console.log(xhr.responseText);
+	}
+};
+
+xhr.send(JSON.stringify("topico_id": 1));
 
 printTopic("Title", "Pergunta");
 printAnswer("gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg gggggggg ", "NOME", "ESPEC", "CIDADE");
 printAnswer("gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg", "NOME", "ESPEC", "CIDADE");
 printAnswer("gggggggg", "NOME", "ESPEC", "CIDADE");
-
-/*(function() {
-  this.printTopic = function(title, msg) {
-    document.getElementById("title").innerHTML += title;
-    return document.getElementById("question").innerHTML += msg;
-  };
-
-  this.printAnswer = function(msg, name, speciality, city) {
-    return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n                        <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
-  };
-
-  printTopic("Title", "Pergunta");
-
-  printAnswer("MSG1", "User1", "Pediatra", "Seattle");
-  printAnswer("MSG2", "User2", "Clinico", "Alvorada");
-  printAnswer("MSG3", "User3", "Psicologo", "POA");
-
-  for(i = 0; i < pergunta.length; i++)
-  {
-	  printAnswer(pergunta[0], )
-  }
-
-
-}).call(this);*/
