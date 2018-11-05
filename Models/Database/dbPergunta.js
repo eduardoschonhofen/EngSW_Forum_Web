@@ -2,7 +2,7 @@ function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from pergunta where titulo="+Pergunta;
+  busca="Select * from pergunta where pergunta_id="+Pergunta;
   console.log(busca);
   con.query(busca,function(error,results,fields){
     if(error)
@@ -33,7 +33,7 @@ function obtemPerguntas(con)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from pergunta INNER JOIN Usuario ON Pergunta.nomeUsuario=Usuario.nomeUsuario";
+  busca="Select * from Pergunta INNER JOIN Usuario ON Pergunta.nomeUsuario=Usuario.nomeUsuario";
   con.query(busca,function(error,results,fields){
     if(error)
     {
