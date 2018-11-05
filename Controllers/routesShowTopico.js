@@ -24,7 +24,8 @@ function MostrarPerguntaErespostas(req,res,con)
 
 
       resultados=JSON.parse(body);
-      console.log(resultados);
+      console.log(resultados.topico_id);
+      console.log(resultados.cookie);
       dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
@@ -39,8 +40,8 @@ function MostrarPerguntaErespostas(req,res,con)
 
 
           res.writeHead(200, {'Content-Type': 'application/json'});
-        console.log("Acabou:");
-        console.log(res.finished);
+        console.log(results);
+        console.log(results2);
 
         var valor=JSON.stringify([results,results2]);
         console.log(valor);
