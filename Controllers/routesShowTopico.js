@@ -56,4 +56,24 @@ function MostrarPerguntaErespostas(req,res,con)
 
 });
 }
+
+function insereResposta(req,res,con)
+{
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbResposta.inserePergunta(con,resultados.username,resultados.texto,resultados.topico_id);
+});
+}
 exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
+exports.insereResposta=insereResposta;
