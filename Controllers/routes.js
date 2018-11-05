@@ -11,8 +11,22 @@ var routesLogin = require('../Controllers/routesLogin.js');
 var routesRegister = require('../Controllers/routesRegister.js');
 var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
+var routeShowTopico = require('../Controllers/routeShowTopico.js')
 class Routes
 {
+  loadPage(req,res,filename,type)
+  {
+    fs.readFile(filename, function(err, data) {
+      if (err) {
+        res.writeHead(404, {'Content-Type': 'text/'+type});
+        return res.end("404 Not Found");
+      }
+      res.writeHead(200, {'Content-Type': 'text/'+type});
+      res.write(data);
+      return res.end();
+    });
+
+  }
   get(req,res,path,con)
   {
 
@@ -25,24 +39,15 @@ class Routes
     var folder='./Views'
     var filename=folder+"/"+subPath+"/"+subPath+"."+type;
     console.log(filename);
-      fs.readFile(filename, function(err, data) {
-        if (err) {
-          res.writeHead(404, {'Content-Type': 'text/'+type});
-          return res.end("404 Not Found");
-        }
-        res.writeHead(200, {'Content-Type': 'text/'+type});
-        res.write(data);
-        return res.end();
-      });
+    loadPage(req,res,filename,type);
     }
+
     else
     {
-      console.log("CRIOU!");
       if(path=="/create")
         dbCreate.create(con);
-
     }
-    }
+  }
 
   post(req,res,con)
   {
@@ -58,6 +63,7 @@ class Routes
     break;
     case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   break;
+    case "/topic":routeShowTopico.MostrarPerguntaErespostas(req,res,con);
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});

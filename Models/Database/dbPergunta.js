@@ -32,7 +32,7 @@ function obtemPerguntas(con)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * from Pergunta";
+  busca="Select * from Pergunta INNER JOIN Usuario ON Pergunta.nomeUsuario=Usuario.nomeUsuario";
   con.query(busca,function(error,results,fields){
     if(error)
     {

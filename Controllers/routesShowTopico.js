@@ -7,7 +7,7 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-function MostrarTopico(req,res,con,topico)
+function MostrarPerguntaErespostas(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -31,9 +31,9 @@ function MostrarTopico(req,res,con,topico)
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntaTitulo(con,topico).then(function(results)
+      dbPergunta.obtemPerguntaTitulo(con,resultados.topico_id).then(function(results)
       {
-        dbResposta.obtemRespostaParaPergunta(con,topico).then(function(results2))
+        dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2))
         {
 
 

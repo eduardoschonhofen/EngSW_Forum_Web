@@ -1,4 +1,18 @@
-function obtemRespostaParaPergunta(con,tituloPergunta)
+function obtemRespostaParaPerguntaPorId(con,idPergunta)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * from Resposta INNER JOIN Usuario ON Resposta.nomeUsuario=Usuario.nomeUsuario where pergunta_id='"+idPergunta+"'";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+function obtemRespostaParaPerguntaPorTitulo(con,tituloPergunta)
 {
   return new Promise(function(resolve,reject)
 {
@@ -30,4 +44,3 @@ function obtemRespostas(con)
 
 exports.obtemRespostaParaPergunta=obtemRespostaParaPergunta;
 exports.obtemRespostas=obtemRespostas;
-

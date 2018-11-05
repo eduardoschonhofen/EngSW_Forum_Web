@@ -16,23 +16,25 @@ eModerador BOOLEAN
 
 
 CREATE TABLE IF NOT EXISTS Pergunta(
+pergunta_id INTEGER AUTO_INCREMENT,
+PRIMARY KEY(pergunta_id),
 titulo varchar(255),
-PRIMARY KEY(titulo),
 nomeUsuario VARCHAR(255) NOT NULL,
 FOREIGN KEY(nomeUsuario) REFERENCES Usuario(nomeUsuario),
 texto TEXT NOT NULL,
 data DATE,
 mediaAvaliacao FLOAT,
 somaDeAvaliacoes FLOAT,
-totalDeAvaliacoes INT
+totalDeAvaliacoes INT,
+aprovada BOOLEAN
 );
 CREATE TABLE IF NOT EXISTS Resposta(
 resposta_id INTEGER AUTO_INCREMENT,
 PRIMARY KEY(resposta_id),
 nomeUsuario VARCHAR(255) NOT NULL,
 FOREIGN KEY(nomeUsuario) REFERENCES Usuario(nomeUsuario),
-perguntaTitulo VARCHAR(255) NOT NULL,
-FOREIGN KEY(perguntaTitulo) REFERENCES Pergunta(titulo),
+pergunta_id INTEGER,
+FOREIGN KEY(pergunta_id) REFERENCES Pergunta(pergunta_id),
 texto TEXT NOT NULL,
 data DATE,
 mediaAvaliacao FLOAT,
