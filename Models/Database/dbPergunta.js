@@ -2,8 +2,8 @@ function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
 {
-  console.log("Pergunta:"+Pergunta);
   busca="Select * from Pergunta where titulo="+Pergunta;
+  console.log(busca);
   con.query(busca,function(error,results,fields){
     if(error)
     {
