@@ -54,4 +54,4 @@ function MostrarPerguntaErespostas(req,res,con)
 
 });
 }
-exports.MostrarPerguntas=MostrarPerguntas;
+exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
