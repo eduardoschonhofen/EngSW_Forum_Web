@@ -11,7 +11,7 @@ var routesLogin = require('../Controllers/routesLogin.js');
 var routesRegister = require('../Controllers/routesRegister.js');
 var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
-var routeShowTopico = require('../Controllers/routeShowTopico.js')
+var routesShowTopico = require('../Controllers/routesShowTopico.js')
 class Routes
 {
   loadPage(req,res,filename,type)
@@ -39,7 +39,7 @@ class Routes
     var folder='./Views'
     var filename=folder+"/"+subPath+"/"+subPath+"."+type;
     console.log(filename);
-    loadPage(req,res,filename,type);
+    this.loadPage(req,res,filename,type);
     }
 
     else
@@ -63,7 +63,7 @@ class Routes
     break;
     case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   break;
-    case "/topic":routeShowTopico.MostrarPerguntaErespostas(req,res,con);
+    case "/topic":routesShowTopico.MostrarPerguntaErespostas(req,res,con);
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});

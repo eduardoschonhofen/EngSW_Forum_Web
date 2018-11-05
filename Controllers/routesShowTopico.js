@@ -33,7 +33,7 @@ function MostrarPerguntaErespostas(req,res,con)
 
       dbPergunta.obtemPerguntaTitulo(con,resultados.topico_id).then(function(results)
       {
-        dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2))
+        dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2)
         {
 
 
@@ -49,9 +49,9 @@ function MostrarPerguntaErespostas(req,res,con)
     });
       });
 
-    })
+    });
 
 
-})
+});
 }
-exports.MostrarPerguntas=MostrarPerguntas;
+exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;

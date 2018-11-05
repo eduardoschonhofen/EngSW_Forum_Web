@@ -42,5 +42,5 @@ function obtemRespostas(con)
 });
 }
 
-exports.obtemRespostaParaPergunta=obtemRespostaParaPergunta;
+exports.obtemRespostaParaPerguntaPorId=obtemRespostaParaPerguntaPorId;
 exports.obtemRespostas=obtemRespostas;
