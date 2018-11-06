@@ -74,9 +74,25 @@ function usuarioEPaciente(con,nomeUsuario)
 });
 }
 
+function usuarioEModerador(con,nomeUsuario)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eModerador";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+
 
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
 exports.loginUsuario=loginUsuario;
 exports.usuarioEMedico=usuarioEMedico;
 exports.usuarioEPaciente=usuarioEPaciente;
+exports.usuarioEModerador=usuarioEModerador;

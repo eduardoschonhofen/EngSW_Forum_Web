@@ -1,0 +1,59 @@
+#question, .answer {
+
+        padding: 16px;
+        border: 1px solid #aaa;
+        border-radius: 8px;
+}
+
+#page {
+        width: 100%;
+}
+
+#pergunta {
+		margin-top: 16px;
+
+}
+
+#error {
+    color: red;
+}
+
+
+#question {
+        background-color: #eff1f3;
+}
+
+#topic {
+        width: 50%;
+}
+
+#title {
+        font-weight: bold;
+}
+
+.post {
+        margin-top: 16px;
+        width: 100%;
+        display: inline-block;
+}
+
+.answer {
+        width: 70%;
+        float: left;
+}
+
+.user {
+        width: 30%;
+        float: right;
+}
+
+.username {
+        color: green;
+}
+
+div {
+  margin-top: 16px;
+  width: 100%;
+  display: inline-block;
+  word-break: break-all;
+}
