@@ -73,7 +73,7 @@ function insereResposta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbUsuario.obtemUsuario(con,resultados.username,resultados.password).then(function(results)
+      dbUsuario.usuarioEMedico(con,resultados.username).then(function(results)
       {
         if(results[0]==undefined)
       {
