@@ -73,7 +73,23 @@ function insereResposta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
+      dbUsuario.obtemUsuario(con,resultados.username,resultados.password).then(function(results)
+      {
+        if(results[0]==undefined)
+      {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify("false"));
+        return res.end();
+
+      }
+        else
+        {
+			dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
+          res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify("true"));
+          return res.end();
+        }
+      });
 });
 }
 

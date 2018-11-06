@@ -44,9 +44,25 @@ function loginUsuario(con,nomeUsuario,senha)
 });
 }
 
+function usuarioEMedico(con,nomeUsuario)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eMedico='1'";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+
 
 
 
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
 exports.loginUsuario=loginUsuario;
+exports.usuarioEMedico=usuarioEMedico;

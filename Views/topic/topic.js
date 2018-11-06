@@ -25,12 +25,6 @@ function ans() {
 		document.getElementById('error').textContent = 'Voce nao esta logado';
 		//document.getElementById('error').style.display = 'block';
 	}
-	/*else if(usuario.speciality === undefined)
-	{
-
-		document.getElementById('error').textContent = 'Voce nao pode responder perguntas pois nao e medico';
-		//document.getElementById('error').style.display = 'block';
-	}*/
 	else if(getAnswer()=="")
   {
     alert("Você precisa digitar uma resposta");
@@ -58,13 +52,17 @@ function ans() {
 
           if(answerText =="true")
           {
-            alert("Resposta salva e aguardando e aguardando aceitação dos moderadores");
+            alert("Resposta salva e aguardando aceitação dos moderadores");
           }
+          else
+          {
+			  alert("Apenas medicos podem responder")
+		  }
 				}
 			};
 
-      var answer = JSON.stringify({"topico_id": 1,"username":getCookie("username"),"texto":getAnswer()})
-			xhr.send(answer);
+      var endAnswer = JSON.stringify({"topico_id": 1,"username":getCookie("username"),"texto":getAnswer()})
+			xhr.send(endAnswer);
 		}
 	}
 }
