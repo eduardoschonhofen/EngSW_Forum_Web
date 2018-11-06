@@ -70,6 +70,7 @@ class Routes
     case "/answer":routesShowTopico.insereResposta(req,res,con);
     break;
     case "/evaluate":routeShowTopico.avaliaResposta(req,res,con);
+    break;
     case "/testeModerador":routesCheckUsuario.eModerador(req, res, con);
     break;
     default:
