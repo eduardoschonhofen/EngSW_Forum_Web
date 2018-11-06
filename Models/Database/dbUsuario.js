@@ -59,10 +59,24 @@ function usuarioEMedico(con,nomeUsuario)
 });
 }
 
-
+function usuarioEPaciente(con,nomeUsuario)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and ePaciente";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
 
 
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
 exports.loginUsuario=loginUsuario;
 exports.usuarioEMedico=usuarioEMedico;
+exports.usuarioEPaciente=usuarioEPaciente;

@@ -38,9 +38,29 @@ document.getElementById('submit').addEventListener("click", function() {
 	var url = "question";
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4 && xhr.status === 200) {
+		  var answerText = xhr.responseText;
+		  console.log(xhr.responseText);
+		  answerText = JSON.parse(answerText);
+		  console.log(answerText);
+
+		  console.log(getAnswer());
+
+		  if(answerText =="true")
+		  {
+			alert("Pergunta salva e aguardando aceitação dos moderadores");
+			alert("Redirecionando para página de Perguntas");
+			document.location.href = '/search.html';
+		  }
+		  else
+		  {
+			  alert("Apenas pacientes podem perguntar")
+		  }
+		}
+	};
+	
 	var data = JSON.stringify({"title": getTitulo(), "question": getPergunta(),"username":getUsername()});
 	xhr.send(data);
 
-	alert("Redirecionando para página de Perguntas");
-	document.location.href = '/search.html';
 })

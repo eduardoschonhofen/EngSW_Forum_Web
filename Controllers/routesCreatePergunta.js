@@ -2,6 +2,7 @@
 var path = './Views/question/';
 var fs = require('fs');
 
+var dbUsuario =require('../Models/Database/dbUsuario.js');
 var dbPergunta = require('../Models/Database/dbPergunta.js');
 
 
@@ -20,7 +21,23 @@ function realizarPergunta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbPergunta.inserePergunta(con,resultados.username,resultados.question,resultados.title);
+      dbUsuario.usuarioEPaciente(con,resultados.username).then(function(results)
+      {
+        if(results[0]==undefined)
+      {
+        res.writeHead(200, {'Content-Type': 'application/json'});
+        res.write(JSON.stringify("false"));
+        return res.end();
+
+      }
+        else
+        {
+			dbPergunta.inserePergunta(con,resultados.username,resultados.question,resultados.title);
+          res.writeHead(200, {'Content-Type': 'application/json'});
+          res.write(JSON.stringify("true"));
+          return res.end();
+        }
+      });
 });
 }
 
