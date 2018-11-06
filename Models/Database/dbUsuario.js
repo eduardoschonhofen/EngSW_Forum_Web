@@ -48,7 +48,7 @@ function usuarioEMedico(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
-  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eMedico=1";
+  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eMedico";
   con.query(busca,function(error,results,fields){
     if(error)
     {
