@@ -24,6 +24,7 @@ function eModerador(req,res,con)
       {
         if(results[0]==undefined)
       {
+		  console.log('false')
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify("false"));
         return res.end();
@@ -31,6 +32,7 @@ function eModerador(req,res,con)
       }
         else
         {
+			console.log('false')
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();
