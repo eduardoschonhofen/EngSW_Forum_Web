@@ -1,6 +1,15 @@
 (function() {
-  this.printTopic = function(title, msg, username) {
-    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div>`;
+  this.printTopic = function(title, msg, username, id) {
+    return document.getElementById("listTopic").innerHTML +=
+    ` <div class="w3-card-4 topic">
+        <header class="w3-container w3-teal">
+          <h3 class="title"><a href="/topic.html?id=${id}">${title}</a></h3>
+        </header>
+        <div class="w3-container">
+          <p class="username"><b>Usuário: ${username}</b></p>
+          <p class="msg">${msg}</p>
+        </div>
+      </div>`;
   };
 
 }).call(this);
@@ -42,3 +51,6 @@ xhr.onreadystatechange = function () {
 
 var data = JSON.stringify({"cookie":getCookie("username")});
 xhr.send(data);
+
+printTopic("KKK1", "KKK2", "KKK3", "123");
+printTopic("KKK4", "KKK5", "KKK6", "456");
