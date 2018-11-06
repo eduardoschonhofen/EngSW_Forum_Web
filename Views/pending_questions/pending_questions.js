@@ -168,14 +168,14 @@ xhr.onreadystatechange = function () {
 		  if(answerText =="true")
 		  {
 				// Requisição da página
-				var xhr = new XMLHttpRequest();
-				var url = "pendingQuestions";
-				xhr.open("POST", url, true);
-				xhr.setRequestHeader("Content-Type", "application/json");
-				xhr.onreadystatechange = function () {
-					if (xhr.readyState === 4 && xhr.status === 200) {
-						console.log(xhr.responseText);
-						var pergunta = JSON.parse(xhr.responseText);
+				var xhr2 = new XMLHttpRequest();
+				var url2 = "pendingQuestions";
+				xhr2.open("POST", url2, true);
+				xhr2.setRequestHeader("Content-Type", "application/json");
+				xhr2.onreadystatechange = function () {
+					if (xhr2.readyState === 4 && xhr2.status === 200) {
+						console.log(xhr2.responseText);
+						var pergunta = JSON.parse(xhr2.responseText);
 						for(var i=0; i<pergunta.length;i++)
 						{
 							printTopic(pergunta[i].titulo,pergunta[i].texto)
