@@ -167,7 +167,22 @@ xhr.onreadystatechange = function () {
 
 		  if(answerText =="true")
 		  {
-				alert("true");
+				// Requisição da página
+				var xhr = new XMLHttpRequest();
+				var url = "pendingQuestions";
+				xhr.open("POST", url, true);
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4 && xhr.status === 200) {
+						console.log(xhr.responseText);
+						var pergunta = JSON.parse(xhr.responseText);
+						for(var i=0; i<pergunta.length;i++)
+						{
+							printTopic(pergunta[i].titulo,pergunta[i].texto)
+						}
+					}
+				};
+
 		  }
 		  else
 		  {

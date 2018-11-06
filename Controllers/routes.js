@@ -71,7 +71,9 @@ class Routes
     break;
     case "/evaluate":routeShowTopico.avaliaResposta(req,res,con);
     break;
-    case "/testeModerador":routesCheckUsuario.eModerador(req, res, con);
+    case "/testeModerador":routesCheckUsuario.eModerador(req,res,con);
+    break;
+    case "/pendingQuestions":routesShowTopico.MostrarPerguntasPendentes(req,res,con);
     break;
     default:
     	// 404 error
