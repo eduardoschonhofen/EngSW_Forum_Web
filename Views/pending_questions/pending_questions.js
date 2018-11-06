@@ -105,6 +105,7 @@ xhr.onreadystatechange = function () {
 var endtopic = JSON.stringify({"topico_id": 1,"cookie":getCookie("username")})
 xhr.send(endtopic);
 
+/*
 // Requisição da página
 var xhr = new XMLHttpRequest();
 var url = "testeModerador";
@@ -121,8 +122,7 @@ xhr.onreadystatechange = function () {
 
 		  if(answerText =="true")
 		  {
-				alert("true");
-				/*var xhr = new XMLHttpRequest();
+				var xhr = new XMLHttpRequest();
 				var url = "pendingQuestions";
 				xhr.open("POST", url, true);
 				xhr.setRequestHeader("Content-Type", "application/json");
@@ -139,7 +139,35 @@ xhr.onreadystatechange = function () {
 							printAnswer(resposta[i].texto, resposta[i].nomeUsuario, resposta[i].especialidade, resposta[i].cidade,resposta[i].mediaAvaliacao);
 						}
 					}
-				};*/
+				};
+		  }
+		  else
+		  {
+			  alert("Area restrita para moderadores");
+		  }
+	}
+};
+
+var endtopic = JSON.stringify({"username":getCookie("username")})
+xhr.send(endtopic);*/
+
+// Requisição da página
+var xhr = new XMLHttpRequest();
+var url = "testeModerador";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+xhr.onreadystatechange = function () {
+	if (xhr.readyState === 4 && xhr.status === 200) {
+		var answerText = xhr.responseText;
+		  console.log(xhr.responseText);
+		  answerText = JSON.parse(answerText);
+		  console.log(answerText);
+
+		  console.log(getAnswer());
+
+		  if(answerText =="true")
+		  {
+				alert("true");
 		  }
 		  else
 		  {
