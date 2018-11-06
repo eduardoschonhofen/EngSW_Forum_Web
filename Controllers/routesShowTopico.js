@@ -114,7 +114,7 @@ function avaliaResposta(req,res,con)
 
 }
 
-function MostrarPerguntaErespostas(req,res,con)
+function MostrarPerguntasPendentes(req,res,con)
 {
   console.log("Entrei na pergunta e resposta");
   var body = '';
