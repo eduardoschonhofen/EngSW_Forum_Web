@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-		<link rel="stylesheet" type="text/css" href="login.css">
+		<link rel="stylesheet" type="text/css" href="register.css">
 		<title>Page Title</title>
 	</head>
 	<body>
@@ -32,8 +32,11 @@
 		    <p>
 		    <label class="w3-text-black"><b>Senha</b></label>
 		    <input class="w3-input w3-border" type="password" autocomplete="off" id="password" type="text"></p>
-			Paciente <input type="radio" id="paciente" checked="checked" name = "tipo"> <span class="checkmark"></span>
-			Medico <input type="radio" id="medico" name = "tipo"> <span class="checkmark"></span>
+			Paciente <input type="radio" id="paciente" checked="checked" name = "tipo" onclick='removeSpeciality()'> <span class="checkmark"></span>
+			Medico <input type="radio" id="medico" name = "tipo" onclick='addSpeciality()'> <span class="checkmark"></span>
+			<p id="specialityBlock">
+		    <label class="w3-text-black"><b>Especialidade</b></label>
+		    <input class="w3-input w3-border" id="speciality" type="text"></p>
 		    <p>
 		    <button class="w3-btn w3-teal" id='submit'>Registrar</button></p>
 		  </form>

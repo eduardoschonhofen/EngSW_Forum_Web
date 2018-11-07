@@ -28,8 +28,34 @@ function obtemMedicos(con)
 });
 }
 
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
+
+
+function insereMedico(con,nome,nomeUsuario,senha,especialidade)
+{
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,especialidade,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}','{}',0,0,false,true,false);";
+  insert=printf(insert,[nome,nomeUsuario,senha,especialidade]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+
+      return console.error(error.message);
+    }
+})
+}
+
+
 
 
 exports.obtemMedico=obtemMedico;
 exports.obtemMedicos=obtemMedicos;
+exports.insereMedico=insereMedico;
 
