@@ -75,7 +75,7 @@ class Routes
     case "/approve":routesShowTopico.aprovarPergunta(req,res,con);
     break;
     case "/reprove":routesShowTopico.deletarPergunta(req,res,con);
-    console.log("Dedão");
+    break;
 
     default:
     	// 404 error
