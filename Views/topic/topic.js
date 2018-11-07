@@ -58,7 +58,6 @@ function ans() {
 	var answer = getAnswer(); // remove trailing spaces
 	if(answer.length > 0)
 	{
-		alert("TESTE");
 		//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 		var xhr = new XMLHttpRequest();
 		var url = 'answer';
@@ -84,7 +83,7 @@ function ans() {
 			}
 		};
 
-  var endAnswer = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie":getCookie("username"),"texto":getAnswer()})
+  var endAnswer = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "username":getCookie("username"),"texto":getAnswer()})
 		xhr.send(endAnswer);
 	}
 }
