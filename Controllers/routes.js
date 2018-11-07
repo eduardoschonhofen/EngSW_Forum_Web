@@ -12,6 +12,8 @@ var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('../Controllers/routesShowTopico.js');
 var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
 var Pergunta = require('../Models/Pergunta.js');
+var routesRegister=require('../Controllers/routesRegister.js');
+
 class Routes
 {
   loadPage(req,res,filename,type)
