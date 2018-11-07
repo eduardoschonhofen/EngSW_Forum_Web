@@ -139,7 +139,7 @@ function MostrarPerguntasPendentes(req,res,con)
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntaId(con,resultados.topico_id).then(function(results)
+      dbPergunta.obtemPerguntasPendentes(con).then(function(results)
       {
 
 
