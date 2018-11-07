@@ -1,8 +1,10 @@
 
-function printTopic(title, msg) {
-    document.getElementById("title").innerHTML += title;
-    return document.getElementById("question").innerHTML += msg;
-};
+(function() {
+  this.printTopic = function(title, msg, username) {
+    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div>`;
+  };
+
+}).call(this);
 
 function printAnswer(msg, name, speciality, city, nota) {
     return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n        <span class=\"nota\">" + nota + "</span>\n                  <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
@@ -84,35 +86,25 @@ getCookie = function(name) {
 
 // Requisição da página
 var xhr = new XMLHttpRequest();
-var url = "testeModerador";
+var url = "pendingQuestions";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
 	if (xhr.readyState === 4 && xhr.status === 200) {
 		var answerText = xhr.responseText;
 		  console.log(xhr.responseText);
-		  answerText = JSON.parse(answerText);
+		  answer = JSON.parse(answerText);
 		  console.log(answerText);
 
 		  console.log(getAnswer());
 
-		  if(answerText =="true")
+		  if(answer.length > 0)
 		  {
-				// Requisição da página
-				var xhr2 = new XMLHttpRequest();
-				var url2 = "pendingQuestions";
-				xhr2.open("POST", url2, true);
-				xhr2.setRequestHeader("Content-Type", "application/json");
-				xhr2.onreadystatechange = function () {
-					if (xhr2.readyState === 4 && xhr2.status === 200) {
-						console.log(xhr2.responseText);
-						var pergunta = JSON.parse(xhr2.responseText);
-						for(var i=0; i<pergunta.length;i++)
-						{
-							printTopic(pergunta[i].titulo,pergunta[i].texto)
-						}
-					}
-				};
+				
+				for(var i=0; i<answer.length;i++)
+				{
+					printTopic(answer[i].titulo,answer[i].texto, answer[i].nomeUsuario);
+				}
 
 		  }
 		  else

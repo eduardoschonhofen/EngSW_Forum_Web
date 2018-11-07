@@ -12,7 +12,6 @@ var routesRegister = require('../Controllers/routesRegister.js');
 var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('../Controllers/routesShowTopico.js');
-var routesCheckUsuario = require('../Controllers/routesCheckUsuario.js')
 class Routes
 {
   loadPage(req,res,filename,type)
@@ -70,8 +69,6 @@ class Routes
     case "/answer":routesShowTopico.insereResposta(req,res,con);
     break;
     case "/evaluate":routeShowTopico.avaliaResposta(req,res,con);
-    break;
-    case "/testeModerador":routesCheckUsuario.eModerador(req,res,con);
     break;
     case "/pendingQuestions":routesShowTopico.MostrarPerguntasPendentes(req,res,con);
     break;

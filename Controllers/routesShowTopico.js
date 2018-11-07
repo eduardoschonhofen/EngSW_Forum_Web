@@ -129,8 +129,19 @@ function MostrarPerguntasPendentes(req,res,con)
   });
   req.on('end', function () {
 
-      dbPergunta.obtemPerguntas(con).then(function(results)
+      resultados=JSON.parse(body);
+      console.log(resultados.topico_id);
+      console.log(resultados.cookie);
+      dbUsuario.usuarioEModerador(con,resultados.username).then(function(results)
+    {
+      if(results[0]==undefined)
+      {	res.writeHead(404, {'Content-Type': 'text/css'});
+        return res.end("404 Not Found");
+      }
+
+      dbPergunta.obtemPerguntaId(con,resultados.topico_id).then(function(results)
       {
+
 
           res.writeHead(200, {'Content-Type': 'application/json'});
         console.log(results);
@@ -138,9 +149,11 @@ function MostrarPerguntasPendentes(req,res,con)
         var valor=JSON.stringify({results});
         console.log(valor);
 
-      res.write(valor);
-      res.end();
+		  res.write(valor);
+		  res.end();
       });
+
+    });
 
 });
 }
