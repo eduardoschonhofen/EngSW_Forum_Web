@@ -9,7 +9,7 @@ var dbMedico = require('../Models/Database/dbMedico.js');
 
 //var sublime = require('sublime');
 
-function salvaUsuario(req,res,con)
+exports.salvaUsuario=function salvaUsuario(req,res,con)
 {
         var body = '';
         req.on('data', function (data) {
@@ -33,7 +33,7 @@ function salvaUsuario(req,res,con)
         });
 
 }
-function deletaUsuario(req,res,con)
+exports.deletaUsuario=function deletaUsuario(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -52,7 +52,7 @@ function deletaUsuario(req,res,con)
 
 }
 
-function aprovaModerador(req,res,con)
+exports.aprovaModerador=function aprovaModerador(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -133,11 +133,9 @@ function salvaJSON(req,res)
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();
 }
-exports.aprovaModerador=aprovaModerador;
-exports.deletaUsuario=deletaUsuario;
+
 exports.salvaHTML=salvaHTML;
 exports.salvaJS=salvaJS;
 exports.salvaCSS=salvaCSS;
 exports.salvaJSON=salvaJSON;
 exports.salvaPNG=salvaPNG;
-exports.salvaUsuario=salvaUsuario;

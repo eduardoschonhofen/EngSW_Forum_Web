@@ -5,7 +5,7 @@ var fs = require('fs');
 var dbUsuario = require('../Models/Database/dbUsuario.js');
 
 
-function realizarLogin(req,res,con)
+exports.realizarLogin=function realizarLogin(req,res,con)
 {
 
   var body = '';
@@ -115,4 +115,3 @@ exports.salvaJS=salvaJS;
 exports.salvaCSS=salvaCSS;
 exports.salvaJSON=salvaJSON;
 exports.salvaPNG=salvaPNG;
-exports.realizarLogin=realizarLogin;

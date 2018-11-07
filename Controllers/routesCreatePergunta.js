@@ -6,7 +6,7 @@ var dbUsuario =require('../Models/Database/dbUsuario.js');
 var dbPergunta = require('../Models/Database/dbPergunta.js');
 
 
-function realizarPergunta(req,res,con)
+exports.realizarPergunta=function realizarPergunta(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -39,5 +39,3 @@ function realizarPergunta(req,res,con)
       });
 });
 }
-
-exports.realizarPergunta=realizarPergunta;

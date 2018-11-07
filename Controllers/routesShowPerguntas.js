@@ -6,7 +6,7 @@ var dbPergunta = require('../Models/Database/dbPergunta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-function MostrarPerguntas(req,res,con)
+exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -42,4 +42,3 @@ function MostrarPerguntas(req,res,con)
 
 })
 }
-exports.MostrarPerguntas=MostrarPerguntas;

@@ -7,7 +7,7 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-function MostrarPerguntaErespostas(req,res,con)
+exports.MostrarPerguntasErespostas=function MostrarPerguntaErespostas(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -51,7 +51,7 @@ function MostrarPerguntaErespostas(req,res,con)
 });
 }
 
-function insereResposta(req,res,con)
+exports.insereResposta=function insereResposta(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -85,7 +85,7 @@ function insereResposta(req,res,con)
 });
 }
 
-function avaliaResposta(req,res,con)
+exports.avaliaResposta=function avaliaResposta(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -105,7 +105,7 @@ function avaliaResposta(req,res,con)
 
 }
 
-function MostrarPerguntasPendentes(req,res,con)
+exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -144,7 +144,7 @@ function MostrarPerguntasPendentes(req,res,con)
 });
 }
 
-function aprovarPergunta(req,res,con)
+exports.aprovarPergunta=function aprovarPergunta(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -162,7 +162,7 @@ function aprovarPergunta(req,res,con)
 });
 }
 
-function deletarPergunta(req,res,con)
+exports.deletarPergunta=function deletarPergunta(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -179,9 +179,3 @@ function deletarPergunta(req,res,con)
       dbPergunta.deletaPergunta(con,resultados.pergunta_id);
 });
 }
-exports.deletarPergunta=deletarPergunta;
-exports.aprovarPergunta=aprovarPergunta;
-exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
-exports.insereResposta=insereResposta;
-exports.MostrarPerguntasPendentes=MostrarPerguntasPendentes;
-exports.avaliaResposta=avaliaResposta;

@@ -14,9 +14,8 @@ var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
 var Pergunta = require('../Models/Pergunta.js');
 var routesRegister=require('../Controllers/routesRegister.js');
 
-class Routes
-{
-  loadPage(req,res,filename,type)
+
+function loadPage(req,res,filename,type)
   {
     fs.readFile(filename, function(err, data) {
       if (err) {
@@ -29,7 +28,7 @@ class Routes
     });
 
   }
-  get(req,res,path,con)
+exports.get=function get(req,res,path,con)
   {
 
     var indexOfDot = path.indexOf('.');
@@ -51,7 +50,7 @@ class Routes
     }
   }
 
-  post(req,res,con)
+exports.post=function post(req,res,con)
   {
     console.log("Entrei");
     console.log(Pergunta);
@@ -92,8 +91,4 @@ class Routes
         return res.end("404 Not Found");
     }
   }
-
-
 }
-
-module.exports=Routes

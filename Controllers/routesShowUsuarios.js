@@ -5,7 +5,7 @@ var fs = require('fs');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-function MostrarUsuarios(req,res,con)
+exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
@@ -42,4 +42,3 @@ function MostrarUsuarios(req,res,con)
 
 });
 }
-exports.MostrarUsuarios=MostrarUsuarios;
