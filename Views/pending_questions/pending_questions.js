@@ -29,7 +29,6 @@ function aprovaPergunta(pergunta_id) {
 	xhr.setRequestHeader("Content-Type", "application/json");
     var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
 	xhr.send(endAnswer);
-	location.reload();
 }
 
 function removePergunta(pergunta_id) {
@@ -41,7 +40,6 @@ function removePergunta(pergunta_id) {
 	xhr.setRequestHeader("Content-Type", "application/json");
     var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
 	xhr.send(endAnswer);
-	location.reload();
 }
 
 saveCookie = function(name, value) {
