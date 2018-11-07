@@ -13,7 +13,7 @@ var Resposta = require('../Models/Resposta.js');
 var Medico = require('../Models/Medico.js');
 var Usuario = require('../Models/Usuario.js');
 var Moderador = require('../Models/Moderador.js');
-var Topico = require('../Models/Topico.js');
+var Topico = require('../Models/Tópico.js');
 
 
 function loadPage(req,res,filename,type)
