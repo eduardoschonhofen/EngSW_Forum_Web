@@ -13,6 +13,7 @@ var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('../Controllers/routesShowTopico.js');
 var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
+var Pergunta = require('../Models/Pergunta.js');
 class Routes
 {
   loadPage(req,res,filename,type)
@@ -61,7 +62,7 @@ class Routes
     break;
     case "/register":routesRegister.salvaUsuario(req,res,con);
     break;
-    case "/question":routesCreatePergunta.realizarPergunta(req,res,con);
+    case "/question":Pergunta.realizarPergunta(req,res,con);
     break;
     case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   break;
