@@ -9,7 +9,6 @@ var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 function MostrarPerguntaErespostas(req,res,con)
 {
-  console.log("Entrei na pergunta e resposta");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -24,8 +23,6 @@ function MostrarPerguntaErespostas(req,res,con)
 
 
       resultados=JSON.parse(body);
-      console.log(resultados.topico_id);
-      console.log(resultados.cookie);
       dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
@@ -40,11 +37,8 @@ function MostrarPerguntaErespostas(req,res,con)
 
 
           res.writeHead(200, {'Content-Type': 'application/json'});
-        console.log(results);
-        console.log(results2);
 
         var valor=JSON.stringify({"question":results,"answer":results2});
-        console.log(valor);
 
       res.write(valor);
       res.end();
@@ -59,7 +53,6 @@ function MostrarPerguntaErespostas(req,res,con)
 
 function insereResposta(req,res,con)
 {
-  console.log("INSERIU RESPOSTA");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -72,7 +65,6 @@ function insereResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.usuarioEMedico(con,resultados.username).then(function(results)
       {
         if(results[0]==undefined)
@@ -95,7 +87,6 @@ function insereResposta(req,res,con)
 
 function avaliaResposta(req,res,con)
 {
-  console.log("AVALIOU RESPOSTA!!!!!!!!!!SUPER AVALIADOR NOTA MIL!!!");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -108,7 +99,6 @@ function avaliaResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbResposta.atualizaAvaliacao(con,resultados.pergunta_id,resultados.nota);
 	  dbUsuario.atualizaAvaliacao(con,resultados.username,resultados.nota);
 });
@@ -117,7 +107,6 @@ function avaliaResposta(req,res,con)
 
 function MostrarPerguntasPendentes(req,res,con)
 {
-  console.log("Entrei na pergunta e resposta");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -131,8 +120,6 @@ function MostrarPerguntasPendentes(req,res,con)
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      console.log(resultados.topico_id);
-      console.log(resultados.cookie);
       dbUsuario.usuarioEModerador(con,resultados.username).then(function(results)
     {
       if(results[0]==undefined)
@@ -145,10 +132,8 @@ function MostrarPerguntasPendentes(req,res,con)
 
 
           res.writeHead(200, {'Content-Type': 'application/json'});
-        console.log(results);
 
         var valor=JSON.stringify({results});
-        console.log(valor);
 
 		  res.write(valor);
 		  res.end();
@@ -161,7 +146,6 @@ function MostrarPerguntasPendentes(req,res,con)
 
 function aprovarPergunta(req,res,con)
 {
-  console.log("Pergunta aprovou!");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -174,14 +158,12 @@ function aprovarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbPergunta.aprovaPergunta(con,resultados.pergunta_id);
 });
 }
 
 function deletarPergunta(req,res,con)
 {
-  console.log("Pergunta aprovou!");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -194,7 +176,6 @@ function deletarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbPergunta.deletaPergunta(con,resultados.pergunta_id);
 });
 }

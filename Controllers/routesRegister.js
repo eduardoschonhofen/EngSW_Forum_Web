@@ -25,7 +25,6 @@ function salvaUsuario(req,res,con)
 
 
             resultados=JSON.parse(body);
-            console.log(resultados);
 			if(resultados.epaciente)
             	dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
 			else
@@ -36,7 +35,6 @@ function salvaUsuario(req,res,con)
 }
 function deletaUsuario(req,res,con)
 {
-  console.log("Deleta usuario deletou!");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -49,7 +47,6 @@ function deletaUsuario(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.deletaUsuario(con,resultados.username);
 });
 
@@ -57,7 +54,6 @@ function deletaUsuario(req,res,con)
 
 function aprovaModerador(req,res,con)
 {
-  console.log("Deleta usuario deletou!");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -70,7 +66,6 @@ function aprovaModerador(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.aprovaModerador(con,resultados.username);
 });
 
@@ -134,7 +129,6 @@ function salvaPNG(req,res)
 
 function salvaJSON(req,res)
 {
-	console.log(this.res);
     res.writeHead(200, {'Content-Type': 'application/json'});
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();

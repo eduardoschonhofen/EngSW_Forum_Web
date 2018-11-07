@@ -20,7 +20,6 @@ function MostrarPerguntas(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
@@ -31,8 +30,6 @@ function MostrarPerguntas(req,res,con)
       {
 
           res.writeHead(200, {'Content-Type': 'application/json'});
-        console.log("Acabou:");
-        console.log(res.finished);
 
         var valor=JSON.stringify(results);
 
