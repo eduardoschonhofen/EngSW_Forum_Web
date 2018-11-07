@@ -4,6 +4,7 @@ var fs = require('fs');
 var qs = require('querystring');
 
 var dbPaciente = require('../Models/Database/dbPaciente.js');
+var dbUsuario = require('../Models/Database/dbUsuario.js');
 
 //var sublime = require('sublime');
 
@@ -27,6 +28,47 @@ function salvaUsuario(req,res,con)
             dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password, resultados.epaciente, resultados.emedico);
 
         });
+
+}
+function deletaUsuario(req,res,con)
+{
+  console.log("Deleta usuario deletou!");
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbUsuario.deletaUsuario(con,resultados.username);
+});
+
+}
+
+function aprovaModerador(req,res,con)
+{
+  console.log("Deleta usuario deletou!");
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbUsuario.aprovaModerador(con,resultados.username);
+});
 
 }
 
@@ -93,8 +135,8 @@ function salvaJSON(req,res)
     res.write(JSON.stringify("A senha da prova é 1Q"));
     return res.end();
 }
-
-
+exports.aprovaModerador=aprovaModerador;
+exports.deletaUsuario=deletaUsuario;
 exports.salvaHTML=salvaHTML;
 exports.salvaJS=salvaJS;
 exports.salvaCSS=salvaCSS;

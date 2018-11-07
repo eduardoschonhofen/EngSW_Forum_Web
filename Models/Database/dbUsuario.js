@@ -88,8 +88,34 @@ function usuarioEModerador(con,nomeUsuario)
 });
 });
 }
+function deletaUsuario(con,username)
+{
+  insert="DELETE FROM  Usuario WHERE nomeUsuario={}";
+  insert=printf(insert,[username]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+  });
 
+}
 
+function aprovaModerador(con,username)
+{
+  insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario={}";
+  insert=printf(insert,[username]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+  });
+
+}
+
+exports.aprovaModerador=aprovaModerador;
+exports.deletaUsuario=deletaUsuario;
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
 exports.loginUsuario=loginUsuario;

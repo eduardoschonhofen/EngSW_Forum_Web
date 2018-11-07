@@ -76,6 +76,10 @@ class Routes
     break;
     case "/reprove":routesShowTopico.deletarPergunta(req,res,con);
     break;
+    case "/deleteUser":routesRegister.deletarPergunta(req,res,con);
+    break;
+    case "/aproveModerator":routesRegister.aprovaModerador(req,res,con);
+    break;
 
     default:
     	// 404 error
