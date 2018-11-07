@@ -1,34 +1,22 @@
-
-dbResposta=require('./dbResposta.js');
 mysql=require('mysql');
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "Eduardo",
-  password: "123",
-  database: "website"
+var database = mysql.createPool({
+  connectionLimit : 10,
+  host: "us-cdbr-iron-east-01.cleardb.net",
+  user: "b089b876f46b39",
+  password: "e7e02c90",
+  database: "heroku_cb42695d67403c5"
 });
-/*dbPaciente.obtemPaciente(con,"gafonseca").then(function(results)
-{
-console.log(results);
-})
+//mysql --host=us-cdbr-iron-east-01.cleardb.net --user=b089b876f46b39 --password=e7e02c90 --reconnect heroku_cb42695d67403c5
+exports.database=database;
 
-dbPaciente.obtemPacientes(con).then(function(results)
-{
-console.log(results);
-})
 
-dbUsuario.loginUsuario(con,"eoschonhofen","batataFrita123").then(function(results)
-{
-console.log(results);
-})
+exports.printf=function printf(str, params) {
+var i;
 
-dbPergunta.obtemPerguntaTitulo(con, 'como costurar meu braço de volta?').then(function(results)
-{
-console.log(results);
-})*/
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
 
-dbResposta.obtemRespostas(con).then(function(results)
-{
-console.log(results);
-})
+  return str;
+}

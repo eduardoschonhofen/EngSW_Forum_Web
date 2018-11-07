@@ -85,6 +85,7 @@ function usuarioEMedico(con,nomeUsuario)
 
 function usuarioEPaciente(con,nomeUsuario)
 {
+  console.log("EAE GIOVANE");
   return new Promise(function(resolve,reject)
 {
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and ePaciente";
