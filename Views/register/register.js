@@ -37,3 +37,5 @@ document.getElementById('submit').addEventListener("click", function() {
 	alert("Redirecionando para página de login");
 	document.location.href = '/login.html';
 })
+
+document.getElementById('submit')
