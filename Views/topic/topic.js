@@ -8,6 +8,22 @@ function printAnswer(msg, name, speciality, city, nota) {
     return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n        <span class=\"nota\">" + nota + "</span>\n                  <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
 };
 
+function alertEmptyAnswer()
+{
+  alert("Você precisa digitar uma resposta");
+}
+function alertSaveAnswer()
+{
+  alert("Resposta salva e aguardando e aguardando aceitação dos moderadores");
+}
+function notLoged()
+{
+   document.getElementById('error').textContent = 'Voce nao esta logado';
+}
+function notDoctor()
+{
+  document.getElementById('error').textContent = 'Voce nao pode responder perguntas pois nao e medico';
+}
 function getAnswer()
 {
   return document.getElementById("resposta").value.trim();
@@ -18,16 +34,21 @@ function quit()
 	document.location.href = document.location.href.substr(0, indexOfSlash) + '/login.html';
 }
 
+
 function ans() {
-	usuario = getCookie("username");
 	if(usuario === undefined)
 	{
-		document.getElementById('error').textContent = 'Voce nao esta logado';
+		notLoged();
+		//document.getElementById('error').style.display = 'block';
+	}
+	else if(usuario.speciality === undefined)
+	{
+    notDoctor();
 		//document.getElementById('error').style.display = 'block';
 	}
 	else if(getAnswer()=="")
   {
-    alert("Você precisa digitar uma resposta");
+    alertEmptyAnswer();
   }
 
 	else{
@@ -38,7 +59,7 @@ function ans() {
 			alert("TESTE");
 			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 			var xhr = new XMLHttpRequest();
-			var url = "answer";
+			var url = topic;
 			xhr.open("POST", url, true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			xhr.onreadystatechange = function () {
@@ -48,20 +69,16 @@ function ans() {
           answerText = JSON.parse(answerText);
           console.log(answerText);
 
-          console.log(getAnswer());
+          console.loog(getAnswer());
 
           if(answerText =="true")
           {
-            alert("Resposta salva e aguardando aceitação dos moderadores");
+            alertSaveAnswer();
           }
-          else
-          {
-			  alert("Apenas medicos podem responder")
-		  }
 				}
 			};
 
-      var endAnswer = JSON.stringify({"topico_id": 1,"username":getCookie("username"),"texto":getAnswer()})
+      var endAnswer = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie":getCookie("username"),"texto":getAnswer()})
 			xhr.send(endAnswer);
 		}
 	}
@@ -82,9 +99,20 @@ getCookie = function(name) {
 	}
 };
 
+getParameter = function(key, str) {
+	var parts, value;
+	value = "; " + str;
+	parts = value.split("; " + key + "=");
+	if (parts.length === 2) {
+		return parts.pop().split(";").shift();
+	} else {
+		return "";
+	}
+};
+
 // Requisição da página
 var xhr = new XMLHttpRequest();
-var url = "topic";
+var url = "/topic";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
@@ -102,5 +130,10 @@ xhr.onreadystatechange = function () {
 	}
 };
 
-var endtopic = JSON.stringify({"topico_id": 1,"cookie":getCookie("username")})
+var parser = document.createElement('a');
+parser.href = document.location.href;
+
+
+
+var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie": getCookie("username")})
 xhr.send(endtopic);
