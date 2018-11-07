@@ -73,15 +73,15 @@ class Routes
     break;
     case "/pendingQuestions":routesShowTopico.MostrarPerguntasPendentes(req,res,con);
     break;
-    case "/approve":routesShowTopico.aprovarPergunta(req,res,con);
+    case "/approveQuestion":routesShowTopico.aprovarPergunta(req,res,con);
     break;
-    case "/reprove":routesShowTopico.deletarPergunta(req,res,con);
+    case "/removeQuestion":routesShowTopico.deletarPergunta(req,res,con);
     break;
 	case "/listusers":routesShowUsuarios.MostrarUsuarios(req,res,con);
 	break;
     case "/deleteUser":routesRegister.deletaUsuario(req,res,con);
     break;
-    case "/aproveModierator":routesRegister.aprovaModerador(req,res,con);
+    case "/approveModerator":routesRegister.aprovaModerador(req,res,con);
     break;
 
     default:

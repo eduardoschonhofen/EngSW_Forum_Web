@@ -110,6 +110,7 @@ function avaliaResposta(req,res,con)
       resultados=JSON.parse(body);
       console.log(resultados);
       dbResposta.atualizaAvaliacao(con,resultados.pergunta_id,resultados.nota);
+	  dbUsuario.atualizaAvaliacao(con,resultados.username,resultados.nota);
 });
 
 }
@@ -202,3 +203,4 @@ exports.aprovarPergunta=aprovarPergunta;
 exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
 exports.insereResposta=insereResposta;
 exports.MostrarPerguntasPendentes=MostrarPerguntasPendentes;
+exports.avaliaResposta=avaliaResposta;

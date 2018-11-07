@@ -24,7 +24,7 @@ function aprovaPergunta(pergunta_id) {
 	
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
-	var url = "approve";
+	var url = "approveQuestion";
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
     var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
@@ -35,7 +35,7 @@ function removePergunta(pergunta_id) {
 	
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
-	var url = "reprove";
+	var url = "removeQuestion";
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
     var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
