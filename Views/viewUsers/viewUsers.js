@@ -52,6 +52,7 @@ xhr.onreadystatechange = function()
     console.log(xhr.responseText);
     var users = JSON.parse(xhr.responseText);
     console.log(users);
+	users = users.results;
     for(var i=0; i<users.length; i++)
     {
       printUsers(users[i].nomeUsuario,users[i].mediaAvaliacao);
