@@ -5,6 +5,7 @@ var qs = require('querystring');
 
 var dbPaciente = require('../Models/Database/dbPaciente.js');
 var dbUsuario = require('../Models/Database/dbUsuario.js');
+var dbMedico = require('../Models/Database/dbMedico.js');
 
 //var sublime = require('sublime');
 
@@ -28,7 +29,7 @@ function salvaUsuario(req,res,con)
 			if(resultados.epaciente)
             	dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
 			else
-				dbPaciente.insereMedico(con,resultados.name,resultados.username,resultados.password,resultados.speciality);
+				dbMedico.insereMedico(con,resultados.name,resultados.username,resultados.password,resultados.speciality);
 
         });
 
