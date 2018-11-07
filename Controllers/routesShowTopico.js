@@ -194,7 +194,7 @@ function deletarPergunta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbResposta.deletaPergunta(con,resultados.pergunta_id);
+      dbPergunta.deletaPergunta(con,resultados.pergunta_id);
 });
 }
 exports.deletarPergunta=deletarPergunta;
