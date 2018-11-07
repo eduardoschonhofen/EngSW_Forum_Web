@@ -78,7 +78,7 @@ class Routes
     break;
     case "/deleteUser":routesRegister.deletarPergunta(req,res,con);
     break;
-    case "/aproveModerator":routesRegister.aprovaModerador(req,res,con);
+    case "/aproveModierator":routesRegister.aprovaModerador(req,res,con);
     break;
 
     default:

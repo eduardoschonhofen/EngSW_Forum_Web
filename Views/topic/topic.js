@@ -54,51 +54,38 @@ function quit()
 
 
 function ans() {
-	if(usuario === undefined)
+	
+	var answer = getAnswer(); // remove trailing spaces
+	if(answer.length > 0)
 	{
-		notLoged();
-		//document.getElementById('error').style.display = 'block';
-	}
-	else if(usuario.speciality === undefined)
-	{
-    notDoctor();
-		//document.getElementById('error').style.display = 'block';
-	}
-	else if(getAnswer()=="")
-  {
-    alertEmptyAnswer();
-  }
+		alert("TESTE");
+		//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+		var xhr = new XMLHttpRequest();
+		var url = 'answer';
+		xhr.open("POST", url, true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+	  var answerText = xhr.responseText;
+	  console.log(xhr.responseText);
+	  answerText = JSON.parse(answerText);
+	  console.log(answerText);
 
-	else{
+	  console.log(getAnswer());
 
-		var answer = getAnswer(); // remove trailing spaces
-		if(answer.length > 0)
-		{
-			alert("TESTE");
-			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
-			var xhr = new XMLHttpRequest();
-			var url = topic;
-			xhr.open("POST", url, true);
-			xhr.setRequestHeader("Content-Type", "application/json");
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState === 4 && xhr.status === 200) {
-          var answerText = xhr.responseText;
-          console.log(xhr.responseText);
-          answerText = JSON.parse(answerText);
-          console.log(answerText);
+	  if(answerText =="true")
+	  {
+		alertSaveAnswer();
+	  }
+	  else
+	  {
+		  alert("Apenas medicos podem responder perguntas");
+	  }
+			}
+		};
 
-          console.loog(getAnswer());
-
-          if(answerText =="true")
-          {
-            alertSaveAnswer();
-          }
-				}
-			};
-
-      var endAnswer = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie":getCookie("username"),"texto":getAnswer()})
-			xhr.send(endAnswer);
-		}
+  var endAnswer = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie":getCookie("username"),"texto":getAnswer()})
+		xhr.send(endAnswer);
 	}
 }
 
