@@ -44,7 +44,7 @@ xhr.onreadystatechange = function () {
     console.log(success);
     for(var i=0;i<success.length;i++)
     {
-      printTopic(success[i].titulo,success[i].texto,success[i].nomeUsuario);
+      printTopic(success[i].titulo,success[i].texto,success[i].nomeUsuario, success[i].id);
     }
   }
 };
