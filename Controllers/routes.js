@@ -14,13 +14,13 @@ var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
 
 var routesRegister=require('../Controllers/routesRegister.js');
 
-
+/*
 var Pergunta = require('../Models/Pergunta.js');
 var Resposta = require('../Models/Resposta.js');
 var Medico = require('../Models/Medico.js');
 var Paciente = require('../Models/Paciente.js');
 var Moderador = require('../Models/Moderador.js');
-
+*/
 
 function loadPage(req,res,filename,type)
   {
@@ -91,7 +91,6 @@ exports.post=function post(req,res,con)
     break;
     case "/approveModerator":routesRegister.aprovaModerador(req,res,con);
     break;
-
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});
