@@ -63,7 +63,7 @@ class Routes
     break;
     case "/register":routesRegister.salvaUsuario(req,res,con);
     break;
-    case "/question":Pergunta.Pergunta.realizarPergunta(req,res,con);
+    case "/question":Pergunta.realizarPergunta(req,res,con);
     break;
     case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
   break;
