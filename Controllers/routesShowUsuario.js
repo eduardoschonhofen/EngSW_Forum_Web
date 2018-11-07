@@ -30,7 +30,7 @@ function MostrarUsuarios(req,res,con)
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemUsuarios(con).then(function(results)
+      dbUsuario.obtemUsuarios(con).then(function(results)
       {
 
 
