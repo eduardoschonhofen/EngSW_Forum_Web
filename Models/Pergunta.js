@@ -66,7 +66,7 @@ class Pergunta extends Registro
 
   })
   }
-  realizarPergunta(req,res,con)
+  static realizarPergunta(req,res,con)
   {
     var body = '';
     req.on('data', function (data) {
