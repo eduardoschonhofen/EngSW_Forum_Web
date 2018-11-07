@@ -6,9 +6,6 @@ var dbUsuario =require('./Database/dbUsuario.js');
 var dbPergunta = require('./Database/dbPergunta.js');
 
 
-class Pergunta extends Registro
-{
-
 
   setNomePaciente(nomePaciente)
   {
@@ -63,7 +60,7 @@ class Pergunta extends Registro
 
   })
   }
-  var realizarPergunta=function(req,res,con)
+  exports.realizarPergunta=function realizarPergunta(req,res,con)
   {
     console("A");
     var body = '';
@@ -94,6 +91,3 @@ class Pergunta extends Registro
         });
   });
   }
-}
-
-module.exports=new Pergunta();
