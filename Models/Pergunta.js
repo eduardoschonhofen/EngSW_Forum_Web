@@ -5,23 +5,7 @@ var fs = require('fs');
 var dbUsuario =require('./Database/dbUsuario.js');
 var dbPergunta = require('./Database/dbPergunta.js');
 
-
-
-  setNomePaciente(nomePaciente)
-  {
-	  this.nomePaciente = nomePaciente;
-  }
-
-  getNomePaciente()
-  {
-	  return this.nomePaciente;
-  }
-
-  geraNotificacao()
-  {
-	  // Avisa os médicos que existe pergunta nova ???
-  }
-  MostrarPerguntas(req,res,con)
+  exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
   {
     var body = '';
     req.on('data', function (data) {
