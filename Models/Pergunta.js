@@ -96,4 +96,4 @@ class Pergunta extends Registro
   }
 }
 
-module.exports=new Pergunta();
+module.exports=Pergunta;
