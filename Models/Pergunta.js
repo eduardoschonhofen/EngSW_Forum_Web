@@ -66,6 +66,7 @@ var dbPergunta = require('./Database/dbPergunta.js');
         }
           else
           {
+            console.log("INSERIU NO CU DO NODEJS");
   			dbPergunta.inserePergunta(con,resultados.username,resultados.question,resultados.title);
             res.writeHead(200, {'Content-Type': 'application/json'});
             res.write(JSON.stringify("true"));
