@@ -72,9 +72,9 @@ class Routes
     break;
     case "/pendingQuestions":routesShowTopico.MostrarPerguntasPendentes(req,res,con);
     break;
-    case "/aprove":routesShowTopico.aprovarPergunta(req,res,con);
+    case "/approve":routesShowTopico.aprovarPergunta(req,res,con);
     break;
-    case "/delete":routesShowTopico.deletarPergunta(req,res,con);
+    case "/reprove":routesShowTopico.deletarPergunta(req,res,con);
     console.log("Dedão");
 
     default:
