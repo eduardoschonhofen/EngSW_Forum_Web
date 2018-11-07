@@ -32,7 +32,7 @@ function alertEmptyAnswer()
 }
 function alertSaveAnswer()
 {
-  alert("Resposta salva e aguardando e aguardando aceitação dos moderadores");
+  alert("Resposta salva");
 }
 function notLoged()
 {
@@ -133,10 +133,6 @@ xhr.onreadystatechange = function () {
 		}
 	}
 };
-
-printTopic("Maconha", "Mais Maconha");
-printAnswer(1, "AEWfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "João Roubão", "Chinelagem", "Alvorada", "9,9");
-printAnswer(2 ,"AEW", "João Roubão", "Chinelagem", "Alvorada", "9,9");
 
 var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie": getCookie("username")})
 xhr.send(endtopic);
