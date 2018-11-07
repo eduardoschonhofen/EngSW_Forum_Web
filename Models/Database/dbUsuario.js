@@ -115,7 +115,7 @@ function usuarioEModerador(con,nomeUsuario)
 }
 function deletaUsuario(con,username)
 {
-  insert="DELETE FROM  Usuario WHERE nomeUsuario={}";
+  insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
   insert=printf(insert,[username]);
   con.query(insert,function(error,results){
     if(error)

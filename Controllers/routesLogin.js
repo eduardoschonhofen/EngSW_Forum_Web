@@ -19,8 +19,6 @@ function realizarLogin(req,res,con)
       }
   });
   req.on('end', function () {
-
-
       resultados=JSON.parse(body);
       console.log(resultados);
       dbUsuario.loginUsuario(con,resultados.username,resultados.password).then(function(results)
