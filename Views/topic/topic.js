@@ -4,8 +4,26 @@ function printTopic(title, msg) {
     return document.getElementById("question").innerHTML += msg;
 };
 
-function printAnswer(msg, name, speciality, city, nota) {
-    return document.getElementById("topic").innerHTML += "<div class=\"post\">\n        <div class=\"user\">\n                <img></img>\n                <div>\n                        <span class=\"username\">" + name + "</span>\n        <span class=\"nota\">" + nota + "</span>\n                  <span class=\"speciality\">" + speciality + "</span>\n                        <span class=\"city\">" + city + "</span>\n                </div>\n        </div>\n\n        <div class=\"answer\">" + msg + "</div>\n</div>";
+function printAnswer(n, msg, name, speciality, city, nota) {
+    return document.getElementById("topic").innerHTML +=
+    `<div class='post-container w3-card-4'>
+      <header class="w3-container w3-teal">
+        <h6>#${n}</h6>
+      </header>
+
+      <div class='post w3-container'>
+         <div class=\"user\">
+           <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" height="140" width="140"></img>
+           <div><br>
+             <span class=\"username\">${name}</span><br><br>
+             <span class=\"nota\">Nota média: ${nota}</span><br>
+             <span class=\"speciality\">Especialidade: ${speciality}</span><br>
+             <span class=\"city\">Cidade: ${city}</span>
+           </div>
+          </div>
+         <div class=\"answer\">${msg}</div>
+       </div>
+     </div>`;
 };
 
 function alertEmptyAnswer()
@@ -125,15 +143,14 @@ xhr.onreadystatechange = function () {
 		printTopic(pergunta.titulo,pergunta.texto)
 		for(var i=0; i<resposta.length;i++)
 		{
-			printAnswer(resposta[i].texto, resposta[i].nomeUsuario, resposta[i].especialidade, resposta[i].cidade,resposta[i].mediaAvaliacao);
+			printAnswer(i+1,resposta[i].texto, resposta[i].nomeUsuario, resposta[i].especialidade, resposta[i].cidade,resposta[i].mediaAvaliacao);
 		}
 	}
 };
 
-var parser = document.createElement('a');
-parser.href = document.location.href;
-
-
+printTopic("Maconha", "Mais Maconha");
+printAnswer(1, "AEWfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff", "João Roubão", "Chinelagem", "Alvorada", "9,9");
+printAnswer(2 ,"AEW", "João Roubão", "Chinelagem", "Alvorada", "9,9");
 
 var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie": getCookie("username")})
 xhr.send(endtopic);

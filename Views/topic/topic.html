@@ -8,25 +8,37 @@
 	</head>
 	<body>
 
-		<div id="wrapper">
 				<div id="page">
-						<div class="" id="topic">
+						<div id="topic">
+							<div class="w3-card-4">
+								<header class="w3-container w3-teal">
+									<h1 id="title"></h1>
+								</header>
+
 								<div id="question">
-										<p><span id="title"></span></p>
 								</div>
-
-
+							</div>
 						</div>
 
-						<div>
-								<textarea rows='4' cols='50' id='resposta'></textarea>
-								<p><button id='submit' onclick='ans()'>Responder Pergunta</button>
-								<button id='sair' onclick='quit()'>Sair da conta</button>
-								<h6 id='error'></h6>
+
+
+
+
+
+						<div class="w3-card-4">
+								<header class="w3-container w3-teal">
+									<h1 id="title">Resposta</h1>
+								</header>
+
+								<div id="comment">
+									<textarea rows='4' cols='50' id='resposta'></textarea>
+									<button class="w3-button w3-teal" id='submit' onclick='ans()'>Enviar Resposta</button>
+									<button class="w3-button w3-teal" id='sair' onclick='quit()'>Sair da conta</button>
+									<h6 id='error'></h6>
+								</div>
 						</div>
 
 				</div>
-		</div>
 
 	</body>
 <script src="topic.js"></script>

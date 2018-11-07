@@ -1,12 +1,25 @@
-#question, .answer {
+textarea {
+  resize: none;
+  padding: 16px;
 
-        padding: 16px;
-        border: 1px solid #aaa;
-        border-radius: 8px;
+  border: 3px dashed gray;
+  background-color: #eee;
+}
+
+#resposta {
+
+        width: 100%;
+        margin-bottom: 16px;
+}
+
+#comment {
+      padding: 16px;
 }
 
 #page {
-        width: 100%;
+        display: block;
+        margin: 0 auto;
+        width: 60%;
 }
 
 #pergunta {
@@ -18,42 +31,50 @@
     color: red;
 }
 
+.w3-card-4 {
+  margin-top: 16px;
+}
 
 #question {
-        background-color: #eff1f3;
+  padding: 16px;
+  border: 1px solid #bbb;
 }
 
 #topic {
-        width: 50%;
+        width: 100%;
 }
 
-#title {
-        font-weight: bold;
+.post-container, .comment {
+  margin-top: 16px;
+  width: 100%;
+  display: inline-block;
+  word-break: break-all;
 }
 
 .post {
-        margin-top: 16px;
         width: 100%;
         display: inline-block;
+        padding: 16px 0px 16px 16px;
 }
 
+
 .answer {
+  padding: 16px;
+  border-left: 6px solid red;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background-color: #eff1f3;
+
         width: 70%;
         float: left;
 }
 
 .user {
+  text-align: center;
         width: 30%;
         float: right;
 }
 
 .username {
         color: green;
-}
-
-div {
-  margin-top: 16px;
-  width: 100%;
-  display: inline-block;
-  word-break: break-all;
 }
