@@ -46,7 +46,6 @@ var dbPergunta = require('./Database/dbPergunta.js');
   }
   exports.realizarPergunta=function realizarPergunta(req,res,con)
   {
-    console("A");
     var body = '';
     req.on('data', function (data) {
         body += data;
