@@ -1,7 +1,7 @@
 
 (function() {
   this.printTopic = function(title, msg, username, pergunta_id) {
-    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='aprovaPergunta(${pergunta_id})'>Aprovar pergunta</button></p>`;
+    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='aprovaPergunta(${pergunta_id})'>Aprovar pergunta</button> <button class="w3-btn w3-teal" onclick='removePergunta(${pergunta_id})'>Cancelar pergunta</button> </p>`;
   };
 
 }).call(this);
@@ -24,7 +24,19 @@ function aprovaPergunta(pergunta_id) {
 	
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
-	var url = "answer";
+	var url = "approve";
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+    var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
+	xhr.send(endAnswer);
+	location.reload();
+}
+
+function removePergunta(pergunta_id) {
+	
+	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+	var xhr = new XMLHttpRequest();
+	var url = "reprove";
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-Type", "application/json");
     var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
