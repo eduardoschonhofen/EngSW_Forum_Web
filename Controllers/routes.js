@@ -11,8 +11,15 @@ var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('../Controllers/routesShowTopico.js');
 var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
-var Pergunta = require('../Models/Pergunta.js');
+
 var routesRegister=require('../Controllers/routesRegister.js');
+
+
+var Pergunta = require('../Models/Pergunta.js');
+var Resposta = require('../Models/Resposta.js');
+var Medico = require('../Models/Medico.js');
+var Paciente = require('../Models/Paciente.js');
+var Moderador = require('../Models/Moderador.js');
 
 
 function loadPage(req,res,filename,type)

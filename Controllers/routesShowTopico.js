@@ -7,7 +7,7 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-exports.MostrarPerguntasErespostas=function MostrarPerguntaErespostas(req,res,con)
+exports.MostrarPerguntaErespostas=function MostrarPerguntaErespostas(req,res,con)
 {
   var body = '';
   req.on('data', function (data) {
