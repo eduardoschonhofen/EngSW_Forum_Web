@@ -54,6 +54,7 @@ class Routes
   post(req,res,con)
   {
     console.log("Entrei");
+    console.log(Pergunta);
     switch(req.url)
     {
     case "/login":routesLogin.realizarLogin(req,res,con);

@@ -7,17 +7,17 @@ class Resposta extends Registro
   {
 	  this.nomeMedico = nomeMedico;
   }
-  
+
   setNomePaciente(nomeMedico)
   {
 	  this.nomeMedico = nomeMedico;
   }
-  
+
   getNomePaciente()
   {
 	  return this.nomeMedico;
   }
-  
+
 }
 
-module.exports=Resposta;
+module.exports=Resposta();
