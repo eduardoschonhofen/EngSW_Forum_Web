@@ -12,6 +12,7 @@ var routesRegister = require('../Controllers/routesRegister.js');
 var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('../Controllers/routesShowTopico.js');
+var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
 class Routes
 {
   loadPage(req,res,filename,type)
@@ -76,6 +77,8 @@ class Routes
     break;
     case "/reprove":routesShowTopico.deletarPergunta(req,res,con);
     break;
+	case "/listusers":routesShowUsuarios.MostrarUsuarios(req,res,con);
+	break;
     case "/deleteUser":routesRegister.deletarPergunta(req,res,con);
     break;
     case "/aproveModierator":routesRegister.aprovaModerador(req,res,con);

@@ -42,7 +42,7 @@ function postServer(username,url)
 
 // Requisição da página
 var xhr = new XMLHttpRequest();
-var url = "/listusers";
+var url = "listusers";
 xhr.open("POST",url,true);
 xhr.setRequestHeader("Content-Type","application/json");
 xhr.onreadystatechange = function()
