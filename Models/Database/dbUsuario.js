@@ -28,6 +28,21 @@ function obtemUsuarios(con)
 });
 }
 
+function obtemUsuariosNaoModeradores(con)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * from Usuario WHERE not eModerador";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+
 function loginUsuario(con,nomeUsuario,senha)
 {
   return new Promise(function(resolve,reject)
@@ -118,6 +133,7 @@ exports.aprovaModerador=aprovaModerador;
 exports.deletaUsuario=deletaUsuario;
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
+exports.obtemUsuariosNaoModeradores = obtemUsuariosNaoModeradores;
 exports.loginUsuario=loginUsuario;
 exports.usuarioEMedico=usuarioEMedico;
 exports.usuarioEPaciente=usuarioEPaciente;

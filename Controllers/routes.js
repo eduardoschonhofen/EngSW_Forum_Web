@@ -79,7 +79,7 @@ class Routes
     break;
 	case "/listusers":routesShowUsuarios.MostrarUsuarios(req,res,con);
 	break;
-    case "/deleteUser":routesRegister.deletarPergunta(req,res,con);
+    case "/deleteUser":routesRegister.deletaUsuario(req,res,con);
     break;
     case "/aproveModierator":routesRegister.aprovaModerador(req,res,con);
     break;

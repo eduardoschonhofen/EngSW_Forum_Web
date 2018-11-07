@@ -30,7 +30,7 @@ function MostrarUsuarios(req,res,con)
         return res.end("404 Not Found");
       }
 
-      dbUsuario.obtemUsuarios(con).then(function(results)
+      dbUsuario.obtemUsuariosNaoModeradores(con).then(function(results)
       {
 
 
