@@ -8,10 +8,7 @@ var dbPergunta = require('./Database/dbPergunta.js');
 
 class Pergunta extends Registro
 {
-  constructor(nomePaciente)
-  {
-	  this.nomePaciente = nomePaciente;
-  }
+
 
   setNomePaciente(nomePaciente)
   {
@@ -99,4 +96,4 @@ class Pergunta extends Registro
   }
 }
 
-module.Pergunta=Pergunta;
+module.exports=new Pergunta();
