@@ -102,7 +102,7 @@ function inserePergunta(con,nomeUsuario,texto,titulo)
 function aprovaPergunta(con,pergunta_id)
 {
 
-  insert="UPDATE  PERGUNTA SET pendente=true WHERE pergunta_id={}";
+  insert="UPDATE  PERGUNTA SET aprovada=true WHERE pergunta_id={}";
   insert=printf(insert,[pergunta_id]);
   con.query(insert,function(error,results){
     if(error)
