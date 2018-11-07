@@ -36,6 +36,7 @@ function deleteUser(username)
   var xhr = new XMLHttpRequest();
 	var url = 'deleteUser';
   xhr.open("POST",url,true);
+	console.log(username);
     var endPost = JSON.stringify({"username":username})
   xhr.send(endPost);
 }
