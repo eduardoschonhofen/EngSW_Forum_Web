@@ -1,7 +1,7 @@
 
 function printUsers(username,nota)
 {
-    return document.getElementById("listUsers").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${username}</h3>\n		 </header>\n\n		 <div class="w3-container">\n				   <p class="msg">${mediaAvaliacao}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='deleteUsers()'>Deletar Usuário</button></p>`;
+    return document.getElementById("listUsers").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${username}</h3>\n		 </header>\n\n		 <div class="w3-container">\n				   <p class="msg">${mediaAvaliacao}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='postServer(${username}, ${'deleteUser'})'>Deletar Usuário</button></p>`;
 }
 
 saveCookie = function(name, value) {
@@ -52,7 +52,7 @@ xhr.onreadystatechange = function()
     console.log(xhr.responseText);
     var users = JSON.parse(xhr.responseText);
     console.log(users);
-    for(var i=0; i<user.length; i++)
+    for(var i=0; i<users.length; i++)
     {
       printUsers(users[i].nomeUsuario,users[i].mediaAvaliacao);
     }
