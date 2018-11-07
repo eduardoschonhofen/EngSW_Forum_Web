@@ -11,8 +11,9 @@ var dbCreate = require('../Models/Database/dbCreate.js');
 var Pergunta = require('../Models/Pergunta.js');
 var Resposta = require('../Models/Resposta.js');
 var Medico = require('../Models/Medico.js');
-var Paciente = require('../Models/Paciente.js');
+var Usuario = require('../Models/Usuario.js');
 var Moderador = require('../Models/Moderador.js');
+var Topico = require('../Models/Topico.js');
 
 
 function loadPage(req,res,filename,type)

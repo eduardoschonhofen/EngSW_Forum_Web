@@ -1,4 +1,4 @@
-function obtemMedico(con,nomeMedico)
+exports.obtemMedico=function obtemMedico(con,nomeMedico)
 {
   return new Promise(function(resolve,reject)
 {
@@ -13,7 +13,7 @@ function obtemMedico(con,nomeMedico)
 });
 }
 
-function obtemMedicos(con)
+exports.obtemMedicos=function obtemMedicos(con)
 {
   return new Promise(function(resolve,reject)
 {
@@ -39,7 +39,7 @@ var i;
 }
 
 
-function insereMedico(con,nome,nomeUsuario,senha,especialidade)
+exports.insereMedico=function insereMedico(con,nome,nomeUsuario,senha,especialidade)
 {
   insert="INSERT INTO Usuario(nome,nomeUsuario,senha,especialidade,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}','{}',0,0,false,true,false);";
   insert=printf(insert,[nome,nomeUsuario,senha,especialidade]);
@@ -51,11 +51,3 @@ function insereMedico(con,nome,nomeUsuario,senha,especialidade)
     }
 })
 }
-
-
-
-
-exports.obtemMedico=obtemMedico;
-exports.obtemMedicos=obtemMedicos;
-exports.insereMedico=insereMedico;
-
