@@ -128,7 +128,7 @@ function deletaUsuario(con,username)
 
 function aprovaModerador(con,username)
 {
-  insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario={}";
+  insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
   insert=printf(insert,[username]);
   con.query(insert,function(error,results){
     if(error)
@@ -136,6 +136,19 @@ function aprovaModerador(con,username)
       return console.error(error.message);
     }
   });
+
+}
+
+function atualizaAvaliacao(con,nomeUsuario,nota)
+{
+  insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE nomeUsuario='{}'";
+  insert=printf(insert,[nota,nomeUsuario]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+})
 
 }
 
@@ -148,3 +161,4 @@ exports.loginUsuario=loginUsuario;
 exports.usuarioEMedico=usuarioEMedico;
 exports.usuarioEPaciente=usuarioEPaciente;
 exports.usuarioEModerador=usuarioEModerador;
+exports.atualizaAvaliacao=atualizaAvaliacao;
