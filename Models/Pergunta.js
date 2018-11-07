@@ -99,4 +99,4 @@ class Pergunta extends Registro
   }
 }
 
-module.exports=Pergunta;
+module.Pergunta=Pergunta;
