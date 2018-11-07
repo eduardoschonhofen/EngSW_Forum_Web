@@ -1,7 +1,7 @@
 
 function printUsers(username,mediaAvaliacao)
 {
-    return document.getElementById("listUsers").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${username}</h3>\n		 </header>\n\n		 <div class="w3-container">\n				   <p class="msg">${mediaAvaliacao}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick="deleteUser('${username}')">Deletar Usuário</button></p>`;
+    return document.getElementById("listUsers").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${username}</h3>\n		 </header>\n\n		 <div class="w3-container">\n				   <p class="msg">${mediaAvaliacao}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick="deleteUser('${username}')">Deletar Usuário</button></p> <p><button class="w3-btn w3-teal" onclick="approveModerator('${username}')">Tornar Moderador</button></p>`;
 }
 
 saveCookie = function(name, value) {
@@ -42,7 +42,16 @@ function deleteUser(username)
   xhr.send(endPost);
 }
 
-
+function approveModerator(username)
+{
+  console.log(typeof(username))
+  var xhr = new XMLHttpRequest();
+  var url = 'approveModerator';
+  xhr.open("POST",url,true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+    var endPost = JSON.stringify({"username":username})
+  xhr.send(endPost);
+}
 // Requisição da página
 var xhr = new XMLHttpRequest();
 var url = "listusers";
