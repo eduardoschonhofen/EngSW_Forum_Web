@@ -125,7 +125,7 @@ function deletaUsuario(con,username)
 
 }
 
-function aprovaModerador(con,username)
+function virarModerador(con,username)
 {
   insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
   insert=printf(insert,[username]);
@@ -151,7 +151,7 @@ function atualizaAvaliacao(con,nomeUsuario,nota)
 
 }
 
-exports.aprovaModerador=aprovaModerador;
+exports.virarModerador=virarModerador;
 exports.deletaUsuario=deletaUsuario;
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;

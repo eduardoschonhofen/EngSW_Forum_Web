@@ -6,22 +6,14 @@ var dbUsuario = require('../Models/Database/dbUsuario.js');
 var dbPergunta = require('../Models/Database/dbPergunta.js');
 var dbResposta = require('../Models/Database/dbResposta.js');
 var dbCreate = require('../Models/Database/dbCreate.js');
-var routesLogin = require('../Controllers/routesLogin.js');
-var routesCreatePergunta=require('../Controllers/routesCreatePergunta');
-var routesShowPerguntas=require('../Controllers/routesShowPerguntas.js');
-var routesShowTopico = require('../Controllers/routesShowTopico.js');
-var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
-
-var routesRegister=require('../Controllers/routesRegister.js');
 
 
 var Pergunta = require('../Models/Pergunta.js');
-/*
 var Resposta = require('../Models/Resposta.js');
 var Medico = require('../Models/Medico.js');
 var Paciente = require('../Models/Paciente.js');
 var Moderador = require('../Models/Moderador.js');
-*/
+
 
 function loadPage(req,res,filename,type)
   {
@@ -63,33 +55,31 @@ exports.post=function post(req,res,con)
     console.log("Entrei fdp do node");
     switch(req.url)
     {
-    case "/login":routesLogin.realizarLogin(req,res,con);
+    case "/login":Usuario.realizarLogin(req,res,con);
     break;
-    case "test":0;
-    break;
-    case "/register":routesRegister.salvaUsuario(req,res,con);
+    case "/register":Usuario.salvaUsuario(req,res,con);
     break;
     case "/question":Pergunta.realizarPergunta(req,res,con);
     break;
-    case "/search":routesShowPerguntas.MostrarPerguntas(req,res,con);
-  break;
-    case "/topic":routesShowTopico.MostrarPerguntaErespostas(req,res,con);
+    case "/search":Pergunta.MostrarPerguntas(req,res,con);
     break;
-    case "/answer":routesShowTopico.insereResposta(req,res,con);
+    case "/topic":Topico.MostrarTopico(req,res,con);
     break;
-    case "/evaluate":routeShowTopico.avaliaResposta(req,res,con);
+    case "/answer":Resposta.insereResposta(req,res,con);
     break;
-    case "/pendingQuestions":routesShowTopico.MostrarPerguntasPendentes(req,res,con);
+    case "/evaluate":Resposta.avaliaResposta(req,res,con);
     break;
-    case "/approveQuestion":routesShowTopico.aprovarPergunta(req,res,con);
+    case "/pendingQuestions":Pergunta.MostrarPerguntasPendentes(req,res,con);
     break;
-    case "/removeQuestion":routesShowTopico.deletarPergunta(req,res,con);
+    case "/approveQuestion":Pergunta.aprovarPergunta(req,res,con);
     break;
-	case "/listusers":routesShowUsuarios.MostrarUsuarios(req,res,con);
-	break;
-    case "/deleteUser":routesRegister.deletaUsuario(req,res,con);
+    case "/removeQuestion":Pergunta.deletarPergunta(req,res,con);
     break;
-    case "/approveModerator":routesRegister.aprovaModerador(req,res,con);
+	   case "/listusers":Usuario.MostrarUsuarios(req,res,con);
+	   break;
+    case "/deleteUser":Usuario.deletaUsuario(req,res,con);
+    break;
+    case "/approveModerator":Usuario.virarModerador(req,res,con);
     break;
     default:
     	// 404 error
