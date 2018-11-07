@@ -95,7 +95,7 @@ xhr.onreadystatechange = function () {
 		  console.log(xhr.responseText);
 		  answer = JSON.parse(answerText);
 		  console.log(answerText);
-
+			answer = answer.results;
 		  if(answer.length > 0)
 		  {
 				
