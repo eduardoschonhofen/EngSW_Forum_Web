@@ -40,7 +40,7 @@ exports.get=function get(req,res,path,con)
     var folder='./Views'
     var filename=folder+"/"+subPath+"/"+subPath+"."+type;
     console.log(filename);
-    this.loadPage(req,res,filename,type);
+    loadPage(req,res,filename,type);
     }
 
     else
