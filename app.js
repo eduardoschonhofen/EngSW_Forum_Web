@@ -24,11 +24,10 @@ q=url.parse(adr,true);
 path=q.pathname;
 console.log("Path:"+path);
 
-var Router=new Routes();
 if(req.method!="POST")
-  Router.get(req,res,path,con);
+  Routes.get(req,res,path,con);
 else
-  Router.post(req,res,con);
+  Routes.post(req,res,con);
 }
 
 var port = process.env.PORT || 8080;
