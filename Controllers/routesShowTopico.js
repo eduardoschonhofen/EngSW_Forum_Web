@@ -174,7 +174,7 @@ function aprovarPergunta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbResposta.aprovaPergunta(con,resultados.pergunta_id);
+      dbPergunta.aprovaPergunta(con,resultados.pergunta_id);
 });
 }
 
