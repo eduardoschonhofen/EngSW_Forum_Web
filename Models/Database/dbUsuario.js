@@ -1,3 +1,13 @@
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
+
 function obtemUsuario(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
