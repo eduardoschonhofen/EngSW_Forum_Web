@@ -63,7 +63,7 @@ class Pergunta extends Registro
 
   })
   }
-  realizarPergunta=function(req,res,con)
+  var realizarPergunta=function(req,res,con)
   {
     console("A");
     var body = '';
