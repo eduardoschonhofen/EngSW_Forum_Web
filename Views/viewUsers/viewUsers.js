@@ -34,7 +34,6 @@ getParameter = function(key, str) {
 function deleteUser(username)
 {
 	console.log(username)
-	console.log('"'+username'"')
   var xhr = new XMLHttpRequest();
 	var url = 'deleteUser';
   xhr.open("POST",url,true);
