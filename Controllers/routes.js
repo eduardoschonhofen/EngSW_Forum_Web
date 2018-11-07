@@ -14,8 +14,9 @@ var routesShowUsuarios=require('../Controllers/routesShowUsuarios.js');
 
 var routesRegister=require('../Controllers/routesRegister.js');
 
-/*
+
 var Pergunta = require('../Models/Pergunta.js');
+/*
 var Resposta = require('../Models/Resposta.js');
 var Medico = require('../Models/Medico.js');
 var Paciente = require('../Models/Paciente.js');
@@ -59,8 +60,7 @@ exports.get=function get(req,res,path,con)
 
 exports.post=function post(req,res,con)
   {
-    console.log("Entrei");
-    console.log(Pergunta);
+    console.log("Entrei fdp do node");
     switch(req.url)
     {
     case "/login":routesLogin.realizarLogin(req,res,con);
