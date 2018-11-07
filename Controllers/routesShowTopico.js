@@ -158,6 +158,47 @@ function MostrarPerguntasPendentes(req,res,con)
 });
 }
 
+function aprovarPergunta(req,res,con)
+{
+  console.log("Pergunta aprovou!");
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbResposta.aprovaPergunta(con,resultados.pergunta_id);
+});
+}
+
+function deletarPergunta(req,res,con)
+{
+  console.log("Pergunta aprovou!");
+  var body = '';
+  req.on('data', function (data) {
+      body += data;
+
+      // 1e6 === 1 * Math.pow(10, 6) === 1 * 1000000 ~~~ 1MB
+      if (body.length > 1e6) {
+          // FLOOD ATTACK OR FAULTY CLIENT, NUKE REQUEST
+          req.connection.destroy();
+      }
+  });
+  req.on('end', function () {
+      resultados=JSON.parse(body);
+      console.log(resultados);
+      dbResposta.deletaPergunta(con,resultados.pergunta_id);
+});
+}
+exports.deletarPergunta=deletarPergunta;
+exports.aprovarPergunta=aprovarPergunta;
 exports.MostrarPerguntaErespostas=MostrarPerguntaErespostas;
 exports.insereResposta=insereResposta;
 exports.MostrarPerguntasPendentes=MostrarPerguntasPendentes;
