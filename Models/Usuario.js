@@ -4,12 +4,6 @@ var qs = require('querystring');
 var dbUsuario = require('./Database/dbUsuario.js');
 var dbPaciente = require('./Database/dbPaciente.js');
 var dbMedico = require('./Database/dbMedico.js');
-
-
-
-
-//var sublime = require('sublime');
-
 exports.salvaUsuario=function salvaUsuario(req,res,con)
 {
         var body = '';
