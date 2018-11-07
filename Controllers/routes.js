@@ -8,7 +8,6 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbCreate = require('../Models/Database/dbCreate.js');
 var routesTeste = require('./Controllers/routesTeste.js');
 var routesLogin = require('./Controllers/routesLogin.js');
-var routesRegister = require('./Controllers/routesRegister.js');
 var routesCreatePergunta=require('./Controllers/routesCreatePergunta');
 var routesShowPerguntas=require('./Controllers/routesShowPerguntas.js');
 var routesShowTopico = require('./Controllers/routesShowTopico.js');
