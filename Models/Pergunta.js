@@ -5,7 +5,7 @@ var fs = require('fs');
 var dbUsuario =require('./Database/dbUsuario.js');
 var dbPergunta = require('./Database/dbPergunta.js');
 
-  exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
+exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
   {
     var body = '';
     req.on('data', function (data) {
@@ -44,7 +44,7 @@ var dbPergunta = require('./Database/dbPergunta.js');
 
   })
   }
-  exports.realizarPergunta=function realizarPergunta(req,res,con)
+exports.realizarPergunta=function realizarPergunta(req,res,con)
   {
     var body = '';
     req.on('data', function (data) {
