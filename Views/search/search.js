@@ -52,5 +52,3 @@ xhr.onreadystatechange = function () {
 var data = JSON.stringify({"cookie":getCookie("username")});
 xhr.send(data);
 
-printTopic("KKK1", "KKK2", "KKK3", "123");
-printTopic("KKK4", "KKK5", "KKK6", "456");
