@@ -1,7 +1,7 @@
 
 (function() {
-  this.printTopic = function(title, msg, username) {
-    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='ans()'>Aprovar pergunta</button></p>`;
+  this.printTopic = function(title, msg, username, pergunta_id) {
+    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic">\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p><button class="w3-btn w3-teal" onclick='aprovaPergunta(${pergunta_id})'>Aprovar pergunta</button></p>`;
   };
 
 }).call(this);
@@ -20,53 +20,16 @@ function quit()
 	document.location.href = document.location.href.substr(0, indexOfSlash) + '/login.html';
 }
 
-function ans() {
-	usuario = getCookie("username");
-	if(usuario === undefined)
-	{
-		document.getElementById('error').textContent = 'Voce nao esta logado';
-		//document.getElementById('error').style.display = 'block';
-	}
-	else if(getAnswer()=="")
-  {
-    alert("Você precisa digitar uma resposta");
-  }
-
-	else{
-
-		var answer = getAnswer(); // remove trailing spaces
-		if(answer.length > 0)
-		{
-			alert("TESTE");
-			//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
-			var xhr = new XMLHttpRequest();
-			var url = "answer";
-			xhr.open("POST", url, true);
-			xhr.setRequestHeader("Content-Type", "application/json");
-			xhr.onreadystatechange = function () {
-				if (xhr.readyState === 4 && xhr.status === 200) {
-          var answerText = xhr.responseText;
-          console.log(xhr.responseText);
-          answerText = JSON.parse(answerText);
-          console.log(answerText);
-
-          console.log(getAnswer());
-
-          if(answerText =="true")
-          {
-            alert("Resposta salva e aguardando aceitação dos moderadores");
-          }
-          else
-          {
-			  alert("Apenas medicos podem responder")
-		  }
-				}
-			};
-
-      var endAnswer = JSON.stringify({"topico_id": 1,"username":getCookie("username"),"texto":getAnswer()})
-			xhr.send(endAnswer);
-		}
-	}
+function aprovaPergunta(pergunta_id) {
+	
+	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
+	var xhr = new XMLHttpRequest();
+	var url = "answer";
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+    var endAnswer = JSON.stringify({"pergunta_id":pergunta_id})
+	xhr.send(endAnswer);
+	location.reload();
 }
 
 saveCookie = function(name, value) {
@@ -101,7 +64,7 @@ xhr.onreadystatechange = function () {
 				
 				for(var i=0; i<answer.length;i++)
 				{
-					printTopic(answer[i].titulo,answer[i].texto, answer[i].nomeUsuario);
+					printTopic(answer[i].titulo,answer[i].texto, answer[i].nomeUsuario, answer[i].pergunta_id);
 				}
 
 		  }
