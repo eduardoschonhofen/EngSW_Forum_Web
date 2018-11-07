@@ -1,3 +1,13 @@
+
+function printf(str, params) {
+var i;
+
+  for (i = 0; i < params.length; i++) {
+    str = str.replace("{}", params[i]);
+  }
+
+  return str;
+}
 function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
@@ -74,20 +84,12 @@ function obtemPerguntasAceitas(con)
 }
 
 
-function printf(str, params) {
-var i;
 
-  for (i = 0; i < params.length; i++) {
-    str = str.replace("{}", params[i]);
-  }
-
-  return str;
-}
 
 
 function inserePergunta(con,nomeUsuario,texto,titulo)
 {
-  insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
+  insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes,aprovada) VALUES('{}','{}','{}',now(),0,0,false)";
   insert=printf(insert,[nomeUsuario,titulo,texto]);
   con.query(insert,function(error,results){
     if(error)
@@ -97,10 +99,36 @@ function inserePergunta(con,nomeUsuario,texto,titulo)
 })
 }
 
-exports.inserePergunta=inserePergunta;
+function aprovaPergunta(con,pergunta_id)
+{
 
+  insert="UPDATE  PERGUNTA SET pendente=true WHERE pergunta_id={}";
+  insert=printf(insert,[pergunta_id]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+  });
+}
+
+function deletaPergunta(con,pergunta_id)
+{
+  insert="DELETE FROM  PERGUNTA WHERE pergunta_id={}";
+  insert=printf(insert,[pergunta_id]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+  });
+
+}
+exports.deletaPergunta=deletaPergunta;
+exports.inserePergunta=inserePergunta;
 exports.obtemPerguntaId=obtemPerguntaId;
 exports.obtemPerguntaUsuario=obtemPerguntaUsuario;
 exports.obtemPerguntas=obtemPerguntas;
 exports.obtemPerguntasPendentes=obtemPerguntasPendentes;
 exports.obtemPerguntasAceitas=obtemPerguntasAceitas;
+exports.aprovaPergunta=aprovaPergunta;

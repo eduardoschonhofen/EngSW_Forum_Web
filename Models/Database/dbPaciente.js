@@ -52,10 +52,21 @@ function inserePaciente(con,nome,nomeUsuario,senha, ePaciente, eMedico)
     }
 })
 }
+function deletaUsuario(con,username)
+{
+  insert="DELETE FROM  Usuario WHERE nomeUsuario={}";
+  insert=printf(insert,[pergunta_id]);
+  con.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+  });
+
+}
 
 
-
-
+exports.deletaUsuario=deletaUsuario;
 exports.obtemPaciente=obtemPaciente;
 exports.obtemPacientes=obtemPacientes;
 exports.inserePaciente=inserePaciente;
