@@ -63,7 +63,6 @@ function loginUsuario(con,nomeUsuario,senha)
     {
       return console.error(error.message);
     }
-    console.log(busca);
     resolve(results);
 });
 });

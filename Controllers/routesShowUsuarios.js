@@ -7,7 +7,6 @@ var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 function MostrarUsuarios(req,res,con)
 {
-  console.log("Entrei na pergunta e resposta");
   var body = '';
   req.on('data', function (data) {
       body += data;
@@ -21,8 +20,6 @@ function MostrarUsuarios(req,res,con)
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      console.log(resultados.topico_id);
-      console.log(resultados.cookie);
       dbUsuario.usuarioEModerador(con,resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
@@ -33,12 +30,9 @@ function MostrarUsuarios(req,res,con)
       dbUsuario.obtemUsuariosNaoModeradores(con).then(function(results)
       {
 
-
           res.writeHead(200, {'Content-Type': 'application/json'});
-        console.log(results);
 
         var valor=JSON.stringify({results});
-        console.log(valor);
 
 		  res.write(valor);
 		  res.end();

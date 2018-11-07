@@ -20,12 +20,10 @@ function realizarLogin(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.loginUsuario(con,resultados.username,resultados.password).then(function(results)
       {
         if(results[0]==undefined)
       {
-        console.log("FALSE");
         res.writeHead(200, {'Content-Type': 'application/json'});
         res.write(JSON.stringify("false"));
         return res.end();
@@ -33,7 +31,6 @@ function realizarLogin(req,res,con)
       }
         else
         {
-          console.log("AAA");
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();

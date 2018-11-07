@@ -66,11 +66,7 @@ function ans() {
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 	  var answerText = xhr.responseText;
-	  console.log(xhr.responseText);
 	  answerText = JSON.parse(answerText);
-	  console.log(answerText);
-
-	  console.log(getAnswer());
 
 	  if(answerText =="true")
 	  {
@@ -121,9 +117,7 @@ xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
 	if (xhr.readyState === 4 && xhr.status === 200) {
-		console.log(xhr.responseText);
 		var response = JSON.parse(xhr.responseText);
-		console.log(response);
 		var pergunta = response.question[0];
 		var resposta = response.answer;
 		printTopic(pergunta.titulo,pergunta.texto)

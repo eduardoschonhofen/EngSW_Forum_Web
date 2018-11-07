@@ -41,15 +41,10 @@ document.getElementById('submit').addEventListener("click", function() {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			var success = xhr.responseText;
-			console.log(xhr.responseText);
 			success=JSON.parse(success);
-			console.log(success);
-			console.log("TREU");
 
-			console.log(getNomeUsuario());
 			if (success=="true")
 			{
-				console.log(saveCookie("username",getNomeUsuario()));
 				alert("Redirecionando para lista de tópicos");
 				document.location.href = '/search.html';
 			}

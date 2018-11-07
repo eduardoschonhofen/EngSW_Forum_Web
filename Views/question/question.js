@@ -32,8 +32,6 @@ document.getElementById('submit').addEventListener("click", function() {
 		return;
 	}
 
-	console.log("REG");
-
 	var xhr = new XMLHttpRequest();
 	var url = "question";
 	xhr.open("POST", url, true);
@@ -41,11 +39,7 @@ document.getElementById('submit').addEventListener("click", function() {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 		  var answerText = xhr.responseText;
-		  console.log(xhr.responseText);
 		  answerText = JSON.parse(answerText);
-		  console.log(answerText);
-
-		  console.log(getAnswer());
 
 		  if(answerText =="true")
 		  {

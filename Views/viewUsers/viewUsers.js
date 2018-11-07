@@ -33,7 +33,6 @@ getParameter = function(key, str) {
 
 function deleteUser(username)
 {
-	console.log(typeof(username))
   var xhr = new XMLHttpRequest();
 	var url = 'deleteUser';
   xhr.open("POST",url,true);
@@ -44,7 +43,6 @@ function deleteUser(username)
 
 function approveModerator(username)
 {
-  console.log(typeof(username))
   var xhr = new XMLHttpRequest();
   var url = 'approveModerator';
   xhr.open("POST",url,true);
@@ -61,9 +59,7 @@ xhr.onreadystatechange = function()
 {
   if(xhr.readyState === 4 && xhr.status ===200)
   {
-    console.log(xhr.responseText);
     var users = JSON.parse(xhr.responseText);
-    console.log(users);
 	users = users.results;
     for(var i=0; i<users.length; i++)
     {
