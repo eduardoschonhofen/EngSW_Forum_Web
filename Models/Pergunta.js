@@ -68,6 +68,7 @@ class Pergunta extends Registro
   }
   static realizarPergunta(req,res,con)
   {
+    console("A");
     var body = '';
     req.on('data', function (data) {
         body += data;
