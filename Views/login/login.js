@@ -42,9 +42,9 @@ document.getElementById('submit').addEventListener("click", function() {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			var success = xhr.responseText;
 			success=JSON.parse(success);
-
 			if (success=="true")
 			{
+				saveCookie("username", getNomeUsuario());
 				alert("Redirecionando para lista de tópicos");
 				document.location.href = '/search.html';
 			}
