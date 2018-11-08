@@ -29,7 +29,6 @@ exports.buscaPergunta=function buscaPergunta(con,texto)
     }
     resolve(results);
 });
-});
 }
 
 
