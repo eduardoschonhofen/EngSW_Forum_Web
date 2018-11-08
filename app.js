@@ -32,7 +32,7 @@ else
 
 var port = process.env.PORT || 8080;
 http.createServer(function(req,res){
-console.log(database.database.state);
+console.log(database.state);
 selector(req, res);
 }
 

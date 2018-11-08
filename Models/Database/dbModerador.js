@@ -5,7 +5,7 @@ function obtemModerador(con,nomeModerador)
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario where nomeUsuario='"+nomeModerador+"' AND eModerador=true";
-  database.database.query(busca,function(error,results,fields){
+  database.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -20,7 +20,7 @@ function obtemModeradores(con)
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario where eModerador=true";
-  database.database.query(busca,function(error,results,fields){
+  database.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -35,7 +35,7 @@ function usuarioEModerador(con,nomeUsuario)
   return new Promise(function(resolve,reject)
 {
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eModerador";
-  database.database.query(busca,function(error,results,fields){
+  database.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -49,7 +49,7 @@ function virarModerador(con,username)
 {
   insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
   insert=database.printf(insert,[username]);
-  database.database.query(insert,function(error,results){
+  database.query(insert,function(error,results){
     if(error)
     {
       return console.error(error.message);

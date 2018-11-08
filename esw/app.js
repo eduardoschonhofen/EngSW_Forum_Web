@@ -21,9 +21,9 @@ var con = mysql.createConnection({
 });
 
 // fazendo query no banco de dados
-database.database.connect(function(err) {
+database.connect(function(err) {
 	if (err) throw err;
-	database.database.query("SELECT * FROM " + tabela, function (err, result, fields) {
+	database.query("SELECT * FROM " + tabela, function (err, result, fields) {
 	if (err) throw err;
 	console.log(result);
 	});
