@@ -82,6 +82,12 @@ exports.post=function post(req,res,con)
     break;
     case "/approveModerator":Usuario.virarModerador(req,res,con);
     break;
+    case "/searchTopic":Pergunta.buscaPergunta(req,res,con);
+    break;
+    case "/evaluateAnswer":Resposta.avaliaResposta(req,res,con);
+    break;
+    case "/evaluateQuestion":Pergunta.avaliaPergunta(req,res,con);
+    break;
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});

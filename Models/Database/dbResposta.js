@@ -66,7 +66,7 @@ function insereResposta(con,nomeUsuario,texto,pergunta_id)
 
 function atualizaAvaliacao(con,pergunta_id,nota)
 {
-  insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE pergunta_id={}";
+  insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE resposta_id={}";
   insert=printf(insert,[nota,pergunta_id]);
   con.query(insert,function(error,results){
     if(error)

@@ -24,6 +24,22 @@ function obtemPerguntaId(con,Pergunta)
 });
 }
 
+exports.buscaPergunta=function buscaPergunta(con,texto)
+{
+  busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
+  busca=printf(busca,[texto]);
+  console.log(busca);
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}
+
+
 function obtemPerguntaUsuario(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
