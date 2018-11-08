@@ -1,5 +1,5 @@
 var database = require('./database.js');
-
+var utilitary = require('./utilitary.js');
 exports.obtemMedico=function obtemMedico(con,nomeMedico)
 {
   return new Promise(function(resolve,reject)
@@ -34,7 +34,7 @@ exports.obtemMedicos=function obtemMedicos(con)
 exports.insereMedico=function insereMedico(con,nome,nomeUsuario,senha,especialidade)
 {
   insert="INSERT INTO Usuario(nome,nomeUsuario,senha,especialidade,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}','{}',0,0,false,true,false);";
-  insert=database.printf(insert,[nome,nomeUsuario,senha,especialidade]);
+  insert=utilitary.printf(insert,[nome,nomeUsuario,senha,especialidade]);
   database.query(insert,function(error,results){
     if(error)
     {

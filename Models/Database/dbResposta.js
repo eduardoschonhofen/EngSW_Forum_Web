@@ -1,5 +1,5 @@
 var database = require('./database.js');
-
+var utilitary = require('./utilitary.js');
 function obtemRespostaParaPerguntaPorId(con,idPergunta)
 {
   return new Promise(function(resolve,reject)
@@ -47,7 +47,7 @@ function obtemRespostas(con)
 function insereResposta(con,nomeUsuario,texto,pergunta_id)
 {
   insert="INSERT INTO Resposta(nomeUsuario,pergunta_id,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
-  insert=database.printf(insert,[nomeUsuario,pergunta_id,texto]);
+  insert=utilitary.printf(insert,[nomeUsuario,pergunta_id,texto]);
   database.query(insert,function(error,results){
     if(error)
     {
@@ -59,7 +59,7 @@ function insereResposta(con,nomeUsuario,texto,pergunta_id)
 function atualizaAvaliacao(con,pergunta_id,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE resposta_id={}";
-  insert=database.printf(insert,[nota,pergunta_id]);
+  insert=utilitary.printf(insert,[nota,pergunta_id]);
   database.query(insert,function(error,results){
     if(error)
     {

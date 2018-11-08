@@ -1,5 +1,5 @@
 var database = require('./database.js');
-
+var utilitary = require('./utilitary.js');
 function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
@@ -19,7 +19,7 @@ function obtemPerguntaId(con,Pergunta)
 exports.buscaPergunta=function buscaPergunta(con,texto)
 {
   busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
-  busca=database.printf(busca,[texto]);
+  busca=utilitary.printf(busca,[texto]);
   console.log(busca);
   database.query(busca,function(error,results,fields){
     if(error)
@@ -97,7 +97,7 @@ function obtemPerguntasAceitas(con)
 function inserePergunta(con,nomeUsuario,texto,titulo)
 {
   insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes,aprovada) VALUES('{}','{}','{}',now(),0,0,false)";
-  insert=database.printf(insert,[nomeUsuario,titulo,texto]);
+  insert=utilitary.printf(insert,[nomeUsuario,titulo,texto]);
   database.query(insert,function(error,results){
     if(error)
     {
@@ -110,7 +110,7 @@ function aprovaPergunta(con,pergunta_id)
 {
 
   insert="UPDATE  PERGUNTA SET aprovada=true WHERE pergunta_id={}";
-  insert=database.printf(insert,[pergunta_id]);
+  insert=utilitary.printf(insert,[pergunta_id]);
   database.query(insert,function(error,results){
     if(error)
     {
@@ -122,7 +122,7 @@ function aprovaPergunta(con,pergunta_id)
 function deletaPergunta(con,pergunta_id)
 {
   insert="DELETE FROM  PERGUNTA WHERE pergunta_id={}";
-  insert=database.printf(insert,[pergunta_id]);
+  insert=utilitary.printf(insert,[pergunta_id]);
   database.query(insert,function(error,results){
     if(error)
     {

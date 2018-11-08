@@ -1,5 +1,5 @@
 var database = require('./database.js');
-
+var utilitary = require('./utilitary.js');
 function obtemUsuario(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
@@ -63,7 +63,7 @@ function loginUsuario(con,nomeUsuario,senha)
 function deletaUsuario(con,username)
 {
   insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
-  insert=database.printf(insert,[username]);
+  insert=utilitary.printf(insert,[username]);
   database.query(insert,function(error,results){
     if(error)
     {
@@ -75,7 +75,7 @@ function deletaUsuario(con,username)
 function atualizaAvaliacao(con,nomeUsuario,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE nomeUsuario='{}'";
-  insert=database.printf(insert,[nota,nomeUsuario]);
+  insert=utilitary.printf(insert,[nota,nomeUsuario]);
   database.query(insert,function(error,results){
     if(error)
     {
