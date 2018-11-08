@@ -1,5 +1,5 @@
 
-var database = require('../Models/Database/database.js');
+var database = require('./database.js');
 
 function obtemPerguntaId(con,Pergunta)
 {
