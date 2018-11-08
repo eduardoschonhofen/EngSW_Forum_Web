@@ -49,6 +49,7 @@ function usuarioEPaciente(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
+  console.log(database.database);
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and ePaciente";
   database.database.query(busca,function(error,results,fields){
     if(error)

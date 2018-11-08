@@ -7,6 +7,7 @@ var dbPaciente = require('./Database/dbPaciente.js');
 var dbModerador=require('./Database/dbModerador.js');
 
 exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res)
+exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res)
 {
   var body = '';
   req.on('data', function (data) {
