@@ -1,11 +1,11 @@
-var database = require('./database.js');
-var utilitary = require('./utilitary.js');
+var database = require('../Models/Database/database.js');
+
 function obtemUsuario(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario where nomeUsuario='"+nomeUsuario+"'";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -20,7 +20,7 @@ function obtemUsuarios(con)
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -35,7 +35,7 @@ function obtemUsuariosNaoModeradores(con)
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario WHERE not eModerador";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -50,7 +50,7 @@ function loginUsuario(con,nomeUsuario,senha)
   return new Promise(function(resolve,reject)
 {
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and senha='"+senha+"'";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -63,8 +63,8 @@ function loginUsuario(con,nomeUsuario,senha)
 function deletaUsuario(con,username)
 {
   insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
-  insert=utilitary.printf(insert,[username]);
-  database.query(insert,function(error,results){
+  insert=database.printf(insert,[username]);
+  con.query(insert,function(error,results){
     if(error)
     {
       return console.error(error.message);
@@ -75,8 +75,8 @@ function deletaUsuario(con,username)
 function atualizaAvaliacao(con,nomeUsuario,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE nomeUsuario='{}'";
-  insert=utilitary.printf(insert,[nota,nomeUsuario]);
-  database.query(insert,function(error,results){
+  insert=database.printf(insert,[nota,nomeUsuario]);
+  con.query(insert,function(error,results){
     if(error)
     {
       return console.error(error.message);

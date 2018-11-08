@@ -1,11 +1,11 @@
-var database = require('./database.js');
-var utilitary = require('./utilitary.js');
+var database = require('../Models/Database/database.js');
+
 function obtemPaciente(con,nomePaciente)
 {
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario where ePaciente=true and nomeUsuario='"+nomePaciente+"'";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
@@ -20,7 +20,7 @@ function obtemPacientes(con)
   return new Promise(function(resolve,reject)
 {
   busca="Select * from Usuario WHERE ePaciente=true";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
 
@@ -35,8 +35,8 @@ function obtemPacientes(con)
 function inserePaciente(con,nome,nomeUsuario,senha)
 {
   insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,true,false,false);";
-  insert=utilitary.printf(insert,[nome,nomeUsuario,senha]);
-  database.query(insert,function(error,results){
+  insert=database.printf(insert,[nome,nomeUsuario,senha]);
+  con.query(insert,function(error,results){
     if(error)
     {
 
@@ -49,9 +49,8 @@ function usuarioEPaciente(con,nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
-  console.log(database.database);
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and ePaciente";
-  database.query(busca,function(error,results,fields){
+  con.query(busca,function(error,results,fields){
     if(error)
     {
       return console.error(error.message);
