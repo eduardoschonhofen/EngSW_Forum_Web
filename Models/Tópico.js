@@ -4,7 +4,7 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-exports.MostrarTopico=function MostrarTopico(req,res,con)
+exports.MostrarTopico=function MostrarTopico(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -20,16 +20,16 @@ exports.MostrarTopico=function MostrarTopico(req,res,con)
 
 
       resultados=JSON.parse(body);
-      dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
+      dbUsuario.obtemUsuario(resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntaId(con,resultados.topico_id).then(function(results)
+      dbPergunta.obtemPerguntaId(resultados.topico_id).then(function(results)
       {
-        dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2)
+        dbResposta.obtemRespostaParaPerguntaPorId(resultados.topico_id).then(function(results2)
         {
 
 

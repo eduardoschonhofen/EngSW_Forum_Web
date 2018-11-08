@@ -6,7 +6,7 @@ var dbPaciente = require('./Database/dbPaciente.js');
 var dbMedico = require('./Database/dbMedico.js');
 var dbModerador=require('./Database/dbModerador.js');
 
-exports.salvaUsuario=function salvaUsuario(req,res,con)
+exports.salvaUsuario=function salvaUsuario(req,res)
 {
         var body = '';
         req.on('data', function (data) {
@@ -23,14 +23,14 @@ exports.salvaUsuario=function salvaUsuario(req,res,con)
 
             resultados=JSON.parse(body);
 			if(resultados.epaciente)
-            	dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
+            	dbPaciente.inserePaciente(resultados.name,resultados.username,resultados.password);
 			else
-				dbMedico.insereMedico(con,resultados.name,resultados.username,resultados.password,resultados.speciality);
+				dbMedico.insereMedico(resultados.name,resultados.username,resultados.password,resultados.speciality);
 
         });
 
 }
-exports.deletaUsuario=function deletaUsuario(req,res,con)
+exports.deletaUsuario=function deletaUsuario(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -44,12 +44,12 @@ exports.deletaUsuario=function deletaUsuario(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.deletaUsuario(con,resultados.username);
+      dbUsuario.deletaUsuario(resultados.username);
 });
 
 }
 
-exports.virarModerador=function virarModerador(req,res,con)
+exports.virarModerador=function virarModerador(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -63,12 +63,12 @@ exports.virarModerador=function virarModerador(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbModerador.virarModerador(con,resultados.username);
+      dbModerador.virarModerador(resultados.username);
 });
 
 }
 
-exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
+exports.MostrarUsuarios=function MostrarUsuarios(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -83,7 +83,7 @@ exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbModerador.usuarioEModerador(con,resultados.cookie).then(function(results)
+      dbModerador.usuarioEModerador(resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
@@ -105,7 +105,7 @@ exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
 
 });
 }
-exports.realizarLogin=function realizarLogin(req,res,con)
+exports.realizarLogin=function realizarLogin(req,res)
 {
 
   var body = '';
@@ -120,7 +120,7 @@ exports.realizarLogin=function realizarLogin(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.loginUsuario(con,resultados.username,resultados.password).then(function(results)
+      dbUsuario.loginUsuario(resultados.username,resultados.password).then(function(results)
       {
         if(results[0]==undefined)
       {

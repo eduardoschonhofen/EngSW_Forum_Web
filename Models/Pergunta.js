@@ -6,7 +6,7 @@ var dbResposta = require('./Database/dbResposta.js');
 var dbPaciente = require('./Database/dbPaciente.js');
 var dbModerador=require('./Database/dbModerador.js');
 
-exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con)
+exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -21,7 +21,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbModerador.usuarioEModerador(con,resultados.username).then(function(results)
+      dbModerador.usuarioEModerador(resultados.username).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
@@ -45,7 +45,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con
 });
 }
 
-exports.aprovarPergunta=function aprovarPergunta(req,res,con)
+exports.aprovarPergunta=function aprovarPergunta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -59,11 +59,11 @@ exports.aprovarPergunta=function aprovarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbPergunta.aprovaPergunta(con,resultados.pergunta_id);
+      dbPergunta.aprovaPergunta(resultados.pergunta_id);
 });
 }
 
-exports.deletarPergunta=function deletarPergunta(req,res,con)
+exports.deletarPergunta=function deletarPergunta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -77,12 +77,12 @@ exports.deletarPergunta=function deletarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbPergunta.deletaPergunta(con,resultados.pergunta_id);
+      dbPergunta.deletaPergunta(resultados.pergunta_id);
 });
 }
 
 
-exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
+exports.MostrarPerguntas=function MostrarPerguntas(req,res)
   {
     var body = '';
     req.on('data', function (data) {
@@ -97,7 +97,7 @@ exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
     req.on('end', function () {
         resultados=JSON.parse(body);
         console.log(resultados);
-        dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
+        dbUsuario.obtemUsuario(resultados.cookie).then(function(results)
       {
         if(results[0]==undefined)
         {	res.writeHead(404, {'Content-Type': 'text/css'});
@@ -121,7 +121,7 @@ exports.MostrarPerguntas=function MostrarPerguntas(req,res,con)
 
   })
   }
-exports.realizarPergunta=function realizarPergunta(req,res,con)
+exports.realizarPergunta=function realizarPergunta(req,res)
   {
     var body = '';
     req.on('data', function (data) {
@@ -133,7 +133,7 @@ exports.realizarPergunta=function realizarPergunta(req,res,con)
     req.on('end', function () {
         resultados=JSON.parse(body);
         console.log(resultados);
-        dbPaciente.usuarioEPaciente(con,resultados.username).then(function(results)
+        dbPaciente.usuarioEPaciente(resultados.username).then(function(results)
         {
           if(results[0]==undefined)
         {
@@ -144,7 +144,7 @@ exports.realizarPergunta=function realizarPergunta(req,res,con)
           else
           {
             console.log("INSERIU NO CU DO NODEJS");
-  			dbPergunta.inserePergunta(con,resultados.username,resultados.question,resultados.title);
+  			dbPergunta.inserePergunta(resultados.username,resultados.question,resultados.title);
             res.writeHead(200, {'Content-Type': 'application/json'});
             res.write(JSON.stringify("true"));
             return res.end();
@@ -153,7 +153,7 @@ exports.realizarPergunta=function realizarPergunta(req,res,con)
   });
   }
 
-  exports.avaliaPergunta=function avaliaPergunta(req,res,con)
+  exports.avaliaPergunta=function avaliaPergunta(req,res)
   {
     var body = '';
     req.on('data', function (data) {
@@ -167,12 +167,12 @@ exports.realizarPergunta=function realizarPergunta(req,res,con)
     });
     req.on('end', function () {
         resultados=JSON.parse(body);
-        dbResposta.atualizaAvaliacao(con,resultados.resposta_id,resultados.nota);
-      dbUsuario.atualizaAvaliacao(con,resultados.username,resultados.nota);
+        dbResposta.atualizaAvaliacao(resultados.resposta_id,resultados.nota);
+      dbUsuario.atualizaAvaliacao(resultados.username,resultados.nota);
   });
   }
 
-exports.buscaPergunta=function buscaPergunta(req,res,con)
+exports.buscaPergunta=function buscaPergunta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -187,13 +187,13 @@ exports.buscaPergunta=function buscaPergunta(req,res,con)
   req.on('end', function () {
       resultados=JSON.parse(body);
       console.log(resultados);
-      dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
+      dbUsuario.obtemUsuario(resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
       }
-      dbPergunta.buscaPergunta(con,resultados.texto).then(function(results)
+      dbPergunta.buscaPergunta(resultados.texto).then(function(results)
       {
 
           res.writeHead(200, {'Content-Type': 'application/json'});

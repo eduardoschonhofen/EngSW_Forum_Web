@@ -5,7 +5,7 @@ var dbUsuario =require('../Models/Database/dbUsuario.js');
 var dbMedico = require('../Models/Database/dbMedico.js');
 
 
-exports.insereResposta=function insereResposta(req,res,con)
+exports.insereResposta=function insereResposta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -19,7 +19,7 @@ exports.insereResposta=function insereResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbMedico.usuarioEMedico(con,resultados.username).then(function(results)
+      dbMedico.usuarioEMedico(resultados.username).then(function(results)
       {
         if(results[0]==undefined)
       {
@@ -30,7 +30,7 @@ exports.insereResposta=function insereResposta(req,res,con)
       }
         else
         {
-			dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
+			dbResposta.insereResposta(resultados.username,resultados.texto,resultados.topico_id);
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();
@@ -39,7 +39,7 @@ exports.insereResposta=function insereResposta(req,res,con)
 });
 }
 
-exports.avaliaResposta=function avaliaResposta(req,res,con)
+exports.avaliaResposta=function avaliaResposta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -53,8 +53,8 @@ exports.avaliaResposta=function avaliaResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbResposta.atualizaAvaliacao(con,resultados.pergunta_id,resultados.nota);
-	  dbUsuario.atualizaAvaliacao(con,resultados.username,resultados.nota);
+      dbResposta.atualizaAvaliacao(resultados.pergunta_id,resultados.nota);
+	  dbUsuario.atualizaAvaliacao(resultados.username,resultados.nota);
 });
 
 }
