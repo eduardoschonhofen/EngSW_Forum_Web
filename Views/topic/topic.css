@@ -1,3 +1,18 @@
+.topbar {
+  display: flex;
+  background-color: #009688;
+  padding: 8px;
+}
+
+.inline {
+  display: inline;
+}
+
+.search {
+  margin-left: 14px;
+  display: inline;
+}
+
 textarea {
   resize: none;
   padding: 16px;
@@ -37,7 +52,18 @@ textarea {
 
 #question {
   padding: 16px;
-  border: 1px solid #bbb;
+  border-left: 6px solid red;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background-color: #eff1f3;
+}
+
+.padding {
+  padding: 16px;
+}
+
+#paddingTopic {
+  padding: 16px;
 }
 
 #topic {
@@ -52,9 +78,9 @@ textarea {
 }
 
 .post {
+        padding: 0px !important;
         width: 100%;
         display: inline-block;
-        padding: 16px 0px 16px 16px;
 }
 
 
@@ -77,4 +103,9 @@ textarea {
 
 .username {
         color: green;
+}
+
+.rating {
+        text-align: center;
+        display: block;
 }

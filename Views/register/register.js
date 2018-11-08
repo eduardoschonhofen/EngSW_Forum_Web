@@ -39,6 +39,8 @@ document.getElementById('submit').addEventListener("click", function() {
 		return;
 	}
 
+	console.log("REG");
+
 	var especialidade = '';
 	if(emedico)
 		especialidade = getEspecialidade();

@@ -1,8 +1,27 @@
 .topbar {
-display: flex;
-background-color: #000;
+  display: flex;
+  background-color: #009688;
+  padding: 8px;
 }
 
-.logo {
-float: left;
+.inline {
+  display: inline;
+}
+
+.search {
+  margin-left: 14px;
+  display: inline;
+}
+
+.centerbox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 500px;
+}
+
+body {
+  background: url("http://www.kiclinic.pt/img/content/Home-1/banner-home.png");
 }

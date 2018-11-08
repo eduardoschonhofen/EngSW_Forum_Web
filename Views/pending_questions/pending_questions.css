@@ -1,3 +1,18 @@
+.topbar {
+  display: flex;
+  background-color: #009688;
+  padding: 8px;
+}
+
+.inline {
+  display: inline;
+}
+
+.search {
+  margin-left: 14px;
+  display: inline;
+}
+
 .topic {
 margin-bottom: 16px;
 }

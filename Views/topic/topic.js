@@ -1,7 +1,14 @@
 
 function printTopic(title, msg) {
     document.getElementById("title").innerHTML += title;
-    return document.getElementById("question").innerHTML += msg;
+    document.getElementById("question").innerHTML += msg;
+
+    document.getElementById("paddingTopic").innerHTML +=
+    `<div class="rating">
+      <p>Nota: <span id="rating0"><span></p>
+      <input type="range" min="1" max="5" value="4" onchange="refreshRating('rating0', this.value)">
+      <button class="w3-btn w3-teal" id='submit0'>Enivar</button></p>
+    </div>`;
 };
 
 function printAnswer(n, msg, name, speciality, city, nota) {
@@ -11,20 +18,33 @@ function printAnswer(n, msg, name, speciality, city, nota) {
         <h6>#${n}</h6>
       </header>
 
-      <div class='post w3-container'>
-         <div class=\"user\">
-           <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" height="140" width="140"></img>
-           <div><br>
-             <span class=\"username\">${name}</span><br><br>
-             <span class=\"nota\">Nota média: ${nota}</span><br>
-             <span class=\"speciality\">Especialidade: ${speciality}</span><br>
-             <span class=\"city\">Cidade: ${city}</span>
-           </div>
-          </div>
-         <div class=\"answer\">${msg}</div>
-       </div>
+      <div class="padding">
+        <div class='post w3-container'>
+           <div class=\"user\">
+             <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" height="140" width="140"></img>
+             <div><br>
+               <span class=\"username\">${name}</span><br><br>
+               <span class=\"nota\">Nota média: ${nota}</span><br>
+               <span class=\"speciality\">Especialidade: ${speciality}</span><br>
+               <span class=\"city\">Cidade: ${city}</span>
+             </div>
+            </div>
+           <div class=\"answer\">${msg}</div>
+         </div>
+
+         <div class="rating">
+           <p>Nota: <span id="rating${n}"><span></p>
+           <input type="range" min="1" max="5" value="4" onchange="refreshRating('rating${n}', this.value)">
+           <button class="w3-btn w3-teal" id='submit${n}'>Enivar</button></p>
+         </div>
+      </div>
+
      </div>`;
 };
+
+function refreshRating(id, val) {
+  document.getElementById(id).innerHTML = val;
+}
 
 function alertEmptyAnswer()
 {
@@ -54,7 +74,7 @@ function quit()
 
 
 function ans() {
-	
+
 	var answer = getAnswer(); // remove trailing spaces
 	if(answer.length > 0)
 	{
@@ -66,7 +86,11 @@ function ans() {
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState === 4 && xhr.status === 200) {
 	  var answerText = xhr.responseText;
+	  console.log(xhr.responseText);
 	  answerText = JSON.parse(answerText);
+	  console.log(answerText);
+
+	  console.log(getAnswer());
 
 	  if(answerText =="true")
 	  {
@@ -117,7 +141,9 @@ xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 xhr.onreadystatechange = function () {
 	if (xhr.readyState === 4 && xhr.status === 200) {
+		console.log(xhr.responseText);
 		var response = JSON.parse(xhr.responseText);
+		console.log(response);
 		var pergunta = response.question[0];
 		var resposta = response.answer;
 		printTopic(pergunta.titulo,pergunta.texto)
@@ -130,3 +156,14 @@ xhr.onreadystatechange = function () {
 
 var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "cookie": getCookie("username")})
 xhr.send(endtopic);
+
+// Esconder itens restrito a usuários não logados
+if (getCookie("username") == "") {
+  document.getElementById("wrapperComment").style.display = "none";
+
+  var x = document.getElementsByClassName("rating");
+  var i;
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+}

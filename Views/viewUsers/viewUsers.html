@@ -9,16 +9,25 @@
 	<body>
 
 		<div class="topbar">
-		  <div class="w3-bar w3-black">
+		  <div class="w3-bar w3-teal">
 		   <a href="/register.html" class="w3-bar-item w3-button">Registrar</a>
 		   <a href="/login.html" class="w3-bar-item w3-button">Login</a>
 		   <a href="/question.html" class="w3-bar-item w3-button">Criar Tópico</a>
 		   <a href="/search.html" class="w3-bar-item w3-button">Buscar Tópicos</a>
-		   <a href="/pending_questions.html" class="w3-bar-item w3-button">Perguntas Pendentes</a>
-       	   <a href="/viewUsers.html" class="w3-bar-item w3-button">Visualizar Usuários</a>
+
+			 <input class="w3-input w3-border w3-animate-input search" type="text" style="width:150px" placeholder="Buscar tópicos">
+
+				<div class="w3-dropdown-hover">
+					<button class="w3-button w3-black">Login</button>
+					<div class="w3-dropdown-content w3-bar-block w3-border">
+						<a href="/pending_questions.html" class="w3-bar-item w3-button moderator">Perguntas Pendentes</a>
+						<a href="/viewUsers.html" class="w3-bar-item w3-button moderator">Visualizar Usuários</a>
+						<a href="#" class="w3-bar-item w3-button">Sair</a>
+					</div>
+				</div>
 		  </div>
 		</div>
-		
+
 		<div id="listUsers">
 	  </div>
 

@@ -41,10 +41,15 @@ document.getElementById('submit').addEventListener("click", function() {
 	xhr.onreadystatechange = function () {
 		if (xhr.readyState === 4 && xhr.status === 200) {
 			var success = xhr.responseText;
+			console.log(xhr.responseText);
 			success=JSON.parse(success);
+			console.log(success);
+			console.log("TREU");
+
+			console.log(getNomeUsuario());
 			if (success=="true")
 			{
-				saveCookie("username", getNomeUsuario());
+				console.log(saveCookie("username",getNomeUsuario()));
 				alert("Redirecionando para lista de tópicos");
 				document.location.href = '/search.html';
 			}
@@ -57,3 +62,18 @@ document.getElementById('submit').addEventListener("click", function() {
 	var data = JSON.stringify({"username": getNomeUsuario(), "password": getSenhaUsuario()});
 	xhr.send(data);
 })
+
+var user = "Mod";
+
+function changeVisibility() {
+    if (user == "Mod") {
+
+      var x = document.getElementsByClassName("moderator");
+      var i;
+      for (i = 0; i < x.length; i++) {
+        x[i].style.cssText = 'display:block !important';
+      }
+    }
+}
+
+changeVisibility();
