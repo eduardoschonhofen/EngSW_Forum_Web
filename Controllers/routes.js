@@ -53,7 +53,7 @@ exports.get=function get(req,res,path)
 
 exports.post=function post(req,res)
   {
-    console.log("Entrei fdp do node");
+
     switch(req.url)
     {
     case "/login":Usuario.realizarLogin(req,res);
