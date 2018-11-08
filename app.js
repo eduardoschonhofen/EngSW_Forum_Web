@@ -25,9 +25,9 @@ path=q.pathname;
 console.log("Path:"+path);
 
 if(req.method!="POST")
-  Routes.get(req,res,path,con);
+  Routes.get(req,res,path);
 else
-  Routes.post(req,res,con);
+  Routes.post(req,res);
 }
 
 var port = process.env.PORT || 8080;
