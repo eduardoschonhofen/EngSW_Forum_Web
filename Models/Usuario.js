@@ -4,6 +4,8 @@ var qs = require('querystring');
 var dbUsuario = require('./Database/dbUsuario.js');
 var dbPaciente = require('./Database/dbPaciente.js');
 var dbMedico = require('./Database/dbMedico.js');
+var dbModerador=require('./Database/dbModerador.js');
+
 exports.salvaUsuario=function salvaUsuario(req,res,con)
 {
         var body = '';
@@ -61,7 +63,7 @@ exports.virarModerador=function virarModerador(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.virarModerador(con,resultados.username);
+      dbModerador.virarModerador(con,resultados.username);
 });
 
 }
@@ -81,7 +83,7 @@ exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEModerador(con,resultados.cookie).then(function(results)
+      dbModerador.usuarioEModerador(con,resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});

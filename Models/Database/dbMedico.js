@@ -51,3 +51,18 @@ exports.insereMedico=function insereMedico(con,nome,nomeUsuario,senha,especialid
     }
 })
 }
+
+exports.usuarioEMedico = function usuarioEMedico(con,nomeUsuario)
+{
+  return new Promise(function(resolve,reject)
+{
+  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eMedico";
+  con.query(busca,function(error,results,fields){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+    resolve(results);
+});
+});
+}

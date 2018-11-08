@@ -2,6 +2,7 @@ var fs = require('fs');
 var dbPergunta = require('../Models/Database/dbPergunta.js');
 var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
+var dbMedico = require('../Models/Database/dbMedico.js');
 
 
 exports.insereResposta=function insereResposta(req,res,con)
@@ -18,7 +19,7 @@ exports.insereResposta=function insereResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEMedico(con,resultados.username).then(function(results)
+      dbMedico.usuarioEMedico(con,resultados.username).then(function(results)
       {
         if(results[0]==undefined)
       {

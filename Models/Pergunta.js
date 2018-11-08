@@ -3,6 +3,8 @@ var fs = require('fs');
 var dbUsuario =require('./Database/dbUsuario.js');
 var dbPergunta = require('./Database/dbPergunta.js');
 var dbResposta = require('./Database/dbResposta.js');
+var dbPaciente = require('./Database/dbPaciente.js');
+var dbModerador=require('./Database/dbModerador.js');
 
 exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con)
 {
@@ -19,7 +21,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEModerador(con,resultados.username).then(function(results)
+      dbModerador.usuarioEModerador(con,resultados.username).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
@@ -131,7 +133,7 @@ exports.realizarPergunta=function realizarPergunta(req,res,con)
     req.on('end', function () {
         resultados=JSON.parse(body);
         console.log(resultados);
-        dbUsuario.usuarioEPaciente(con,resultados.username).then(function(results)
+        dbPaciente.usuarioEPaciente(con,resultados.username).then(function(results)
         {
           if(results[0]==undefined)
         {

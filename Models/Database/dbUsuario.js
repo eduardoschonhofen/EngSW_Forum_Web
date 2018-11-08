@@ -68,51 +68,6 @@ function loginUsuario(con,nomeUsuario,senha)
 });
 }
 
-function usuarioEMedico(con,nomeUsuario)
-{
-  return new Promise(function(resolve,reject)
-{
-  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eMedico";
-  con.query(busca,function(error,results,fields){
-    if(error)
-    {
-      return console.error(error.message);
-    }
-    resolve(results);
-});
-});
-}
-
-function usuarioEPaciente(con,nomeUsuario)
-{
-  console.log("EAE GIOVANE");
-  return new Promise(function(resolve,reject)
-{
-  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and ePaciente";
-  con.query(busca,function(error,results,fields){
-    if(error)
-    {
-      return console.error(error.message);
-    }
-    resolve(results);
-});
-});
-}
-
-function usuarioEModerador(con,nomeUsuario)
-{
-  return new Promise(function(resolve,reject)
-{
-  busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and eModerador";
-  con.query(busca,function(error,results,fields){
-    if(error)
-    {
-      return console.error(error.message);
-    }
-    resolve(results);
-});
-});
-}
 function deletaUsuario(con,username)
 {
   insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
@@ -123,20 +78,6 @@ function deletaUsuario(con,username)
       return console.error(error.message);
     }
   });
-
-}
-
-function virarModerador(con,username)
-{
-  insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
-  insert=printf(insert,[username]);
-  con.query(insert,function(error,results){
-    if(error)
-    {
-      return console.error(error.message);
-    }
-  });
-
 }
 
 function atualizaAvaliacao(con,nomeUsuario,nota)
@@ -152,13 +93,9 @@ function atualizaAvaliacao(con,nomeUsuario,nota)
 
 }
 
-exports.virarModerador=virarModerador;
 exports.deletaUsuario=deletaUsuario;
 exports.obtemUsuario=obtemUsuario;
 exports.obtemUsuarios=obtemUsuarios;
 exports.obtemUsuariosNaoModeradores = obtemUsuariosNaoModeradores;
 exports.loginUsuario=loginUsuario;
-exports.usuarioEMedico=usuarioEMedico;
-exports.usuarioEPaciente=usuarioEPaciente;
-exports.usuarioEModerador=usuarioEModerador;
 exports.atualizaAvaliacao=atualizaAvaliacao;
