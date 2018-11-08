@@ -1,12 +1,4 @@
-function printf(str, params) {
-var i;
-
-  for (i = 0; i < params.length; i++) {
-    str = str.replace("{}", params[i]);
-  }
-
-  return str;
-}
+var database = require('../Models/Database/database.js');
 
 function obtemUsuario(con,nomeUsuario)
 {
@@ -71,7 +63,7 @@ function loginUsuario(con,nomeUsuario,senha)
 function deletaUsuario(con,username)
 {
   insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
-  insert=printf(insert,[username]);
+  insert=database.printf(insert,[username]);
   con.query(insert,function(error,results){
     if(error)
     {
@@ -83,7 +75,7 @@ function deletaUsuario(con,username)
 function atualizaAvaliacao(con,nomeUsuario,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE nomeUsuario='{}'";
-  insert=printf(insert,[nota,nomeUsuario]);
+  insert=database.printf(insert,[nota,nomeUsuario]);
   con.query(insert,function(error,results){
     if(error)
     {

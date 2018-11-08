@@ -1,3 +1,5 @@
+var database = require('../Models/Database/database.js');
+
 function obtemPaciente(con,nomePaciente)
 {
   return new Promise(function(resolve,reject)
@@ -29,21 +31,11 @@ function obtemPacientes(con)
 });
 }
 
-function printf(str, params) {
-var i;
-
-  for (i = 0; i < params.length; i++) {
-    str = str.replace("{}", params[i]);
-  }
-
-  return str;
-}
-
 
 function inserePaciente(con,nome,nomeUsuario,senha)
 {
   insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,true,false,false);";
-  insert=printf(insert,[nome,nomeUsuario,senha]);
+  insert=database.printf(insert,[nome,nomeUsuario,senha]);
   con.query(insert,function(error,results){
     if(error)
     {

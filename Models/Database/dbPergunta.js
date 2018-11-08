@@ -1,13 +1,6 @@
 
-function printf(str, params) {
-var i;
+var database = require('../Models/Database/database.js');
 
-  for (i = 0; i < params.length; i++) {
-    str = str.replace("{}", params[i]);
-  }
-
-  return str;
-}
 function obtemPerguntaId(con,Pergunta)
 {
   return new Promise(function(resolve,reject)
@@ -27,7 +20,7 @@ function obtemPerguntaId(con,Pergunta)
 exports.buscaPergunta=function buscaPergunta(con,texto)
 {
   busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
-  busca=printf(busca,[texto]);
+  busca=database.printf(busca,[texto]);
   console.log(busca);
   con.query(busca,function(error,results,fields){
     if(error)
@@ -106,7 +99,7 @@ function obtemPerguntasAceitas(con)
 function inserePergunta(con,nomeUsuario,texto,titulo)
 {
   insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes,aprovada) VALUES('{}','{}','{}',now(),0,0,false)";
-  insert=printf(insert,[nomeUsuario,titulo,texto]);
+  insert=database.printf(insert,[nomeUsuario,titulo,texto]);
   con.query(insert,function(error,results){
     if(error)
     {
@@ -119,7 +112,7 @@ function aprovaPergunta(con,pergunta_id)
 {
 
   insert="UPDATE  PERGUNTA SET aprovada=true WHERE pergunta_id={}";
-  insert=printf(insert,[pergunta_id]);
+  insert=database.printf(insert,[pergunta_id]);
   con.query(insert,function(error,results){
     if(error)
     {
@@ -131,7 +124,7 @@ function aprovaPergunta(con,pergunta_id)
 function deletaPergunta(con,pergunta_id)
 {
   insert="DELETE FROM  PERGUNTA WHERE pergunta_id={}";
-  insert=printf(insert,[pergunta_id]);
+  insert=database.printf(insert,[pergunta_id]);
   con.query(insert,function(error,results){
     if(error)
     {

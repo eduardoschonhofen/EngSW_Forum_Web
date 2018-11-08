@@ -1,3 +1,5 @@
+var database = require('../Models/Database/database.js');
+
 function obtemModerador(con,nomeModerador)
 {
   return new Promise(function(resolve,reject)
@@ -46,7 +48,7 @@ function usuarioEModerador(con,nomeUsuario)
 function virarModerador(con,username)
 {
   insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
-  insert=printf(insert,[username]);
+  insert=database.printf(insert,[username]);
   con.query(insert,function(error,results){
     if(error)
     {

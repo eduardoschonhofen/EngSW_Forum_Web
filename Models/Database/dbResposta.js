@@ -1,3 +1,5 @@
+var database = require('../Models/Database/database.js');
+
 function obtemRespostaParaPerguntaPorId(con,idPergunta)
 {
   return new Promise(function(resolve,reject)
@@ -42,20 +44,10 @@ function obtemRespostas(con)
 });
 }
 
-function printf(str, params) {
-var i;
-
-  for (i = 0; i < params.length; i++) {
-    str = str.replace("{}", params[i]);
-  }
-
-  return str;
-}
-
 function insereResposta(con,nomeUsuario,texto,pergunta_id)
 {
   insert="INSERT INTO Resposta(nomeUsuario,pergunta_id,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
-  insert=printf(insert,[nomeUsuario,pergunta_id,texto]);
+  insert=database.printf(insert,[nomeUsuario,pergunta_id,texto]);
   con.query(insert,function(error,results){
     if(error)
     {
@@ -67,7 +59,7 @@ function insereResposta(con,nomeUsuario,texto,pergunta_id)
 function atualizaAvaliacao(con,pergunta_id,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE resposta_id={}";
-  insert=printf(insert,[nota,pergunta_id]);
+  insert=database.printf(insert,[nota,pergunta_id]);
   con.query(insert,function(error,results){
     if(error)
     {
