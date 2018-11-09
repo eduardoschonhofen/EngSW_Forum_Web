@@ -1,4 +1,4 @@
-var database = require('../Models/Database/database.js');
+
 
 function obtemUsuario(con,nomeUsuario)
 {

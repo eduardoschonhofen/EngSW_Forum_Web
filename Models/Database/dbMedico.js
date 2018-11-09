@@ -1,5 +1,5 @@
 
-var database = require('../Models/Database/database.js');
+
 
 exports.obtemMedico=function obtemMedico(con,nomeMedico)
 {

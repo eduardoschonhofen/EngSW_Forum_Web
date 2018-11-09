@@ -1,4 +1,4 @@
-var database = require('../Models/Database/database.js');
+
 
 function obtemModerador(con,nomeModerador)
 {
@@ -63,4 +63,3 @@ exports.obtemModerador=obtemModerador;
 exports.obtemModeradores=obtemModeradores;
 exports.usuarioEModerador=usuarioEModerador;
 exports.virarModerador=virarModerador;
-
