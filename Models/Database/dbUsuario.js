@@ -56,6 +56,8 @@ function loginUsuario(nomeUsuario,senha)
     {
       return console.error(error.message);
     }
+    console.log(results);
+    console.log(fields);
     resolve(results);
 });
 });
