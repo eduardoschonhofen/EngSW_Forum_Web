@@ -50,6 +50,7 @@ function loginUsuario(con,nomeUsuario,senha)
   return new Promise(function(resolve,reject)
 {
   busca="Select * FROM Usuario WHERE nomeUsuario='"+nomeUsuario+"' and senha='"+senha+"'";
+  console.log(busca);
   con.query(busca,function(error,results,fields){
     if(error)
     {
