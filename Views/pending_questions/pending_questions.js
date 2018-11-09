@@ -21,7 +21,7 @@ function quit()
 }
 
 function aprovaPergunta(pergunta_id) {
-	
+
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
 	var url = "approveQuestion";
@@ -32,7 +32,7 @@ function aprovaPergunta(pergunta_id) {
 }
 
 function removePergunta(pergunta_id) {
-	
+
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
 	var url = "removeQuestion";
@@ -71,7 +71,7 @@ xhr.onreadystatechange = function () {
 			answer = answer.results;
 		  if(answer.length > 0)
 		  {
-				
+
 				for(var i=0; i<answer.length;i++)
 				{
 					printTopic(answer[i].titulo,answer[i].texto, answer[i].nomeUsuario, answer[i].pergunta_id);
@@ -80,7 +80,7 @@ xhr.onreadystatechange = function () {
 		  }
 		  else
 		  {
-			  alert("Area restrita para moderadores");
+			  alert("Não há perguntas pendentes!");
 		  }
 	}
 };
