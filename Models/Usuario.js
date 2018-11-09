@@ -119,9 +119,7 @@ exports.realizarLogin=function realizarLogin(req,res)
       }
   });
   req.on('end', function () {
-
       resultados=JSON.parse(body);
-      console.log(resultados);
       dbUsuario.loginUsuario(resultados.username,resultados.password).then(function(results)
       {
         if(results[0]==undefined)

@@ -29,7 +29,7 @@ function loadPage(req,res,filename,type)
     });
 
   }
-exports.get=function get(req,res,path,con)
+exports.get=function get(req,res,path)
   {
 
     var indexOfDot = path.indexOf('.');
@@ -47,50 +47,50 @@ exports.get=function get(req,res,path,con)
     else
     {
       if(path=="/create")
-        dbCreate.create(con);
+        dbCreate.create();
     }
   }
 
-exports.post=function post(req,res,con)
+exports.post=function post(req,res)
   {
-    console.log("Entrei fdp do node");
+
     switch(req.url)
     {
-    case "/login":Usuario.realizarLogin(req,res,con);
+    case "/login":Usuario.realizarLogin(req,res);
     break;
-    case "/register":Usuario.salvaUsuario(req,res,con);
+    case "/register":Usuario.salvaUsuario(req,res);
     break;
-    case "/question":Pergunta.realizarPergunta(req,res,con);
+    case "/question":Pergunta.realizarPergunta(req,res);
     break;
-    case "/search":Pergunta.MostrarPerguntas(req,res,con);
+    case "/search":Pergunta.MostrarPerguntas(req,res);
     break;
-    case "/topic":Topico.MostrarTopico(req,res,con);
+    case "/topic":Topico.MostrarTopico(req,res);
     break;
-    case "/answer":Resposta.insereResposta(req,res,con);
+    case "/answer":Resposta.insereResposta(req,res);
     break;
-    case "/evaluate":Resposta.avaliaResposta(req,res,con);
+    case "/evaluate":Resposta.avaliaResposta(req,res);
     break;
-    case "/pendingQuestions":Pergunta.MostrarPerguntasPendentes(req,res,con);
+    case "/pendingQuestions":Pergunta.MostrarPerguntasPendentes(req,res);
     break;
-    case "/approveQuestion":Pergunta.aprovarPergunta(req,res,con);
+    case "/approveQuestion":Pergunta.aprovarPergunta(req,res);
     break;
-    case "/removeQuestion":Pergunta.deletarPergunta(req,res,con);
+    case "/removeQuestion":Pergunta.deletarPergunta(req,res);
     break;
-	   case "/listusers":Usuario.MostrarUsuarios(req,res,con);
+	   case "/listusers":Usuario.MostrarUsuarios(req,res);
 	   break;
-    case "/deleteUser":Usuario.deletaUsuario(req,res,con);
+    case "/deleteUser":Usuario.deletaUsuario(req,res);
     break;
-    case "/approveModerator":Usuario.virarModerador(req,res,con);
+    case "/approveModerator":Usuario.virarModerador(req,res);
     break;
-    case "/searchTopic":Pergunta.buscaPergunta(req,res,con);
+    case "/searchTopic":Pergunta.buscaPergunta(req,res);
     break;
-    case "/evaluateAnswer":Resposta.avaliaResposta(req,res,con);
+    case "/evaluateAnswer":Resposta.avaliaResposta(req,res);
     break;
-    case "/evaluateQuestion":Pergunta.avaliaPergunta(req,res,con);
+    case "/evaluateQuestion":Pergunta.avaliaPergunta(req,res);
     break;
     default:
     	// 404 error
     	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
     }
-}
+  }
