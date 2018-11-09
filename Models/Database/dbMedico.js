@@ -15,7 +15,7 @@ exports.obtemMedico=function obtemMedico(nomeMedico)
 });
 }
 
-exports.obtemMedicos=function obtemMedicos(con)
+exports.obtemMedicos=function obtemMedicos()
 {
   return new Promise(function(resolve,reject)
 {

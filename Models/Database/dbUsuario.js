@@ -15,7 +15,7 @@ function obtemUsuario(nomeUsuario)
 });
 }
 
-function obtemUsuarios(con)
+function obtemUsuarios()
 {
   return new Promise(function(resolve,reject)
 {
@@ -30,7 +30,7 @@ function obtemUsuarios(con)
 });
 }
 
-function obtemUsuariosNaoModeradores(con)
+function obtemUsuariosNaoModeradores()
 {
   return new Promise(function(resolve,reject)
 {

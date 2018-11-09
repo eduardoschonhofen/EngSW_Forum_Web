@@ -15,7 +15,7 @@ function obtemModerador(nomeModerador)
 });
 }
 
-function obtemModeradores(con)
+function obtemModeradores()
 {
   return new Promise(function(resolve,reject)
 {

@@ -46,7 +46,7 @@ function obtemPerguntaUsuario(nomeUsuario)
 });
 }
 
-function obtemPerguntas(con)
+function obtemPerguntas()
 {
   return new Promise(function(resolve,reject)
 {
@@ -61,7 +61,7 @@ function obtemPerguntas(con)
 });
 }
 
-function obtemPerguntasPendentes(con)
+function obtemPerguntasPendentes()
 {
   return new Promise(function(resolve,reject)
 {
@@ -75,7 +75,7 @@ function obtemPerguntasPendentes(con)
 });
 });
 }
-function obtemPerguntasAceitas(con)
+function obtemPerguntasAceitas()
 {
   return new Promise(function(resolve,reject)
 {

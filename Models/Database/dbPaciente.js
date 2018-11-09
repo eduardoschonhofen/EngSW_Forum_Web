@@ -15,7 +15,7 @@ function obtemPaciente(nomePaciente)
 });
 }
 
-function obtemPacientes(con)
+function obtemPacientes()
 {
   return new Promise(function(resolve,reject)
 {

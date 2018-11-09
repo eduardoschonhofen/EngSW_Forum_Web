@@ -29,7 +29,7 @@ function obtemRespostaParaPerguntaPorTitulo(tituloPergunta)
 });
 }
 
-function obtemRespostas(con)
+function obtemRespostas()
 {
   return new Promise(function(resolve,reject)
 {

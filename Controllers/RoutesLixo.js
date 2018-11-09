@@ -349,7 +349,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res)
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntasPendentes(con).then(function(results)
+      dbPergunta.obtemPerguntasPendentes().then(function(results)
       {
 
 
@@ -431,7 +431,7 @@ exports.MostrarUsuarios=function MostrarUsuarios(req,res)
         return res.end("404 Not Found");
       }
 
-      dbUsuario.obtemUsuariosNaoModeradores(con).then(function(results)
+      dbUsuario.obtemUsuariosNaoModeradores().then(function(results)
       {
 
           res.writeHead(200, {'Content-Type': 'application/json'});

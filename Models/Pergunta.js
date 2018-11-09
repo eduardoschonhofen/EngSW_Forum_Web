@@ -28,7 +28,8 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res){
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntasPendentes(con).then(function(results)
+      dbPergunta.obtemPerguntasPendentes().then(function(results)
+      dbPergunta.obtemPerguntasPendentes().then(function(results)
       {
 
 
@@ -103,7 +104,7 @@ exports.MostrarPerguntas=function MostrarPerguntas(req,res)
         {	res.writeHead(404, {'Content-Type': 'text/css'});
           return res.end("404 Not Found");
         }
-        dbPergunta.obtemPerguntasAceitas(con).then(function(results)
+        dbPergunta.obtemPerguntasAceitas().then(function(results)
         {
 
             res.writeHead(200, {'Content-Type': 'application/json'});
