@@ -29,7 +29,6 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res){
       }
 
       dbPergunta.obtemPerguntasPendentes().then(function(results)
-      dbPergunta.obtemPerguntasPendentes().then(function(results)
       {
 
 
