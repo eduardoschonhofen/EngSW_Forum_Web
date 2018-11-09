@@ -131,6 +131,7 @@ exports.realizarLogin=function realizarLogin(req,res)
       }
         else
         {
+          console.log("AAA");
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();

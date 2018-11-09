@@ -1,6 +1,6 @@
 var database = require('./database.js');
 var utilitary = require('./utilitary.js');
-function obtemModerador(con,nomeModerador)
+function obtemModerador(nomeModerador)
 {
   return new Promise(function(resolve,reject)
 {
@@ -30,7 +30,7 @@ function obtemModeradores(con)
 });
 }
 
-function usuarioEModerador(con,nomeUsuario)
+function usuarioEModerador(nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
@@ -45,7 +45,7 @@ function usuarioEModerador(con,nomeUsuario)
 });
 }
 
-function virarModerador(con,username)
+function virarModerador(username)
 {
   insert="UPDATE Usuario SET eModerador=true WHERE nomeUsuario='{}'";
   insert=utilitary.printf(insert,[username]);

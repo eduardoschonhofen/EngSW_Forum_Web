@@ -1,6 +1,6 @@
 var database = require('./database.js');
 var utilitary = require('./utilitary.js');
-function obtemUsuario(con,nomeUsuario)
+function obtemUsuario(nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
@@ -45,7 +45,7 @@ function obtemUsuariosNaoModeradores(con)
 });
 }
 
-function loginUsuario(con,nomeUsuario,senha)
+function loginUsuario(nomeUsuario,senha)
 {
   return new Promise(function(resolve,reject)
 {
@@ -61,7 +61,7 @@ function loginUsuario(con,nomeUsuario,senha)
 });
 }
 
-function deletaUsuario(con,username)
+function deletaUsuario(username)
 {
   insert="DELETE FROM  Usuario WHERE nomeUsuario='{}'";
   insert=utilitary.printf(insert,[username]);
@@ -73,7 +73,7 @@ function deletaUsuario(con,username)
   });
 }
 
-function atualizaAvaliacao(con,nomeUsuario,nota)
+function atualizaAvaliacao(nomeUsuario,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE nomeUsuario='{}'";
   insert=utilitary.printf(insert,[nota,nomeUsuario]);

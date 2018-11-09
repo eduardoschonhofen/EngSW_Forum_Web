@@ -1,6 +1,6 @@
 var database = require('./database.js');
 var utilitary = require('./utilitary.js');
-function obtemPerguntaId(con,Pergunta)
+function obtemPerguntaId(Pergunta)
 {
   return new Promise(function(resolve,reject)
 {
@@ -16,7 +16,7 @@ function obtemPerguntaId(con,Pergunta)
 });
 }
 
-exports.buscaPergunta=function buscaPergunta(con,texto)
+exports.buscaPergunta=function buscaPergunta(texto)
 {
   busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
   busca=utilitary.printf(busca,[texto]);
@@ -31,7 +31,7 @@ exports.buscaPergunta=function buscaPergunta(con,texto)
 }
 
 
-function obtemPerguntaUsuario(con,nomeUsuario)
+function obtemPerguntaUsuario(nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
@@ -94,7 +94,7 @@ function obtemPerguntasAceitas(con)
 
 
 
-function inserePergunta(con,nomeUsuario,texto,titulo)
+function inserePergunta(nomeUsuario,texto,titulo)
 {
   insert="INSERT INTO Pergunta(nomeUsuario,titulo,texto,data,mediaAvaliacao,totalDeAvaliacoes,aprovada) VALUES('{}','{}','{}',now(),0,0,false)";
   insert=utilitary.printf(insert,[nomeUsuario,titulo,texto]);
@@ -106,7 +106,7 @@ function inserePergunta(con,nomeUsuario,texto,titulo)
 })
 }
 
-function aprovaPergunta(con,pergunta_id)
+function aprovaPergunta(pergunta_id)
 {
 
   insert="UPDATE  PERGUNTA SET aprovada=true WHERE pergunta_id={}";
@@ -119,7 +119,7 @@ function aprovaPergunta(con,pergunta_id)
   });
 }
 
-function deletaPergunta(con,pergunta_id)
+function deletaPergunta(pergunta_id)
 {
   insert="DELETE FROM  PERGUNTA WHERE pergunta_id={}";
   insert=utilitary.printf(insert,[pergunta_id]);

@@ -100,9 +100,9 @@ exports.salvaUsuario=function salvaUsuario(req,res,con)
 
             resultados=JSON.parse(body);
 			if(resultados.epaciente)
-            	dbPaciente.inserePaciente(con,resultados.name,resultados.username,resultados.password);
+            	dbPaciente.inserePaciente(resultados.name,resultados.username,resultados.password);
 			else
-				dbMedico.insereMedico(con,resultados.name,resultados.username,resultados.password,resultados.speciality);
+				dbMedico.insereMedico(resultados.name,resultados.username,resultados.password,resultados.speciality);
 
         });
 
@@ -121,7 +121,7 @@ exports.deletaUsuario=function deletaUsuario(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.deletaUsuario(con,resultados.username);
+      dbUsuario.deletaUsuario(resultados.username);
 });
 
 }
@@ -140,7 +140,7 @@ exports.virarModerador=function virarModerador(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.virarModerador(con,resultados.username);
+      dbUsuario.virarModerador(resultados.username);
 });
 
 }
@@ -245,16 +245,16 @@ exports.MostrarTopico=function MostrarTopico(req,res,con)
 
 
       resultados=JSON.parse(body);
-      dbUsuario.obtemUsuario(con,resultados.cookie).then(function(results)
+      dbUsuario.obtemUsuario(resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
         return res.end("404 Not Found");
       }
 
-      dbPergunta.obtemPerguntaId(con,resultados.topico_id).then(function(results)
+      dbPergunta.obtemPerguntaId(resultados.topico_id).then(function(results)
       {
-        dbResposta.obtemRespostaParaPerguntaPorId(con,resultados.topico_id).then(function(results2)
+        dbResposta.obtemRespostaParaPerguntaPorId(resultados.topico_id).then(function(results2)
         {
 
 
@@ -287,7 +287,7 @@ exports.insereResposta=function insereResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEMedico(con,resultados.username).then(function(results)
+      dbUsuario.usuarioEMedico(resultados.username).then(function(results)
       {
         if(results[0]==undefined)
       {
@@ -298,7 +298,7 @@ exports.insereResposta=function insereResposta(req,res,con)
       }
         else
         {
-			dbResposta.insereResposta(con,resultados.username,resultados.texto,resultados.topico_id);
+			dbResposta.insereResposta(resultados.username,resultados.texto,resultados.topico_id);
           res.writeHead(200, {'Content-Type': 'application/json'});
           res.write(JSON.stringify("true"));
           return res.end();
@@ -321,8 +321,8 @@ exports.avaliaResposta=function avaliaResposta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbResposta.atualizaAvaliacao(con,resultados.pergunta_id,resultados.nota);
-	  dbUsuario.atualizaAvaliacao(con,resultados.username,resultados.nota);
+      dbResposta.atualizaAvaliacao(resultados.pergunta_id,resultados.nota);
+	  dbUsuario.atualizaAvaliacao(resultados.username,resultados.nota);
 });
 
 }
@@ -342,7 +342,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEModerador(con,resultados.username).then(function(results)
+      dbUsuario.usuarioEModerador(resultados.username).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});
@@ -380,7 +380,7 @@ exports.aprovarPergunta=function aprovarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbPergunta.aprovaPergunta(con,resultados.pergunta_id);
+      dbPergunta.aprovaPergunta(resultados.pergunta_id);
 });
 }
 
@@ -398,7 +398,7 @@ exports.deletarPergunta=function deletarPergunta(req,res,con)
   });
   req.on('end', function () {
       resultados=JSON.parse(body);
-      dbPergunta.deletaPergunta(con,resultados.pergunta_id);
+      dbPergunta.deletaPergunta(resultados.pergunta_id);
 });
 }
 
@@ -424,7 +424,7 @@ exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
   req.on('end', function () {
 
       resultados=JSON.parse(body);
-      dbUsuario.usuarioEModerador(con,resultados.cookie).then(function(results)
+      dbUsuario.usuarioEModerador(resultados.cookie).then(function(results)
     {
       if(results[0]==undefined)
       {	res.writeHead(404, {'Content-Type': 'text/css'});

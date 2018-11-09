@@ -1,6 +1,6 @@
 var database = require('./database.js');
 var utilitary = require('./utilitary.js');
-function obtemRespostaParaPerguntaPorId(con,idPergunta)
+function obtemRespostaParaPerguntaPorId(idPergunta)
 {
   return new Promise(function(resolve,reject)
 {
@@ -14,7 +14,7 @@ function obtemRespostaParaPerguntaPorId(con,idPergunta)
 });
 });
 }
-function obtemRespostaParaPerguntaPorTitulo(con,tituloPergunta)
+function obtemRespostaParaPerguntaPorTitulo(tituloPergunta)
 {
   return new Promise(function(resolve,reject)
 {
@@ -44,7 +44,7 @@ function obtemRespostas(con)
 });
 }
 
-function insereResposta(con,nomeUsuario,texto,pergunta_id)
+function insereResposta(nomeUsuario,texto,pergunta_id)
 {
   insert="INSERT INTO Resposta(nomeUsuario,pergunta_id,texto,data,mediaAvaliacao,totalDeAvaliacoes) VALUES('{}','{}','{}',now(),0,0)";
   insert=utilitary.printf(insert,[nomeUsuario,pergunta_id,texto]);
@@ -56,7 +56,7 @@ function insereResposta(con,nomeUsuario,texto,pergunta_id)
 })
 }
 
-function atualizaAvaliacao(con,pergunta_id,nota)
+function atualizaAvaliacao(pergunta_id,nota)
 {
   insert="UPDATE  RESPOSTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE resposta_id={}";
   insert=utilitary.printf(insert,[nota,pergunta_id]);

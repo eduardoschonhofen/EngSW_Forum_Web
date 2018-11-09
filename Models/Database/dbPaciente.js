@@ -1,6 +1,6 @@
 var database = require('./database.js');
 var utilitary = require('./utilitary.js');
-function obtemPaciente(con,nomePaciente)
+function obtemPaciente(nomePaciente)
 {
   return new Promise(function(resolve,reject)
 {
@@ -32,7 +32,7 @@ function obtemPacientes(con)
 }
 
 
-function inserePaciente(con,nome,nomeUsuario,senha)
+function inserePaciente(nome,nomeUsuario,senha)
 {
   insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,true,false,false);";
   insert=utilitary.printf(insert,[nome,nomeUsuario,senha]);
@@ -45,7 +45,7 @@ function inserePaciente(con,nome,nomeUsuario,senha)
 })
 }
 
-function usuarioEPaciente(con,nomeUsuario)
+function usuarioEPaciente(nomeUsuario)
 {
   return new Promise(function(resolve,reject)
 {
