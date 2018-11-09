@@ -83,7 +83,7 @@ var dbMedico = require('../Models/Database/dbMedico.js');
 
 //var sublime = require('sublime');
 
-exports.salvaUsuario=function salvaUsuario(req,res,con)
+exports.salvaUsuario=function salvaUsuario(req,res)
 {
         var body = '';
         req.on('data', function (data) {
@@ -107,7 +107,7 @@ exports.salvaUsuario=function salvaUsuario(req,res,con)
         });
 
 }
-exports.deletaUsuario=function deletaUsuario(req,res,con)
+exports.deletaUsuario=function deletaUsuario(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -126,7 +126,7 @@ exports.deletaUsuario=function deletaUsuario(req,res,con)
 
 }
 
-exports.virarModerador=function virarModerador(req,res,con)
+exports.virarModerador=function virarModerador(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -229,7 +229,7 @@ var dbResposta = require('../Models/Database/dbResposta.js');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-exports.MostrarTopico=function MostrarTopico(req,res,con)
+exports.MostrarTopico=function MostrarTopico(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -273,7 +273,7 @@ exports.MostrarTopico=function MostrarTopico(req,res,con)
 });
 }
 
-exports.insereResposta=function insereResposta(req,res,con)
+exports.insereResposta=function insereResposta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -307,7 +307,7 @@ exports.insereResposta=function insereResposta(req,res,con)
 });
 }
 
-exports.avaliaResposta=function avaliaResposta(req,res,con)
+exports.avaliaResposta=function avaliaResposta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -327,7 +327,7 @@ exports.avaliaResposta=function avaliaResposta(req,res,con)
 
 }
 
-exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con)
+exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -366,7 +366,7 @@ exports.MostrarPerguntasPendentes=function MostrarPerguntasPendentes(req,res,con
 });
 }
 
-exports.aprovarPergunta=function aprovarPergunta(req,res,con)
+exports.aprovarPergunta=function aprovarPergunta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -384,7 +384,7 @@ exports.aprovarPergunta=function aprovarPergunta(req,res,con)
 });
 }
 
-exports.deletarPergunta=function deletarPergunta(req,res,con)
+exports.deletarPergunta=function deletarPergunta(req,res)
 {
   var body = '';
   req.on('data', function (data) {
@@ -409,7 +409,7 @@ var fs = require('fs');
 var dbUsuario =require('../Models/Database/dbUsuario.js');
 
 
-exports.MostrarUsuarios=function MostrarUsuarios(req,res,con)
+exports.MostrarUsuarios=function MostrarUsuarios(req,res)
 {
   var body = '';
   req.on('data', function (data) {
