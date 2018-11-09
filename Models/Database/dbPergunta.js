@@ -1,4 +1,4 @@
-
+var database=require('./database.js');
 
 
 function obtemPerguntaId(con,Pergunta)
@@ -18,6 +18,8 @@ function obtemPerguntaId(con,Pergunta)
 }
 
 exports.buscaPergunta=function buscaPergunta(con,texto)
+{
+  return new Promise(function(resolve,reject)
 {
   busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
   busca=database.printf(busca,[texto]);

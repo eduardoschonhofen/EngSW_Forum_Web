@@ -1,4 +1,4 @@
-
+var database=require('./database.js');
 
 
 exports.obtemMedico=function obtemMedico(con,nomeMedico)

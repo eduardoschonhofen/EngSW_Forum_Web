@@ -1,4 +1,4 @@
-
+var database=require('./database.js');
 
 function obtemPaciente(con,nomePaciente)
 {

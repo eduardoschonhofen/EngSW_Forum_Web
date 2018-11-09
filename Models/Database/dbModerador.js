@@ -1,4 +1,4 @@
-
+var database=require('./database.js');
 
 function obtemModerador(con,nomeModerador)
 {
