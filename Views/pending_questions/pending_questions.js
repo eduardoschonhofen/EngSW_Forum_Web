@@ -25,6 +25,7 @@ function quit()
 deletaPerguntaHTML = function(pergunta_id)
 {
 	id1='button'+pergunta_id;
+	console.log(id1);
 	document.getElementById(pergunta_id).innerHTML = "";
 	document.getElementsById(id1).innerHTML = "";
 }
