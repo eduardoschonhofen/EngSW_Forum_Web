@@ -69,7 +69,7 @@ function getAnswer()
 
 function getNota(id)
 {
-  return document.getElementById("id").value.trim();
+  return document.getElementById("sendNotaTopic").value.trim();
 }
 
 function quit()
