@@ -62,6 +62,7 @@ document.getElementById('submit').addEventListener("click", function() {
 
 	alert("Registro efetuado com sucesso");
 	document.location.href = '/login.html';
+	return false;
 })
 
 document.getElementById('submit')
