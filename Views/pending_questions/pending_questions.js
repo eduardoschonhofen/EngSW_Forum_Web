@@ -38,7 +38,7 @@ deletaPerguntaHTML = function(pergunta_id)
 }
 
 function removePergunta(pergunta_id) {
-
+	console.log('remove pergunta');
 	//printAnswer(answer, usuario.name, usuario.speciality, usuario.city);
 	var xhr = new XMLHttpRequest();
 	var url = "removeQuestion";
