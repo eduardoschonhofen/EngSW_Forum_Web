@@ -35,7 +35,7 @@ function printAnswer(n, msg, name, speciality, city, nota) {
          <div class="rating">
            <p>Nota: <span id="rating${n}"><span></p>
            <input type="range" min="1" max="5" value="4" onchange="refreshRating('rating${n}', this.value)">
-           <button class="w3-btn w3-teal" id='submit${n}'>Enivar</button></p>
+           <button class="w3-btn w3-teal" id='submit${n}'>Enviar</button></p>
          </div>
       </div>
 
