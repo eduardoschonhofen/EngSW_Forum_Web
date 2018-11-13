@@ -18,6 +18,8 @@ function obtemPerguntaId(Pergunta)
 
 exports.buscaPergunta=function buscaPergunta(texto)
 {
+return new Promise(function(resolve,reject)
+{
   busca="select * from Pergunta where aprovada=true and  texto  like '%{}%'";
   busca=utilitary.printf(busca,[texto]);
   console.log(busca);
@@ -27,6 +29,7 @@ exports.buscaPergunta=function buscaPergunta(texto)
       return console.error(error.message);
     }
     resolve(results);
+});
 });
 }
 
