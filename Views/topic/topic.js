@@ -7,7 +7,7 @@ function printTopic(title, msg) {
     `<div class="rating">
       <p>Nota: <span id="rating0"><span></p>
       <input id="sendNotaTopic" type="range" min="1" max="5" value="4" onchange="refreshRating('rating0', this.value)">
-      <button onclick="postQuestion(sendNotaTopic)" class="w3-btn w3-teal" id='submit0'>Enivar</button></p>
+      <button onclick="postQuestion(sendNotaTopic)" class="w3-btn w3-teal" id='submit0'>Enviar</button></p>
     </div>`;
 };
 

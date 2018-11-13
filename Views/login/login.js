@@ -56,6 +56,7 @@ document.getElementById('submit').addEventListener("click", function() {
 				console.log(saveCookie("username",getNomeUsuario()));
 				alert("Login efetuado com sucesso");
 				document.location.href = '/search.html';
+				return false;
 			}
 			else {
 				alert("Usuário e/ou senha não foi encontrado");
