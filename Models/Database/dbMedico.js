@@ -33,7 +33,7 @@ exports.obtemMedicos=function obtemMedicos()
 
 exports.insereMedico=function insereMedico(nome,nomeUsuario,senha,especialidade)
 {
-  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,especialidade,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}','{}',0,0,false,true,false);";
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,especialidade,mediaAvaliacao,totalDeAvaliacoes,somaDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}','{}',0,0,0,false,true,false);";
   insert=utilitary.printf(insert,[nome,nomeUsuario,senha,especialidade]);
   database.query(insert,function(error,results){
     if(error)

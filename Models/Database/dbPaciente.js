@@ -34,7 +34,7 @@ function obtemPacientes()
 
 function inserePaciente(nome,nomeUsuario,senha)
 {
-  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,true,false,false);";
+  insert="INSERT INTO Usuario(nome,nomeUsuario,senha,mediaAvaliacao,totalDeAvaliacoes,somaDeAvaliacoes,ePaciente,eMedico,eModerador) VALUES('{}','{}','{}',0,0,0,true,false,false);";
   insert=utilitary.printf(insert,[nome,nomeUsuario,senha]);
   database.query(insert,function(error,results){
     if(error)
