@@ -167,7 +167,7 @@ exports.realizarPergunta=function realizarPergunta(req,res)
     });
     req.on('end', function () {
         resultados=JSON.parse(body);
-        dbResposta.atualizaAvaliacao(resultados.resposta_id,resultados.nota);
+        dbPergunta.atualizaAvaliacao(resultados.pergunta_id,resultados.nota);
       dbUsuario.atualizaAvaliacao(resultados.username,resultados.nota);
   });
   }

@@ -134,6 +134,19 @@ function deletaPergunta(pergunta_id)
   });
 
 }
+function atualizaAvaliacao(pergunta_id,nota)
+{
+  insert="UPDATE  PERGUNTA SET totalDeAvaliacoes=totalDeAvaliacoes+1,somaDeAvaliacoes=somaDeAvaliacoes+{} WHERE pergunta_id={}";
+  insert=utilitary.printf(insert,[nota,pergunta_id]);
+  database.query(insert,function(error,results){
+    if(error)
+    {
+      return console.error(error.message);
+    }
+})
+
+}
+exports.atualizaAvaliacao=atualizaAvaliacao
 exports.deletaPergunta=deletaPergunta;
 exports.inserePergunta=inserePergunta;
 exports.obtemPerguntaId=obtemPerguntaId;

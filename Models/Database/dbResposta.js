@@ -68,7 +68,7 @@ function atualizaAvaliacao(pergunta_id,nota)
 })
 
 }
-
+exports.atualizaAvaliacao=atualizaAvaliacao;
 exports.obtemRespostaParaPerguntaPorId=obtemRespostaParaPerguntaPorId;
 exports.obtemRespostas=obtemRespostas;
 exports.insereResposta=insereResposta;

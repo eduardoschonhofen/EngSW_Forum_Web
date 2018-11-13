@@ -146,7 +146,7 @@ var url = "/evaluateQuestion";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
 
-var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "nota": getNota(id)})
+var endtopic = JSON.stringify({"pergunta_id": getParameter("id", document.location.href.split("?")[1]), "nota": getNota(id)})
 xhr.send(endtopic);
 alert("Avaliação enviada com sucesso");
 };
