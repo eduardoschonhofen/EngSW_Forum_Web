@@ -14,10 +14,11 @@ function getAnswer()
 {
   return document.getElementById("resposta").value.trim();
 }
+
 function quit()
 {
-	var indexOfSlash = document.location.href.lastIndexOf('/');
-	document.location.href = document.location.href.substr(0, indexOfSlash) + '/login.html';
+	saveCookie("username", "");
+	document.location.href = '/login.html';
 }
 
 function aprovaPergunta(pergunta_id) {

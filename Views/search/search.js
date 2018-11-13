@@ -26,6 +26,12 @@ getCookie = function(name) {
 	}
 };
 
+function quit()
+{
+	saveCookie("username", "");
+	document.location.href = '/login.html';
+}
+
 eraseTopic = function() {
 	document.getElementById("listTopic").innerHTML = "";
 }
@@ -60,7 +66,7 @@ busca = function() {
 
 	var data = JSON.stringify({"cookie":getCookie("username"), "texto":textoBusca});
 	xhr.send(data);
-	
+
 }
 
 var xhr = new XMLHttpRequest();

@@ -11,8 +11,8 @@
 .search {
   margin-left: 14px;
   display: inline;
+  max-width: 600px;
 }
-
 .centerbox {
   position: absolute;
   left: 50%;

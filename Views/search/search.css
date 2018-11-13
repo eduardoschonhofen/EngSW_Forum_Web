@@ -11,6 +11,7 @@
 .search {
   margin-left: 14px;
   display: inline;
+  max-width: 600px;
 }
 
 .topic {
