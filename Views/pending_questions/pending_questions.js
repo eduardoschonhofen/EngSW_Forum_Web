@@ -1,7 +1,8 @@
 
 (function() {
   this.printTopic = function(title, msg, username, pergunta_id) {
-    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic" id='${pergunta_id}'>\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p class='${pergunta_id}'><button class="w3-btn w3-teal" onclick='aprovaPergunta(${pergunta_id})'>Aprovar pergunta</button> <button class="w3-btn w3-teal" onclick='removePergunta(${pergunta_id})'>Cancelar pergunta</button> </p>`;
+	id1='button'+pergunta_id;
+    return document.getElementById("listTopic").innerHTML += ` <div class="w3-card-4 topic" id='${pergunta_id}'>\n		 <header class="w3-container w3-teal">\n		   <h3 class="title">${title}</h3>\n		 </header>\n\n		 <div class="w3-container">\n			 <p class="username"><b>Usuário: ${username}</b></p>\n		   <p class="msg">${msg}</p>\n		 </div>\n</div> <p id='${id1}'><button class="w3-btn w3-teal" onclick='aprovaPergunta(${pergunta_id})'>Aprovar pergunta</button> <button class="w3-btn w3-teal" onclick='removePergunta(${pergunta_id})'>Cancelar pergunta</button> </p>`;
   };
 
 }).call(this);
@@ -23,8 +24,9 @@ function quit()
 
 deletaPerguntaHTML = function(pergunta_id)
 {
+	id1='button'+pergunta_id;
 	document.getElementById(pergunta_id).innerHTML = "";
-	document.getElementsByClassName(pergunta_id).innerHTML = "";
+	document.getElementsById(id1).innerHTML = "";
 }
 
 function aprovaPergunta(pergunta_id) {
