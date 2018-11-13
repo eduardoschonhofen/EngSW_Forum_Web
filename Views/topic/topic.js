@@ -6,8 +6,8 @@ function printTopic(title, msg) {
     document.getElementById("paddingTopic").innerHTML +=
     `<div class="rating">
       <p>Nota: <span id="rating0"><span></p>
-      <input type="range" min="1" max="5" value="4" onchange="refreshRating('rating0', this.value)">
-      <button class="w3-btn w3-teal" id='submit0'>Enivar</button></p>
+      <input id="sendNotaTopic" type="range" min="1" max="5" value="4" onchange="refreshRating('rating0', this.value)">
+      <button onclick="postQuestion(sendNotaTopic)" class="w3-btn w3-teal" id='submit0'>Enivar</button></p>
     </div>`;
 };
 
@@ -65,6 +65,11 @@ function notDoctor()
 function getAnswer()
 {
   return document.getElementById("resposta").value.trim();
+}
+
+function getNota(id)
+{
+  return document.getElementById("id").value.trim();
 }
 
 function quit()
@@ -132,6 +137,17 @@ getParameter = function(key, str) {
 	} else {
 		return "";
 	}
+};
+
+postQuestion = function(id, nota) {
+// Requisição da página
+var xhr = new XMLHttpRequest();
+var url = "/evaluateQuestion";
+xhr.open("POST", url, true);
+xhr.setRequestHeader("Content-Type", "application/json");
+
+var endtopic = JSON.stringify({"topico_id": getParameter("id", document.location.href.split("?")[1]), "nota": getNota(id)})
+xhr.send(endtopic);
 };
 
 // Requisição da página

@@ -60,7 +60,7 @@ document.getElementById('submit').addEventListener("click", function() {
 	var data = JSON.stringify({"name": getNome(), "username": getNomeUsuario(), "password": getSenhaUsuario(), "epaciente": epaciente, "emedico": emedico, "speciality": especialidade});
 	xhr.send(data);
 
-	alert("Redirecionando para página de login");
+	alert("Registro efetuado com sucesso");
 	document.location.href = '/login.html';
 })
 

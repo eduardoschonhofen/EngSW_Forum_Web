@@ -55,7 +55,6 @@ document.getElementById('submit').addEventListener("click", function() {
 		  if(answerText =="true")
 		  {
 			alert("Pergunta salva e aguardando aceitação dos moderadores");
-			alert("Redirecionando para página de Perguntas");
 			document.location.href = '/search.html';
 		  }
 		  else

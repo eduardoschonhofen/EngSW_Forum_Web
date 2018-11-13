@@ -54,7 +54,7 @@ document.getElementById('submit').addEventListener("click", function() {
 			if (success=="true")
 			{
 				console.log(saveCookie("username",getNomeUsuario()));
-				alert("Redirecionando para lista de tópicos");
+				alert("Login efetuado com sucesso");
 				document.location.href = '/search.html';
 			}
 			else {
