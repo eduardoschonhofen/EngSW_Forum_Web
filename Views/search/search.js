@@ -26,12 +26,43 @@ getCookie = function(name) {
 	}
 };
 
+eraseTopic = function() {
+	document.getElementById("listTopic").innerHTML = "";
+}
+
+busca = function() {
+	var textoBusca = document.getElementById("busca").value;
+	var xhr = new XMLHttpRequest();
+	var url = "searchTopic";
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-Type", "application/json");
+
+	xhr.onreadystatechange = function () {
+	  console.log(xhr.readyState);
+	  console.log(xhr.status);
+	  console.log(getCookie("username"));
+	  if (xhr.readyState === 4 && xhr.status === 200) {
+		var success = xhr.responseText;
+		console.log(xhr.responseText);
+		success=JSON.parse(success);
+		console.log(success);
+		eraseTopic();
+		for(var i=0;i<success.length;i++)
+		{
+		  printTopic(success[i].titulo,success[i].texto,success[i].nomeUsuario, success[i].pergunta_id);
+		}
+	  }
+	};
+
+	var data = JSON.stringify({"cookie":getCookie("username"), "texto":textoBusca});
+	xhr.send(data);
+	
+}
+
 var xhr = new XMLHttpRequest();
 var url = "search";
 xhr.open("POST", url, true);
 xhr.setRequestHeader("Content-Type", "application/json");
-
-
 
 xhr.onreadystatechange = function () {
   console.log(xhr.readyState);
