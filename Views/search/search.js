@@ -51,6 +51,10 @@ busca = function() {
 		{
 		  printTopic(success[i].titulo,success[i].texto,success[i].nomeUsuario, success[i].pergunta_id);
 		}
+		if(success.length === 0)
+		{
+			alert("Nenhuma pergunta foi encontrada");
+		}
 	  }
 	};
 
