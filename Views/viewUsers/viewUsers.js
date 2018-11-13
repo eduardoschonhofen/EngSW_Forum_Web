@@ -30,6 +30,11 @@ getParameter = function(key, str) {
 	}
 };
 
+function quit()
+{
+	saveCookie("username", "");
+	document.location.href = '/login.html';
+}
 
 function deleteUser(username)
 {

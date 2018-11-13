@@ -23,6 +23,11 @@ getCookie = function(name) {
 	}
 };
 
+function quit()
+{
+	saveCookie("username", "");
+	document.location.href = '/login.html';
+}
 
 document.getElementById('submit').addEventListener("click", function() {
 
@@ -59,7 +64,7 @@ document.getElementById('submit').addEventListener("click", function() {
 		  }
 		}
 	};
-	
+
 	var data = JSON.stringify({"title": getTitulo(), "question": getPergunta(),"username":getUsername()});
 	xhr.send(data);
 

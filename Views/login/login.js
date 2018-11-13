@@ -23,7 +23,11 @@ function getSenhaUsuario()
 	return document.getElementById("password").value;
 }
 
-
+function quit()
+{
+	saveCookie("username", "");
+	document.location.href = '/login.html';
+}
 
 document.getElementById('submit').addEventListener("click", function() {
 
